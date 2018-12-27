@@ -1,6 +1,6 @@
 <template lang="pug">
   div#app
-    div#nav
+    div#nav.full-height
       router-link( to="/" ) Sobre
       router-link( to="/servicos" ) Serviços
       router-link( to="/localizacao" ) Localização
@@ -10,6 +10,11 @@
 
 </template>
 
-<style lang="scss">
+<style lang="sass">
+body
+  margin: 0
+
+  .full-height
+    height: 100vh
 
 </style>
