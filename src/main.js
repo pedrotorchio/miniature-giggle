@@ -4,6 +4,9 @@ import router from './router'
 
 Vue.config.productionTip = false
 
+import SvgIcon from 'vue-svgicon'
+Vue.use(SvgIcon);
+
 new Vue({
   router,
   render: h => h(App)
