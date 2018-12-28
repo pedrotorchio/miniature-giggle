@@ -7,7 +7,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "start": "npm run serve -- --open",
-    "generate-svg": "npx vsvg -s ./public/assets/imgs -t ./src/components/svg --es6"
+    "generate-svg": "npx vsvg -s ./public/assets/imgs -t ./src/components/svg --es6 --svgo ./svgo.config.js"
   },
   "dependencies": {
     "gsap": "^2.0.2",
