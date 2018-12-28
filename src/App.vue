@@ -12,16 +12,17 @@
 </template>
 
 <style lang="sass" scoped>
-
+$height: 2em
 #nav-container
   position: absolute
-  height: 1.2em
-  top: calc(100vh - 1.2em)
+  height: $height
+  top: calc(100vh - #{$height})
   font-size: 30px
-  line-height: 1.2em
+  line-height: $height
   z-index: 5
+
   a
-    margin: 0 .2em
+    margin: 0 1em
 
 #view
   max-width: 1600px
@@ -34,6 +35,12 @@ a
   text-decoration: none
 body
   margin: 0
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 400;
+
+
+.cursive
+  font-family: 'Sacramento', cursive;
 
 .section
   position: relative
