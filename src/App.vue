@@ -69,7 +69,17 @@ body
   margin: 0
   font-family: 'Quicksand', sans-serif;
   font-weight: 400;
+  color: #545454;
 
+body::-webkit-scrollbar
+  width: .5em;
+ 
+body::-webkit-scrollbar-track
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+ 
+body::-webkit-scrollbar-thumb
+  background-color: currentColor;
+  outline: 1px solid slategrey;
 
 .cursive
   font-family: 'Sacramento', cursive;
