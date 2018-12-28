@@ -1,38 +1,23 @@
 <script>
-import { TweenLite } from 'gsap';
-import { logoEnter } from '@/scripts/LogoAnimation';
-
 import '@/components/svg/logo-full';
 
-export default {
-  methods: {
-    staggerNavigation(el, done) {
-      const delay = el.dataset.index * 0.2;
+import Animations from '@/mixins/AppAnimations.mixin';
 
-      
-        TweenLite.from(el, .5, {
-          autoAlpha: 0,
-          scale: 1.5,
-          onComplete: done,
-          delay
-        });
-      
-    },
-    logoEnter
-  }
+export default {
+  mixins: [ Animations ]
 }
 </script>
 
 <template lang="pug">
   div#app
-    div#nav-container
+    div#nav-container( v-if = "navShown")
       transition-group#main.section( appear tag = "nav" @enter = "staggerNavigation" )
         router-link( to="/" :data-index = "1" key = "home" ) Sobre
         router-link( to="/servicos" :data-index = "2" key = "servicos" ) Serviços
         router-link( to="/localizacao" :data-index = "3" key = "localizacao" ) Localização
         router-link( to="/contato" :data-index = "4" key = "contato" ) Contato
     
-    transition( appear @enter = "logoEnter" ) 
+    transition( appear @enter = "logoEnter" @after-enter = "showNavigation" ) 
       svgicon#logo( name = "logo-full" :original = "true" )
     
     transition
