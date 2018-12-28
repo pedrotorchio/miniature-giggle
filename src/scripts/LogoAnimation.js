@@ -1,4 +1,5 @@
 import { TimelineMax, TweenMax, Linear } from 'gsap';
+import isFunction from 'is-function';
 
 export function logoEnter(svg, done) {
     
@@ -17,29 +18,52 @@ export function logoEnter(svg, done) {
     let counter = 0;
 
     
-    drawPath(head, 4, false);
+    drawPath(head, 3);
 
     drawPath(cog1, -1.5, .5);
-    timeline.addCallback(() => {
-        rotateCog(cog1, 1);
-    })
+
     
     drawPath(cog2, 1.5, 1);
-    timeline.addCallback(() => {
-        rotateCog(cog2, -1);
-    })
+
     
     drawPath(cog3, 1.5, 1.5);
-    timeline.addCallback(() => {
-        rotateCog(cog3, 1);
-    })
+
 
     reatoLetters.forEach( lt => drawPath(lt, .5, counter * .1, false));
     underText.forEach( lt => drawPath(lt, 1, counter * .01, false));
 
-    timeline.addCallback(done);
+    timeline.addCallback(() => {
+        repaint(head);
+        repaint(cog1);
+        rotateCog(cog1, 1);
+        repaint(cog2);
+        rotateCog(cog2, -1);
+        repaint(cog3);
+        rotateCog(cog3, 1);
 
-    
+        reatoLetters.forEach(( el, i ) => repaint(el, .1, i * .05));
+        underText.forEach(( el, i ) => repaint(el, 1, i * .01));
+
+        done();
+    });
+
+    function repaint(component, duration = .5, delay = 0) {
+
+        TweenMax.fromTo(component.el, duration, {
+            autoAlpha: 0,
+        },{
+            autoAlpha: 1,
+            stroke: "none",
+            strokeWidth: 0,
+            delay
+        });
+        component.setStyle('fill', component.fill);
+        // component.setStyle('stroke', "#1c4477");
+        // component.setStyle('fill', "none");
+        // component.setStyle('strokeWidth', "2px");
+        // component.setStyle('strokeDasharray', component.length);
+        // component.setStyle('strokeDashoffset', component.length);
+    }
     function drawPath(component, duration, offset = "+=0", fix = true) {
         // let dir = 1;
         
@@ -49,13 +73,16 @@ export function logoEnter(svg, done) {
         }
         let finalOffset = fix ? component.length/2 - 20 : 0;
         let engine = timeline;
-        let parameters = [component.el, duration, { strokeDashoffset: component.length }, { strokeDashoffset: finalOffset } ];
+        let parameters = [component.el, duration, { strokeDashoffset: component.length } ];
+        let toVars = { strokeDashoffset: finalOffset };
 
-        if (offset === false) {
+        if (offset === false || isFunction(offset)) {
             engine = TweenMax;
-
+            toVars.onComplete = offset;
+            parameters.push(toVars);
         } else {
-            counter++
+            counter++;
+            parameters.push(toVars);
             parameters.push(offset);
         }
 
@@ -112,8 +139,8 @@ export function makePathComponent(el) {
     }
     
     component.setStyle('stroke', "#1c4477");
-    component.setStyle('fill', "none");
-    component.setStyle('strokeWidth', "2px");
+    component.setStyle('fill', "#FFFFFF00");
+    component.setStyle('strokeWidth', "1.5px");
     component.setStyle('strokeDasharray', component.length);
     component.setStyle('strokeDashoffset', component.length);
 
