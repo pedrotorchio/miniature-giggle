@@ -1,19 +1,24 @@
 <script>
-import { TweenMax } from 'gsap';
+import { TweenLite } from 'gsap';
+import { logoEnter } from '@/scripts/LogoAnimation';
+
+import '@/components/svg/logo-full';
+
 export default {
   methods: {
     staggerNavigation(el, done) {
       const delay = el.dataset.index * 0.2;
 
       
-        TweenMax.from(el, .5, {
+        TweenLite.from(el, .5, {
           autoAlpha: 0,
           scale: 1.5,
           onComplete: done,
           delay
         });
       
-    }
+    },
+    logoEnter
   }
 }
 </script>
@@ -26,19 +31,26 @@ export default {
         router-link( to="/servicos" :data-index = "2" key = "servicos" ) Serviços
         router-link( to="/localizacao" :data-index = "3" key = "localizacao" ) Localização
         router-link( to="/contato" :data-index = "4" key = "contato" ) Contato
-
-    router-view#view
+    
+    transition( appear @enter = "logoEnter" ) 
+      svgicon#logo( name = "logo-full" :original = "true" )
+    
+    transition
+      router-view#view
 
 </template>
 
 <style lang="sass" scoped>
+#app
+  position: relative
+
 $height: 2em
 #nav-container
   position: absolute
   height: $height
   right: 0
   top: calc(100vh - #{$height})
-  font-size: 30px
+  font-size: 24px
   line-height: $height
   z-index: 5
 
@@ -53,7 +65,10 @@ $height: 2em
     &.router-link-active, &:hover
       color: #545454
       text-shadow: 0 0 0 #50505059;
-    
+
+#logo
+  position: absolute  
+  z-index: 55
 
 #view
   max-width: 1600px
@@ -105,3 +120,4 @@ img
   
 
 </style>
+<style src="@/styles/svgicon.css"></style>
