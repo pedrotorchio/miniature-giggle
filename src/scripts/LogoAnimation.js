@@ -1,4 +1,4 @@
-import { TimelineMax } from 'gsap';
+import { TimelineMax, TweenMax, Linear } from 'gsap';
 
 export function logoEnter(svg, done) {
     
@@ -17,32 +17,60 @@ export function logoEnter(svg, done) {
     let counter = 0;
 
     
-    drawPath(head, 6, counter * .5);
-    drawPath(cog1, 2, counter * .5);
-    rotateCog(cog1);
-    drawPath(cog2, 2, counter * .5);
-    rotateCog(cog2, -1);
-    drawPath(cog3, 2, counter * .5);
-    rotateCog(cog3);
+    drawPath(head, 4, false);
+
+    drawPath(cog1, -1.5, .5);
+    timeline.addCallback(() => {
+        rotateCog(cog1, 1);
+    })
     
-    reatoLetters.forEach( lt => drawPath(lt, .5, counter * .1));
-    underText.forEach( lt => drawPath(lt, 1, counter * .01));
+    drawPath(cog2, 1.5, 1);
+    timeline.addCallback(() => {
+        rotateCog(cog2, -1);
+    })
+    
+    drawPath(cog3, 1.5, 1.5);
+    timeline.addCallback(() => {
+        rotateCog(cog3, 1);
+    })
+
+    reatoLetters.forEach( lt => drawPath(lt, .5, counter * .1, false));
+    underText.forEach( lt => drawPath(lt, 1, counter * .01, false));
 
     timeline.addCallback(done);
 
     
-    function drawPath(component, duration, offset) {
-        timeline
-            .fromTo(component.el, duration, { strokeDashoffset: component.length }, { strokeDashoffset: 0 }, offset)
+    function drawPath(component, duration, offset = "+=0", fix = true) {
+        // let dir = 1;
+        
+        if (duration < 0) {
+            // dir = -1;
+            duration *= -1;
+        }
+        let finalOffset = fix ? component.length/2 - 20 : 0;
+        let engine = timeline;
+        let parameters = [component.el, duration, { strokeDashoffset: component.length }, { strokeDashoffset: finalOffset } ];
 
-        counter++;
+        if (offset === false) {
+            engine = TweenMax;
+
+        } else {
+            counter++
+            parameters.push(offset);
+        }
+
+        engine
+            .fromTo(...parameters);
+
     }
-    function rotateCog(cog, dir = 1) {
-        timeline
-            .to(cog, 1, {
-                rotation: dir * 45,
+    function rotateCog(cog, dir, offset = 0) {
+        TweenMax
+            .to(cog.el, 5, {
+                rotation: dir * 360,
                 transformOrigin: "50% 50%",
-                repeat: -1
+                repeat: -1,
+                ease: Linear.easeNone,
+                delay: offset
             });
     }
 }
