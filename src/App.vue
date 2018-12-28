@@ -1,11 +1,31 @@
+<script>
+import { TweenMax } from 'gsap';
+export default {
+  methods: {
+    staggerNavigation(el, done) {
+      const delay = el.dataset.index * 0.2;
+
+      
+        TweenMax.from(el, .5, {
+          autoAlpha: 0,
+          scale: 1.5,
+          onComplete: done,
+          delay
+        });
+      
+    }
+  }
+}
+</script>
+
 <template lang="pug">
   div#app
     div#nav-container
-      nav#main.section
-        router-link( to="/" ) Sobre
-        router-link( to="/servicos" ) Serviços
-        router-link( to="/localizacao" ) Localização
-        router-link( to="/contato" ) Contato
+      transition-group#main.section( appear tag = "nav" @enter = "staggerNavigation" )
+        router-link( to="/" :data-index = "1" key = "home" ) Sobre
+        router-link( to="/servicos" :data-index = "2" key = "servicos" ) Serviços
+        router-link( to="/localizacao" :data-index = "3" key = "localizacao" ) Localização
+        router-link( to="/contato" :data-index = "4" key = "contato" ) Contato
 
     router-view#view
 
@@ -23,12 +43,13 @@ $height: 2em
   z-index: 5
 
   a
+    display: inline-block
     margin: 0 1em
     color: #ffffff;
     text-shadow: 1px 1px 8px #50505059;
     transition: color 500ms
-    will-change: color, text-shadow
-
+    will-change: opacity, color, text-shadow, transform
+    
     &.router-link-active, &:hover
       color: #545454
       text-shadow: 0 0 0 #50505059;
