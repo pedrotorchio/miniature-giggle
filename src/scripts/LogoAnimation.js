@@ -1,4 +1,4 @@
-import { TimelineLite } from 'gsap';
+import { TimelineMax } from 'gsap';
 
 export function logoEnter(svg, done) {
     
@@ -13,7 +13,7 @@ export function logoEnter(svg, done) {
     els.underText.forEach( lt => lt.setStyle('strokeWidth', ".8px") );
     const { head, cog1, cog2, cog3, reatoLetters, underText } = els;
     
-    const timeline = new TimelineLite();
+    const timeline = new TimelineMax();
     let counter = 0;
 
     
@@ -25,19 +25,11 @@ export function logoEnter(svg, done) {
     drawPath(cog3, 2, counter * .5);
     rotateCog(cog3);
     
-
-    // timeline
-    //     .fromTo(head.el, 4, { strokeDashoffset: head.length }, { strokeDashoffset: 0 })
-    //     .fromTo(cog1.el, 1, { strokeDashoffset: cog1.length }, { strokeDashoffset: 0 }, .3)
-    //     .fromTo(cog2.el, 1, { strokeDashoffset: cog2.length }, { strokeDashoffset: 0 }, .6)
-    //     .fromTo(cog3.el, 1, { strokeDashoffset: cog3.length }, { strokeDashoffset: 0 }, 1);
-    
     reatoLetters.forEach( lt => drawPath(lt, .5, counter * .1));
     underText.forEach( lt => drawPath(lt, 1, counter * .01));
-    
 
+    timeline.addCallback(done);
 
-    done();
     
     function drawPath(component, duration, offset) {
         timeline
