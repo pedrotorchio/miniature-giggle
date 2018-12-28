@@ -16,6 +16,7 @@ $height: 2em
 #nav-container
   position: absolute
   height: $height
+  right: 0
   top: calc(100vh - #{$height})
   font-size: 30px
   line-height: $height
@@ -23,6 +24,15 @@ $height: 2em
 
   a
     margin: 0 1em
+    color: #ffffff;
+    text-shadow: 1px 1px 8px #50505059;
+    transition: color 500ms
+    will-change: color, text-shadow
+
+    &.router-link-active, &:hover
+      color: #545454
+      text-shadow: 0 0 0 #50505059;
+    
 
 #view
   max-width: 1600px
@@ -33,6 +43,7 @@ $height: 2em
 <style lang="sass">
 a
   text-decoration: none
+  color: inherit
 body
   margin: 0
   font-family: 'Quicksand', sans-serif;
