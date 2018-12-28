@@ -20,3 +20,7 @@ export default {
         @load = "headerImageLoaded" )
 </template>
 
+<style lang="sass" scoped>
+header img
+  object-position: left
+</style>
