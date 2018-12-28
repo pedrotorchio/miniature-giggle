@@ -1,17 +1,12 @@
-<template>
-  <div class="home">
-    
-  </div>
-</template>
-
 <script>
-// @ is an alias to /src
-
-
+import lazyImage from 'v-lazy-image';
 export default {
   name: 'home',
-  components: {
-
-  }
+  components: { lazyImage }
 }
 </script>
+
+<template lang="pug">
+  div#sobre
+    lazy-image( src = "/assets/imgs/about-hero.jpg" )
+</template>
