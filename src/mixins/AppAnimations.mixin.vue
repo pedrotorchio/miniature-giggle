@@ -12,7 +12,7 @@ export default {
         
             TweenMax.from(el, .5, {
                 autoAlpha: 0,
-                scale: 1.5,
+                scale: 2,
                 onComplete: done,
                 delay
             });
