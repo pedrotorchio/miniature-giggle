@@ -31,7 +31,7 @@ export default {
 #app
   position: relative
 
-$height: 2em
+$height: 4em
 #nav-container
   position: absolute
   height: $height
