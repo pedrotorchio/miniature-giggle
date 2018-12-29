@@ -6,12 +6,16 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start": "npm run serve -- --open"
+    "start": "npm run serve -- --open",
+    "generate-svg": "npx vsvg -s ./public/assets/imgs -t ./src/components/svg --es6 --svgo ./svgo.config.js"
   },
   "dependencies": {
+    "gsap": "^2.0.2",
+    "is-function": "^1.0.1",
     "v-lazy-image": "^1.2.2",
     "vue": "^2.5.17",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vue-svgicon": "^3.2.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.2.0",

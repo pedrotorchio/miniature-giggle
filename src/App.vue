@@ -1,43 +1,75 @@
+<script>
+import '@/components/svg/logo-full';
+
+import Animations from '@/mixins/AppAnimations.mixin';
+
+export default {
+  mixins: [ Animations ]
+}
+</script>
+
 <template lang="pug">
   div#app
-    div#nav-container
-      nav#main.section
-        router-link( to="/" ) Sobre
-        router-link( to="/servicos" ) Serviços
-        router-link( to="/localizacao" ) Localização
-        router-link( to="/contato" ) Contato
-
-    router-view#view
+    div#nav-container( v-if = "navShown")
+      transition-group#main.section( appear tag = "nav" @enter = "staggerNavigation" )
+        router-link( to="/" :data-index = "1" key = "home" ) Sobre
+        router-link( to="/servicos" :data-index = "2" key = "servicos" ) Serviços
+        router-link( to="/localizacao" :data-index = "3" key = "localizacao" ) Localização
+        router-link( to="/contato" :data-index = "4" key = "contato" ) Contato
+    
+    transition( appear @enter = "logoEnter" @after-enter = "showNavigation" ) 
+      svgicon#logo( name = "logo-full" :original = "true" )
+    
+    transition
+      router-view#view
 
 </template>
 
 <style lang="sass" scoped>
+
+
+#app
+  position: relative
+
 $height: 2em
 #nav-container
   position: absolute
   height: $height
-  right: 0
+  right: 50px
   top: calc(100vh - #{$height})
-  font-size: 30px
+  font-size: 24px
   line-height: $height
   z-index: 5
 
   a
+    display: inline-block
+    position: relative
     margin: 0 1em
     color: #ffffff;
     text-shadow: 1px 1px 8px #50505059;
     transition: color 500ms
-    will-change: color, text-shadow
+    will-change: opacity, color, text-shadow, transform    
+
+    &.router-link-active
+      
 
     &.router-link-active, &:hover
       color: #545454
       text-shadow: 0 0 0 #50505059;
-    
+
+#logo
+  position: absolute  
+  z-index: 55
+  width: 400px;
+  height: auto;
+  left: 50px;
+  top: 50px
 
 #view
-  max-width: 1600px
   width: 100%
   margin: 0 auto
+.narrow
+  max-width: 1600px;
 </style>
 
 <style lang="sass">
@@ -48,7 +80,17 @@ body
   margin: 0
   font-family: 'Quicksand', sans-serif;
   font-weight: 400;
+  color: #545454;
 
+body::-webkit-scrollbar
+  width: .5em;
+ 
+body::-webkit-scrollbar-track
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+ 
+body::-webkit-scrollbar-thumb
+  background-color: currentColor;
+  outline: 1px solid slategrey;
 
 .cursive
   font-family: 'Sacramento', cursive;
@@ -74,3 +116,4 @@ img
   
 
 </style>
+<style src="@/styles/svgicon.css"></style>
