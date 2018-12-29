@@ -26,6 +26,8 @@ export default {
 </template>
 
 <style lang="sass" scoped>
+
+
 #app
   position: relative
 
@@ -33,7 +35,7 @@ $height: 2em
 #nav-container
   position: absolute
   height: $height
-  right: 0
+  right: 50px
   top: calc(100vh - #{$height})
   font-size: 24px
   line-height: $height
@@ -41,12 +43,16 @@ $height: 2em
 
   a
     display: inline-block
+    position: relative
     margin: 0 1em
     color: #ffffff;
     text-shadow: 1px 1px 8px #50505059;
     transition: color 500ms
-    will-change: opacity, color, text-shadow, transform
-    
+    will-change: opacity, color, text-shadow, transform    
+
+    &.router-link-active
+      
+
     &.router-link-active, &:hover
       color: #545454
       text-shadow: 0 0 0 #50505059;
@@ -54,11 +60,16 @@ $height: 2em
 #logo
   position: absolute  
   z-index: 55
+  width: 400px;
+  height: auto;
+  left: 50px;
+  top: 50px
 
 #view
-  max-width: 1600px
   width: 100%
   margin: 0 auto
+.narrow
+  max-width: 1600px;
 </style>
 
 <style lang="sass">

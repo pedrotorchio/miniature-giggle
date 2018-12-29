@@ -33,6 +33,14 @@ export function logoEnter(svg, done) {
     underText.forEach( lt => drawPath(lt, 1, counter * .01, false));
 
     timeline.addCallback(() => {
+
+        // TweenMax.to(svg, 2, {
+        //     top: 30,
+        //     left: 30,
+        //     width: "400px",
+        //     ease: Linear.easeOut
+        // });
+
         repaint(head);
         repaint(cog1);
         rotateCog(cog1, 1);
@@ -92,7 +100,7 @@ export function logoEnter(svg, done) {
     }
     function rotateCog(cog, dir, offset = 0) {
         TweenMax
-            .to(cog.el, 5, {
+            .to(cog.el, 40, {
                 rotation: dir * 360,
                 transformOrigin: "50% 50%",
                 repeat: -1,
