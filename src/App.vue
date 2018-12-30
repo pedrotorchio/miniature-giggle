@@ -26,7 +26,7 @@ export default {
 </template>
 
 <style lang="sass" scoped>
-
+@import '~@/styles/config';
 
 #app
   position: relative
@@ -55,7 +55,7 @@ $height: 4em
       font-size: 64px
 
     &.router-link-active, &:hover
-      color: #545454
+      color: $color--primary
       text-shadow: 0 0 0 #50505059;
 
 #logo
