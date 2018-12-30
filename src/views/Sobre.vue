@@ -1,12 +1,12 @@
 <script>
 import lazyImage from 'v-lazy-image';
 import '@/components/svg/about-hero-line';
-import header from './sobre/header';
+import Header from './sobre/Header.mixin';
 import Route from '@/mixins/Route.mixin';
 export default {
   name: 'home',
   extends: Route,
-  mixins: [ header ],
+  mixins: [ Header ],
   components: { lazyImage }
 }
 </script>
