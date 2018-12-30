@@ -2,9 +2,10 @@
 import lazyImage from 'v-lazy-image';
 import '@/components/svg/about-hero-line';
 import header from './sobre/header';
-
+import Route from '@/mixins/Route.mixin';
 export default {
   name: 'home',
+  extends: Route,
   mixins: [ header ],
   components: { lazyImage }
 }

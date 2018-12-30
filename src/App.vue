@@ -2,9 +2,12 @@
 import '@/components/svg/logo-full';
 
 import Animations from '@/mixins/AppAnimations.mixin';
-
+import pages from '@/pages';
 export default {
-  mixins: [ Animations ]
+  mixins: [ Animations ],
+  data: () => ({
+    pages
+  })
 }
 </script>
 
@@ -12,10 +15,7 @@ export default {
   div#app
     div#nav-container( v-if = "navShown")
       transition-group#main.section( appear tag = "nav" @enter = "staggerNavigation" )
-        router-link( to="/" :data-index = "1" key = "home" ) Sobre
-        router-link( to="/servicos" :data-index = "2" key = "servicos" ) Serviços
-        router-link( to="/localizacao" :data-index = "3" key = "localizacao" ) Localização
-        router-link( to="/contato" :data-index = "4" key = "contato" ) Contato
+        router-link( v-for = "( { url, title, slug } , i) in pages" :to="url" :data-index = "i" :key = "slug" ) {{ title }}
     
     transition( appear @enter = "logoEnter" @after-enter = "showNavigation" ) 
       svgicon#logo( name = "logo-full" :original = "true" )
@@ -39,26 +39,27 @@ $height: 4em
   top: calc(100vh - #{$height})
   font-size: 24px
   line-height: $height
-  z-index: 5
+  z-index: 5555
 
   a
     display: inline-block
     position: relative
-    margin: 0 1em
+    margin: 0 16px
     color: #ffffff;
     text-shadow: 1px 1px 8px #50505059;
-    transition: color 500ms
+    transition-property: color, font-size
+    transition-duration: 500ms
     will-change: opacity, color, text-shadow, transform    
 
     &.router-link-active
-      
+      font-size: 64px
 
     &.router-link-active, &:hover
       color: #545454
       text-shadow: 0 0 0 #50505059;
 
 #logo
-  position: absolute  
+  position: fixed  
   z-index: 55
   width: 400px;
   height: auto;
