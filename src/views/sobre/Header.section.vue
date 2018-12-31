@@ -23,26 +23,24 @@ export default {
 
         },
         lineEnter(el, done) {
-            
-            new TimelineMax({ onComplete: done, delay: 4 })
+            const ctaOffset = 0;
+            new TimelineMax({ onComplete: done, delay: 3 })
                 .to(el.querySelector('path'), 1, {
                     strokeDashoffset: 0,
                     ease: SlowMo.ease.config(0.5, 0.7, false)
                 })
                 .set(this.$refs['cta'], {
                     visibility: 'visible'
-                })
+                }, ctaOffset)
+                .addCallback(() => {
+                        ['Bottom', 'Left', 'Top', 'Right']
+                            .forEach( pos => this.$refs[`ctaBorder${pos}`].classList.add('shown') )
+                }, ctaOffset)
                 .staggerFrom( this.$refs['ctaLetters'], 1, { 
                     autoAlpha:0, 
                     y: 50, 
                     ease: SlowMo.easeOut 
-                }, 0.05, .1)
-                .addCallback(() => {
-                    this.$refs.ctaBorderBottom.classList.add('shown');
-                    this.$refs.ctaBorderLeft.classList.add('shown');
-                    this.$refs.ctaBorderTop.classList.add('shown');
-                    this.$refs.ctaBorderRight.classList.add('shown');
-                }, .1)
+                }, 0.05, ctaOffset)
                 
             
         },
