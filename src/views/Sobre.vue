@@ -62,7 +62,7 @@ header img
   cursor: pointer
   visibility: hidden
   z-index: 5555
-  
+
   .top, .right, .left, .bottom
     position: absolute
     background-color: $color--primary

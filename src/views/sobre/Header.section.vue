@@ -36,13 +36,14 @@ export default {
                     autoAlpha:0, 
                     y: 50, 
                     ease: SlowMo.easeOut 
-                }, 0.05, 0)
+                }, 0.05, .1)
                 .addCallback(() => {
                     this.$refs.ctaBorderBottom.classList.add('shown');
                     this.$refs.ctaBorderLeft.classList.add('shown');
                     this.$refs.ctaBorderTop.classList.add('shown');
                     this.$refs.ctaBorderRight.classList.add('shown');
-                }, 0)
+                }, .1)
+                
             
         },
     }
