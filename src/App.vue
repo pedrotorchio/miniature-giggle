@@ -52,7 +52,7 @@ $height: 4em
     will-change: opacity, color, text-shadow, transform    
 
     &.router-link-active
-      font-size: 64px
+      font-size: 32px
 
     &.router-link-active, &:hover
       color: $color--primary
