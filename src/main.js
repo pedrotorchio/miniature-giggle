@@ -11,7 +11,8 @@ Vue.mixin({
     boundingBox: null
   }),
   mounted() {
-    this.boundingBox = this.$el.getBoundingClientRect();
+    if (this.$el && this.$el.getBoundingClientRect)
+      this.boundingBox = this.$el.getBoundingClientRect();
   }
 });
 new Vue({

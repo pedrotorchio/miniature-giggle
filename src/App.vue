@@ -79,6 +79,8 @@ $height: 4em
 </style>
 
 <style lang="sass">
+@import '~@/styles/config'
+
 a
   text-decoration: none
   color: inherit
@@ -123,7 +125,8 @@ img
   &.not-loaded
     filter: blur(5px)
   
-svg .site-line
-  stroke-width: 1px
+svg .site-line, svg.site-line path
+  stroke-width: 12px
+  stroke: $color--secondary
 </style>
 <style src="@/styles/svgicon.css"></style>

@@ -61,7 +61,7 @@ export default {
         @load = "headerImageLoaded" )
       
       transition( appear @before-enter = "beforeLineEnter" @enter = "lineEnter" )
-        svgicon#header-line( v-if = "isHeaderImageLoaded" name = "about-hero-line" :fill = "false" color = "#7dc4c7" )
+        svgicon#header-line( v-if = "isHeaderImageLoaded" name = "about-hero-line" :fill = "false" )
       
       h2#cta( ref = "cta" )
         span.top( ref = "ctaBorderTop" )
