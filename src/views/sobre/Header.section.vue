@@ -84,7 +84,7 @@ header img
     z-index: 555;
     width: 100%;
     height: auto;
-    bottom: 30px;
+    bottom: 0px;
     left: 0
     top: initial;
     
