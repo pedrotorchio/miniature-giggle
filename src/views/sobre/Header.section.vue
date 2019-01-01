@@ -16,20 +16,28 @@ export default {
     },
     methods: {
         headerImageLoaded() {
-            this.isHeaderImageLoaded = true;
+            this.isHeaderImageLoaded = true
+            this.animate();
         },
-        beforeLineEnter(el, done) {
-            const path = el.querySelector('path');
-            const length = path.getTotalLength();
-            
-            path.style.strokeDasharray = length;
-            path.style.strokeDashoffset = length;
+        initializeLine() {
+            const el = this.$refs['line'].$el.querySelector('path');
 
+            const length = el.getTotalLength();
+            
+            TweenMax.set(el, {
+                visibility: 'visible',
+                strokeDasharray: length,
+                strokeDashoffset: length
+            });
+
+            return el;
         },
-        lineEnter(el, done) {
+        animate() {
+            const line = this.initializeLine();
             const ctaOffset = 0;
-            new TimelineMax({ onComplete: done, delay: 3 })
-                .to(el.querySelector('path'), 1, {
+
+            new TimelineMax({ onComplete: () => this.$emit('doneAnimating'), delay: 3 })
+                .to(line, 1, {
                     strokeDashoffset: 0,
                     ease: SlowMo.ease.config(0.5, 0.7, false)
                 })
@@ -54,22 +62,22 @@ export default {
 
 <template lang="pug">
     header.full-height.section
-      lazy-image.cover(
-        :class = "{ 'not-loaded': !isHeaderImageLoaded }"
-        src = "/assets/imgs/about-hero.jpg"
-        src-placeholder = "/assets/imgs/about-hero-tiny.jpg"
-        @load = "headerImageLoaded" )
+        lazy-image.cover(
+            :class = "{ 'not-loaded': !isHeaderImageLoaded }"
+            src = "/assets/imgs/about-hero.jpg"
+            src-placeholder = "/assets/imgs/about-hero-tiny.jpg"
+            @load = "headerImageLoaded" )
       
-      transition( appear @before-enter = "beforeLineEnter" @enter = "lineEnter" )
-        svgicon#header-line( v-if = "isHeaderImageLoaded" name = "about-hero-line" :fill = "false" )
       
-      h2#cta( ref = "cta" )
-        span.top( ref = "ctaBorderTop" )
-        span.bottom( ref = "ctaBorderBottom" )
-        span.left( ref = "ctaBorderLeft" )
-        span.right( ref = "ctaBorderRight" )
+        svgicon#header-line.site-line( ref = "line" name = "about-hero-line" :fill = "false" )
+      
+        h2#cta( ref = "cta" )
+            span.top( ref = "ctaBorderTop" )
+            span.bottom( ref = "ctaBorderBottom" )
+            span.left( ref = "ctaBorderLeft" )
+            span.right( ref = "ctaBorderRight" )
 
-        span.text( ref = "ctaLetters" v-for = "( letter, i ) in ctaTextArray" :key = "letter + i" :data-index = "i" ) {{ letter }}
+            span.text( ref = "ctaLetters" v-for = "( letter, i ) in ctaTextArray" :key = "letter + i" :data-index = "i" ) {{ letter }}
 </template>
 
 
