@@ -129,13 +129,14 @@ body::-webkit-scrollbar-thumb
   height: 100%
   object-fit: cover
 
-img
-  filter: blur(0)
+.v-lazy-image
+  filter: blur(20px)
   will-change: filter
   transition: filter 500ms
 
-  &.not-loaded
-    filter: blur(5px)
+  &.v-lazy-image-loaded
+    filter: blur(0)
+
   
 svg .site-line, svg.site-line path
   visibility: hidden
