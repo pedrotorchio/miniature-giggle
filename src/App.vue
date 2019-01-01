@@ -81,6 +81,13 @@ $height: 4em
 <style lang="sass">
 @import '~@/styles/config'
 
+.section-title,
+  top: 100px;
+  left: 100px;
+  position: relative;
+  display: inline-block;
+  font-size: 32px;
+  color: $color--primary
 a
   text-decoration: none
   color: inherit
@@ -113,6 +120,7 @@ body::-webkit-scrollbar-thumb
   height: 100vh
 
 .cover
+  position: absolute
   width: 100%
   height: 100%
   object-fit: cover
