@@ -14,7 +14,7 @@ export default {
 <template lang="pug">
   div#app
     div#nav-container( v-if = "navShown")
-      transition-group#main.section( appear tag = "nav" @enter = "staggerNavigation" )
+      transition-group#main( appear tag = "nav" @enter = "staggerNavigation" )
         router-link( v-for = "( { url, title, slug } , i) in pages" :to="url" :data-index = "i" :key = "slug" ) {{ title }}
     
     transition( appear @enter = "logoEnter" @after-enter = "showNavigation" ) 
@@ -26,7 +26,7 @@ export default {
 </template>
 
 <style lang="sass" scoped>
-
+@import '~@/styles/config';
 
 #app
   position: relative
@@ -52,19 +52,24 @@ $height: 4em
     will-change: opacity, color, text-shadow, transform    
 
     &.router-link-active
-      font-size: 64px
+      font-size: 32px
 
     &.router-link-active, &:hover
-      color: #545454
+      color: $color--primary
       text-shadow: 0 0 0 #50505059;
 
 #logo
   position: fixed  
-  z-index: 55
+  z-index: 5555
   width: 400px;
   height: auto;
   left: 50px;
   top: 50px
+
+.cover
+  position: absolute
+  width: 100%
+  height: 100%
 
 #view
   width: 100%
@@ -96,8 +101,11 @@ body::-webkit-scrollbar-thumb
 .cursive
   font-family: 'Sacramento', cursive;
 
-.section
+.section, section
   position: relative
+  height: 600px
+  max-width: 1600px;
+  margin 0 auto
 
 .full-height
   height: 100vh

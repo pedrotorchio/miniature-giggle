@@ -34,13 +34,6 @@ export function logoEnter(svg, done) {
 
     timeline.addCallback(() => {
 
-        // TweenMax.to(svg, 2, {
-        //     top: 30,
-        //     left: 30,
-        //     width: "400px",
-        //     ease: Linear.easeOut
-        // });
-
         repaint(head);
         repaint(cog1);
         rotateCog(cog1, 1);
@@ -53,7 +46,7 @@ export function logoEnter(svg, done) {
         underText.forEach(( el, i ) => repaint(el, 1, i * .01));
 
         done();
-    });
+    }, "-=.2");
 
     function repaint(component, duration = .5, delay = 0) {
 
