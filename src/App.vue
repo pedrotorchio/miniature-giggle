@@ -81,12 +81,16 @@ $height: 4em
 <style lang="sass">
 @import '~@/styles/config'
 
+
+.hidden
+  visibility: hidden
+
 .section-title,
   top: 100px;
   left: 100px;
   position: relative;
   display: inline-block;
-  font-size: 32px;
+  font-size: 36px;
   color: $color--primary
 a
   text-decoration: none
@@ -134,6 +138,7 @@ img
     filter: blur(5px)
   
 svg .site-line, svg.site-line path
+  visibility: hidden
   stroke-width: 12px
   stroke: $color--secondary
 </style>

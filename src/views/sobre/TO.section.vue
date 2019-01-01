@@ -1,5 +1,5 @@
 <script>
-import { TweenMax, SlowMo } from 'gsap';
+import { TweenMax, SlowMo, TimelineMax } from 'gsap';
 
 export default {
     data: () => ({
@@ -18,44 +18,32 @@ export default {
         }
     },
     methods: {
-        initializeLine() {
-            const el = this.$el.querySelector('.site-line path');
-            const length = el.getTotalLength();
-
-            TweenMax.set(el, {
-                visibility: 'visible',
-                strokeDasharray: length,
-                strokeDashoffset: length
-            });
-
-            return el;
-        },
         animate() {
-            const el = this.initializeLine();
-            
-            TweenMax.to(el, 1, {
-                strokeDashoffset: 0,  
-                ease: SlowMo.ease.config(0.5, 0.7, false)
-            });
+            new TimelineMax({ onComplete: () => this.$emit('doneAnimating') })
+                .set(this.$refs['cta'], {
+                    visibility: 'visible'
+                })
+                .staggerFrom( this.$refs['ctaLetters'], 1, { 
+                    autoAlpha:0, 
+                    y: 50, 
+                    ease: SlowMo.easeOut 
+                }, 0.05)
         }
     },
     mounted() {
-        // setTimeout(this.animate, 0)
+        setTimeout(this.animate, 0)
     }
 }
 </script>
 <template lang="pug">
     section
-        //- svg.cover.site-line( fill = "none")
-        //-     path( :d="linePath" )
         
-        h1
-            span( v-for = "(lt, i) in h1TextArray" :key = "`${lt + i}`" ) {{ lt }}
+        h1.section-title
+            span( ref = "h1TextLetters" v-for = "(lt, i) in h1TextArray" :key = "`${lt + i}`" ) {{ lt }}
         
 </template>
 <style lang="sass" scoped>
-    svg
+    .hidden
         visibility: hidden
-    h1
         
 </style>
