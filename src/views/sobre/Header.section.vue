@@ -6,7 +6,6 @@ import '@/components/svg/about-hero-line';
 export default {
     components: { lazyImage },
     data: () => ({
-        isHeaderImageLoaded: false,
         ctaText: "Descubra a REATO"
     }),
     computed: {
@@ -16,7 +15,6 @@ export default {
     },
     methods: {
         headerImageLoaded() {
-            this.isHeaderImageLoaded = true
             this.animate();
         },
         initializeLine() {
@@ -63,12 +61,10 @@ export default {
 <template lang="pug">
     header.full-height.section
         lazy-image.cover(
-            :class = "{ 'not-loaded': !isHeaderImageLoaded }"
             src = "/assets/imgs/about-hero.jpg"
             src-placeholder = "/assets/imgs/about-hero-tiny.jpg"
             @load = "headerImageLoaded" )
-      
-      
+
         svgicon#header-line.site-line( ref = "line" name = "about-hero-line" :fill = "false" )
       
         h2#cta( ref = "cta" )
