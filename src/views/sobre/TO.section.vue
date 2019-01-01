@@ -1,7 +1,9 @@
 <script>
 import { TweenMax, SlowMo, TimelineMax } from 'gsap';
+import lazyImage from 'v-lazy-image';
 
 export default {
+    components: { lazyImage },
     data: () => ({
         h1Text: "Terapia Ocupacional"
     }),
@@ -20,10 +22,10 @@ export default {
     methods: {
         animate() {
             new TimelineMax({ onComplete: () => this.$emit('doneAnimating') })
-                .set(this.$refs['cta'], {
+                .set(this.$refs['h1TextLetters'], {
                     visibility: 'visible'
                 })
-                .staggerFrom( this.$refs['ctaLetters'], 1, { 
+                .staggerFrom( this.$refs['h1TextLetters'], 1, { 
                     autoAlpha:0, 
                     y: 50, 
                     ease: SlowMo.easeOut 
@@ -37,13 +39,31 @@ export default {
 </script>
 <template lang="pug">
     section
-        
-        h1.section-title
-            span( ref = "h1TextLetters" v-for = "(lt, i) in h1TextArray" :key = "`${lt + i}`" ) {{ lt }}
-        
+        div.left.half
+            h1.section-title
+                span.hidden( ref = "h1TextLetters" v-for = "(lt, i) in h1TextArray" :key = "`${lt + i}`" ) {{ lt }}
+            lazy-image#img(
+                src = "/assets/imgs/terapia-ocupacional.jpg"
+                src-placeholder = "/assets/imgs/terapia-ocupacional-tiny.jpg" )
+        div.right.half
+            p lorem
 </template>
 <style lang="sass" scoped>
+    .section-title
+        color: white
+        z-index: 5
+    .half
+        width: 50%
+        height: 100%
+
     .hidden
         visibility: hidden
-        
+    
+    #img
+        position: absolute;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        object-fit: cover;
+        object-position: left center;
 </style>
