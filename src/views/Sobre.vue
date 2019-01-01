@@ -1,96 +1,18 @@
 <script>
-import lazyImage from 'v-lazy-image';
-import '@/components/svg/about-hero-line';
-import Header from './sobre/Header.section';
 import Route from '@/mixins/Route.mixin';
+import HeaderSection from './sobre/Header.section';
+import ToSection from './sobre/TO.section';
+
 export default {
   name: 'home',
   extends: Route,
-  mixins: [ Header ],
-  components: { lazyImage }
+  components: { HeaderSection, ToSection }
 }
 </script>
 
 <template lang="pug">
   div#sobre
-    header.full-height.section
-      lazy-image.cover(
-        :class = "{ 'not-loaded': !isHeaderImageLoaded }"
-        src = "/assets/imgs/about-hero.jpg"
-        src-placeholder = "/assets/imgs/about-hero-tiny.jpg"
-        @load = "headerImageLoaded" )
-      
-      transition( appear @before-enter = "beforeLineEnter" @enter = "lineEnter" )
-        svgicon#header-line( v-if = "isHeaderImageLoaded" name = "about-hero-line" :fill = "false" color = "#7dc4c7" )
-      
-      h2#cta( ref = "cta" )
-        span.top( ref = "ctaBorderTop" )
-        span.bottom( ref = "ctaBorderBottom" )
-        span.left( ref = "ctaBorderLeft" )
-        span.right( ref = "ctaBorderRight" )
-
-        span.text( ref = "ctaLetters" v-for = "( letter, i ) in ctaTextArray" :key = "letter + i" :data-index = "i" ) {{ letter }}
+    header-section
+    to-section
 
 </template>
-
-<style lang="sass" scoped>
-@import '~@/styles/config'
-
-header img
-  object-position: 35% center
-
-#header-line
-  position: absolute;
-  z-index: 555;
-  left: 0;
-  top: 0
-  width: 100%;
-  height: 100%;
-
-    
-#cta
-  will-change: transform
-  position: absolute;
-  bottom: 100px;
-  right: 66px;
-  color: $color--primary;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  border: 0 solid;
-  padding: 1em;
-  border-radius: 0;
-  cursor: pointer
-  visibility: hidden
-  z-index: 5555
-
-  .top, .right, .left, .bottom
-    position: absolute
-    background-color: $color--primary
-    transition-property: height, width
-    transition-duration: 1s
-  
-  .top, .bottom
-    width: 0%
-    height: 5px;
-    &.shown
-      width: 100%
-  .left, .right
-    height: 0%
-    width: 5px
-    &.shown
-      height: 100%
-
-  .top, .right
-    top: 0
-  .top, .left
-    left: 0
-  
-  .bottom, .left
-    bottom: 0
-  .bottom, .right
-    right: 0
-
-  span.text
-    visibility: hidden;
-    will-change: transform
-</style>
