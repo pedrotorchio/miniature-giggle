@@ -1,14 +1,14 @@
 <script>
-import '@/components/svg/logo-full';
+import "@/components/svg/logo-full";
 
-import Animations from '@/mixins/AppAnimations.mixin';
-import pages from '@/pages';
+import Animations from "@/mixins/AppAnimations.mixin";
+import pages from "@/pages";
 export default {
-  mixins: [ Animations ],
+  mixins: [Animations],
   data: () => ({
     pages
   })
-}
+};
 </script>
 
 <template lang="pug">
@@ -123,6 +123,7 @@ img
   &.not-loaded
     filter: blur(5px)
   
-
+svg .site-line
+  stroke-width: 1px
 </style>
 <style src="@/styles/svgicon.css"></style>
