@@ -69,7 +69,7 @@ export default {
                 })
             })
             tl
-                .addCallback(() => this.$el.querySelector('#img svg').classList.add('shown'));
+                .addCallback(() => this.$el.querySelector('#img #call-text').classList.add('shown'));
 
 
         }
@@ -81,17 +81,17 @@ export default {
 </script>
 <template lang="pug">
     section#terapia-ocupacional
-        div.narrow.section
+        div.narrow.fixed-height.section
             div.left.half    
                 hoverable-image#img.cover(
                     :hoverable = "false"
                     src = "/assets/imgs/terapia-ocupacional.jpg"
                     src-placeholder = "/assets/imgs/terapia-ocupacional-tiny.jpg" )
                     
-                    svg#call-text
-                        text( y="110px" x="30px" dominant-baseline="text-before-edge" ) O que
-                        text( y="175px" x="30px" dominant-baseline="text-before-edge" ) é mais
-                        text( y="240px" x="30px" dominant-baseline="text-before-edge" ) importante.
+                    div#call-text
+                        h3( y="110px" x="30px" dominant-baseline="text-before-edge" ) O que
+                        h3( y="175px" x="30px" dominant-baseline="text-before-edge" ) é mais
+                        h3( y="240px" x="30px" dominant-baseline="text-before-edge" ) importante.
             div.right.half
                 span.border.top
                 span.border.right
@@ -114,7 +114,7 @@ export default {
     margin: 1em 0
     text-align: justify
     text-indent: 2em
-    font-size: 22px
+    font-size: 18px
 
 .section-title
     z-index: 5
@@ -125,7 +125,7 @@ export default {
     width: 50%
     height: 100%
     position: relative
-    padding: 100px 50px
+    padding: 50px
     box-sizing: border-box
 
 .right
@@ -151,22 +151,26 @@ export default {
     opacity: $opacity
     transition-duration: $duration
 
-#img /deep/ svg 
+#img /deep/ #call-text 
     
     width: 100%
     height: 100%
+    padding-top: 15%
+    padding-left: 5%
 
-    text
+    h3
         +shown(false)
-        transition-property: transform, opacity, fill
+        transition-property: transform, opacity, color
         font-size: 64px
         padding: 0 20px
         text-transform: uppercase
         font-weight: bold
         font-family: Impact, sans-serif
-        fill: rgba(255, 255, 255, .8)
+        color: rgba(255, 255, 255, .8)
+        margin: 0
+        margin-bottom: -10px
 
-#img /deep/ svg.shown text
+#img /deep/ #call-text.shown h3
     +shown(true)
     &:nth-child(1)
         transition-delay: 0s
@@ -174,8 +178,8 @@ export default {
         transition-delay: .2s
     &:nth-child(3)
         transition-delay: .4s
-        fill: rgba($color--secondary, 1)
-#img:hover /deep/ svg.shown text
+        color: rgba($color--secondary, 1)
+#img:hover /deep/ #call-text.shown text
     +shown(false)
     &:nth-child(1)
         transition-delay: 0s
