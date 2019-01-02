@@ -14,5 +14,5 @@ export default {
   div#sobre
     header-section( ref = "headerSection" )
     to-section( ref = "toSection" )
-
+    
 </template>

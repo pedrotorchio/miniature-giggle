@@ -36,14 +36,21 @@ body::-webkit-scrollbar-thumb
 
 .section
   position: relative
-  height: 600px
   box-sizing: border-box
   margin: 0 auto
 
   &.narrow
-    max-width: 1200px
+    max-width: 940px
+    &.fixed-height
+      height: 470px
   &.wide
+    max-width: 1200px
+    &.fixed-height
+      height: 600px
+  &.ultra-wide
     max-width: 1600px
+    &.fixed-height
+      height: 800px
 
 .full-height
   height: 100vh
