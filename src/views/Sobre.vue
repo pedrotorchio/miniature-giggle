@@ -12,7 +12,7 @@ export default {
 
 <template lang="pug">
   div#sobre
-    header-section
-    to-section
+    header-section( ref = "headerSection" )
+    to-section( ref = "toSection" )
 
 </template>

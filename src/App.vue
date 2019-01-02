@@ -3,11 +3,18 @@ import "@/components/svg/logo-full";
 
 import Animations from "@/mixins/AppAnimations.mixin";
 import pages from "@/pages";
+
+import SmoothScroll from 'smooth-scroll';
+
 export default {
   mixins: [Animations],
   data: () => ({
     pages
-  })
+  }),
+  mounted() {
+    new SmoothScroll('a[href*="#"]');
+
+  }
 };
 </script>
 
@@ -30,6 +37,7 @@ export default {
 
 #app
   position: relative
+
 
 $height: 4em
 #nav-container
@@ -59,7 +67,7 @@ $height: 4em
       text-shadow: 0 0 0 #50505059;
 
 #logo
-  position: fixed  
+  position: absolute 
   z-index: 5555
   width: 400px;
   height: auto;
@@ -79,6 +87,20 @@ $height: 4em
 </style>
 
 <style lang="sass">
+@import '~@/styles/config'
+
+.cta
+  font-size: 24px;
+  font-weight: bold;
+
+.hidden
+  visibility: hidden
+
+.section-title
+  position: relative
+  margin: 0;
+  font-size: 36px;
+  color: $color--primary
 a
   text-decoration: none
   color: inherit
@@ -104,6 +126,7 @@ body::-webkit-scrollbar-thumb
 .section, section
   position: relative
   height: 600px
+  box-sizing: border-box
   max-width: 1600px;
   margin 0 auto
 
@@ -111,19 +134,27 @@ body::-webkit-scrollbar-thumb
   height: 100vh
 
 .cover
+  position: absolute
   width: 100%
   height: 100%
   object-fit: cover
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
 
-img
-  filter: blur(0)
+.v-lazy-image
+  filter: blur(20px)
   will-change: filter
   transition: filter 500ms
 
-  &.not-loaded
-    filter: blur(5px)
+  &.v-lazy-image-loaded
+    filter: blur(0)
+
   
-svg .site-line
-  stroke-width: 1px
+svg .site-line, svg.site-line path
+  visibility: hidden
+  stroke-width: 12px
+  stroke: $color--secondary
 </style>
 <style src="@/styles/svgicon.css"></style>
