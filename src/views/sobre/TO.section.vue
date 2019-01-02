@@ -1,9 +1,10 @@
 <script>
 import { TweenMax, SlowMo, TimelineMax, Power2 } from 'gsap';
 import lazyImage from 'v-lazy-image';
+import hoverableImage from '@/components/hoverable-image';
 
 export default {
-    components: { lazyImage },
+    components: { hoverableImage },
     data: () => ({
         h1Text: "Terapia Ocupacional",
         text1: "Procura ampliar campos de <strong>ação e participação</strong>, considerando recursos e necessidades de acordo com o momento e lugar.",
@@ -80,7 +81,7 @@ export default {
 <template lang="pug">
     section#terapia-ocupacional
         div.left.half    
-            lazy-image#img.cover(
+            hoverable-image#img.cover(
                 src = "/assets/imgs/terapia-ocupacional.jpg"
                 src-placeholder = "/assets/imgs/terapia-ocupacional-tiny.jpg" )
         div.right.half
