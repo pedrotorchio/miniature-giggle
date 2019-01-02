@@ -69,7 +69,6 @@ export default {
                 })
             })
             tl
-                .addCallback(() => this.imgEffect = true)
                 .addCallback(() => this.$el.querySelector('#img svg').classList.add('shown'));
 
 
@@ -84,15 +83,14 @@ export default {
     section#terapia-ocupacional
         div.left.half    
             hoverable-image#img.cover(
-                :invert = "imgEffect"
-                :hoverable = "imgEffect"
+                :hoverable = "false"
                 src = "/assets/imgs/terapia-ocupacional.jpg"
                 src-placeholder = "/assets/imgs/terapia-ocupacional-tiny.jpg" )
                 
                 svg#call-text
-                    text( y="200px" x="30px" dominant-baseline="text-before-edge" ) O que
-                    text( y="265px" x="30px" dominant-baseline="text-before-edge" ) é mais
-                    text( y="330px" x="30px" dominant-baseline="text-before-edge" ) importante.
+                    text( y="110px" x="30px" dominant-baseline="text-before-edge" ) O que
+                    text( y="175px" x="30px" dominant-baseline="text-before-edge" ) é mais
+                    text( y="240px" x="30px" dominant-baseline="text-before-edge" ) importante.
         div.right.half
             span.border.top
             span.border.right
@@ -165,7 +163,7 @@ export default {
         text-transform: uppercase
         font-weight: bold
         font-family: Impact, sans-serif
-        fill: rgba(255, 255, 255, .5)
+        fill: rgba(255, 255, 255, .8)
 
 #img /deep/ svg.shown text
     +shown(true)
@@ -175,7 +173,7 @@ export default {
         transition-delay: .2s
     &:nth-child(3)
         transition-delay: .4s
-        fill: rgba($color--secondary, .5)
+        fill: rgba($color--secondary, 1)
 #img:hover /deep/ svg.shown text
     +shown(false)
     &:nth-child(1)
