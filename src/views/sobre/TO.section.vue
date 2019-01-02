@@ -101,7 +101,7 @@ export default {
     margin: 1em 0
     text-align: justify
     text-indent: 2em
-    font-size: 24px
+    font-size: 22px
 
 .section-title
     z-index: 5
