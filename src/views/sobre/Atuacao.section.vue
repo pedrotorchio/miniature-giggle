@@ -87,7 +87,7 @@ export default {
 </template>
 <style lang="sass" scoped>
 @import "~@/styles/config";
-$height: 300px;
+$height: 100vh;
 #atuacao
     height: $height
 
