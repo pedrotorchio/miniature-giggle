@@ -1,0 +1,73 @@
+@import '~@/styles/config'
+
+.cta
+  font-size: 24px;
+  font-weight: bold;
+
+.hidden
+  visibility: hidden
+
+.section-title
+  position: relative
+  margin: 0;
+  font-size: 36px;
+  color: $color--primary
+a
+  text-decoration: none
+  color: inherit
+body
+  margin: 0
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 400;
+  color: #545454;
+
+body::-webkit-scrollbar
+  width: .5em;
+ 
+body::-webkit-scrollbar-track
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+ 
+body::-webkit-scrollbar-thumb
+  background-color: currentColor;
+  outline: 1px solid slategrey;
+
+.cursive
+  font-family: 'Sacramento', cursive;
+
+.section, section
+  position: relative
+  height: 600px
+  box-sizing: border-box
+  margin: 0 auto
+
+  &.narrow
+    max-width: 1200px
+  &.wide
+    max-width: 1600px
+
+.full-height
+  height: 100vh
+
+.cover
+  position: absolute
+  width: 100%
+  height: 100%
+  object-fit: cover
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+
+.v-lazy-image
+  filter: blur(20px)
+  will-change: filter
+  transition: filter 500ms
+
+  &.v-lazy-image-loaded
+    filter: blur(0)
+
+  
+svg .site-line, svg.site-line path
+  visibility: hidden
+  stroke-width: 12px
+  stroke: $color--secondary
