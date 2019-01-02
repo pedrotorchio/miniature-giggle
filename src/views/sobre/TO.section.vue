@@ -10,12 +10,16 @@ export default {
         text1: "Procura ampliar campos de <strong>ação e participação</strong>, considerando recursos e necessidades de acordo com o momento e lugar.",
         text2: "Considerando a <strong>individualidade</strong> de cada paciente, estimula condições de <strong>bem-estar e autonomia</strong>.",
         text3: "Por meio do fazer afetivo, relacional, material e produtivo o profissional contribui com os processos de produção de <strong>vida e saúde</strong>.",
+        callMain: "O que mais importa pra você.",
+
+        imgEffect: false,
+
 
         call0: "Possibilita ao indivíduo que execute suas <strong>atividades cotidianas</strong>",
         call01: "Visando sempre promover <strong>qualidade de vida.</strong>",
         call1: "Respeito ao <strong>indivíduo</strong> e anseios pessoais",
         call2: "Lares adequados ao <strong>estilo de vida</strong>",
-        callMain: "O que mais importa pra você.",
+
     }),
     computed: {
         h1TextArray() {
@@ -64,8 +68,9 @@ export default {
                     }, textOffset + j * .2);
                 })
             })
-
-            tl.addCallback(() => this.$el.querySelector('#img svg').classList.add('shown'));
+            tl
+                .addCallback(() => this.imgEffect = true)
+                .addCallback(() => this.$el.querySelector('#img svg').classList.add('shown'));
 
 
         }
@@ -79,7 +84,8 @@ export default {
     section#terapia-ocupacional
         div.left.half    
             hoverable-image#img.cover(
-                invert
+                :invert = "imgEffect"
+                :hoverable = "imgEffect"
                 src = "/assets/imgs/terapia-ocupacional.jpg"
                 src-placeholder = "/assets/imgs/terapia-ocupacional-tiny.jpg" )
                 
@@ -88,6 +94,10 @@ export default {
                     text( y="265px" x="30px" dominant-baseline="text-before-edge" ) é mais
                     text( y="330px" x="30px" dominant-baseline="text-before-edge" ) importante.
         div.right.half
+            span.border.top
+            span.border.right
+            span.border.bottom
+            span.border.left
             h1.section-title
                 span.hidden( ref = "h1TextLetters" v-for = "(lt, i) in h1TextArray" :key = "`${lt + i}`" ) {{ lt }}
             p.text-area( v-html = "text1")
@@ -120,13 +130,9 @@ export default {
     box-sizing: border-box
 
 .right
-    display: flex
-    flex-direction: column
-    justify-content: space-between
-
     p
         visibility: hidden
-        margin: 0
+        margin: .5em 0
         display: block
 
     p /deep/ strong
@@ -150,17 +156,16 @@ export default {
     
     width: 100%
     height: 100%
-    fill: rgba(255, 255, 255, .5)
-
 
     text
         +shown(false)
-        transition-property: transform, opacity
+        transition-property: transform, opacity, fill
         font-size: 64px
         padding: 0 20px
         text-transform: uppercase
         font-weight: bold
         font-family: Impact, sans-serif
+        fill: rgba(255, 255, 255, .5)
 
 #img /deep/ svg.shown text
     +shown(true)
@@ -170,9 +175,9 @@ export default {
         transition-delay: .2s
     &:nth-child(3)
         transition-delay: .4s
+        fill: rgba($color--secondary, .5)
 #img:hover /deep/ svg.shown text
     +shown(false)
-    
     &:nth-child(1)
         transition-delay: 0s
     &:nth-child(2)
