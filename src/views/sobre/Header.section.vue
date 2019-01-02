@@ -69,11 +69,11 @@ export default {
 
 		svgicon#header-line.site-line( ref = "line" name = "about-hero-line" :fill = "false" )
 	  
-		a#cta.cta.clickable( ref = "cta" href = "#terapia-ocupacional" )
-			span.top( ref = "ctaBorderTop" )
-			span.bottom( ref = "ctaBorderBottom" )
-			span.left( ref = "ctaBorderLeft" )
-			span.right( ref = "ctaBorderRight" )
+		a.cta( ref = "cta" href = "#terapia-ocupacional" )
+			span.border.top( ref = "ctaBorderTop" )
+			span.border.bottom( ref = "ctaBorderBottom" )
+			span.border.left( ref = "ctaBorderLeft" )
+			span.border.right( ref = "ctaBorderRight" )
 
 			span.text( ref = "ctaLetters" v-for = "( letter, i ) in ctaTextArray" :key = "letter + i" :data-index = "i" ) {{ letter }}
 </template>
@@ -96,7 +96,7 @@ header img
 	
 
 	
-#cta
+.cta
 	will-change: transform
 	position: absolute;
 	bottom: 100px;
@@ -115,39 +115,9 @@ header img
 	transition-duration: .5s
 	transition-timing-function: easeOut
 
-
-
-	&.clickable:hover
+	&:hover
 		color: white
 		background-color: $color--primary
-
-	.top, .right, .left, .bottom
-		position: absolute
-		background-color: $color--primary
-		transition-property: height, width
-		transition-duration: 1s
-
-	.top, .bottom
-		width: 0%
-		height: 5px;
-		
-		&.shown
-			width: 100%
-	.left, .right
-		height: 0%
-		width: 5px
-		&.shown
-			height: 100%
-
-	.top, .right
-		top: 0
-	.top, .left
-		left: 0
-
-	.bottom, .left
-		bottom: 0
-	.bottom, .right
-		right: 0
 
 	span.text
 		visibility: hidden;

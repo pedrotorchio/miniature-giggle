@@ -34,7 +34,7 @@ body::-webkit-scrollbar-thumb
 .cursive
   font-family: 'Sacramento', cursive;
 
-.section, section
+.section
   position: relative
   height: 600px
   box-sizing: border-box
@@ -49,9 +49,9 @@ body::-webkit-scrollbar-thumb
   height: 100vh
 
 .cover
-  position: absolute
-  width: 100%
-  height: 100%
+  position: absolute !important
+  width: 100% !important
+  height: 100% !important
   object-fit: cover
   top: 0
   bottom: 0
@@ -71,3 +71,38 @@ svg .site-line, svg.site-line path
   visibility: hidden
   stroke-width: 12px
   stroke: $color--secondary
+
+
+.border
+  position: absolute
+  background-color: $color--primary
+  transition-property: height, width
+  transition-duration: 1s
+
+  &.top, &.bottom
+    width: 0%
+    height: 5px;
+    
+    &.shown
+      width: 100%
+  &.left, &.right
+    height: 0%
+    width: 5px
+    &.shown
+      height: 100%
+
+  &.top, &.right
+    top: 0
+  &.top, &.left
+    left: 0
+
+  &.bottom, &.left
+    bottom: 0
+  &.bottom, &.right
+    right: 0
+
+section:nth-child(odd)
+  background-color: rgba($color--primary, .1)
+
+section:nth-child(even)
+  background-color: rgba($color--secondary, .1)

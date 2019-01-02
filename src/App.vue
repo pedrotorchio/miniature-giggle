@@ -74,17 +74,10 @@ $height: 4em
   left: 50px;
   top: 50px
 
-.cover
-  position: absolute
-  width: 100%
-  height: 100%
-
 #view
   width: 100%
   margin: 0 auto
-.narrow
-  max-width: 1600px;
 </style>
 
-<style lang="sass" src="@/styles/global.sass"></style>
+<style lang="sass" src="@/styles/_global.sass"></style>
 <style src="@/styles/svgicon.css"></style>
