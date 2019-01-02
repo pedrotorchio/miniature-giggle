@@ -75,3 +75,31 @@ svg .site-line, svg.site-line path
 
 .narrow
   max-width: 1600px;
+
+.border
+  position: absolute
+  background-color: $color--primary
+  transition-property: height, width
+  transition-duration: 1s
+
+  &.top, &.bottom
+    width: 0%
+    height: 5px;
+    
+    &.shown
+      width: 100%
+  &.left, &.right
+    height: 0%
+    width: 5px
+    &.shown
+      height: 100%
+
+  &.top, &.right
+    top: 0
+  &.top, &.left
+    left: 0
+
+  &.bottom, &.left
+    bottom: 0
+  &.bottom, &.right
+    right: 0
