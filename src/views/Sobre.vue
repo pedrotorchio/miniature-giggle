@@ -13,6 +13,6 @@ export default {
 <template lang="pug">
   div#sobre
     header-section( ref = "headerSection" )
-    to-section( ref = "toSection" )
+    to-section.narrow( ref = "toSection" )
 
 </template>
