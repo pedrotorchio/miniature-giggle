@@ -34,7 +34,7 @@ body::-webkit-scrollbar-thumb
 .cursive
   font-family: 'Sacramento', cursive;
 
-.section, section
+.section
   position: relative
   height: 600px
   box-sizing: border-box
@@ -73,9 +73,6 @@ svg .site-line, svg.site-line path
   stroke: $color--secondary
 
 
-.narrow
-  max-width: 1600px;
-
 .border
   position: absolute
   background-color: $color--primary
@@ -103,3 +100,9 @@ svg .site-line, svg.site-line path
     bottom: 0
   &.bottom, &.right
     right: 0
+
+section:nth-child(odd)
+  background-color: rgba($color--primary, .1)
+
+section:nth-child(even)
+  background-color: rgba($color--secondary, .1)
