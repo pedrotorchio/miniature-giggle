@@ -81,32 +81,33 @@ export default {
 </script>
 <template lang="pug">
     section#terapia-ocupacional
-        div.left.half    
-            hoverable-image#img.cover(
-                :hoverable = "false"
-                src = "/assets/imgs/terapia-ocupacional.jpg"
-                src-placeholder = "/assets/imgs/terapia-ocupacional-tiny.jpg" )
-                
-                svg#call-text
-                    text( y="110px" x="30px" dominant-baseline="text-before-edge" ) O que
-                    text( y="175px" x="30px" dominant-baseline="text-before-edge" ) é mais
-                    text( y="240px" x="30px" dominant-baseline="text-before-edge" ) importante.
-        div.right.half
-            span.border.top
-            span.border.right
-            span.border.bottom
-            span.border.left
-            h1.section-title
-                span.hidden( ref = "h1TextLetters" v-for = "(lt, i) in h1TextArray" :key = "`${lt + i}`" ) {{ lt }}
-            p.text-area( v-html = "text1")
-            p.text-area( v-html = "text2")
-            p.text-area( v-html = "text3")
+        div.narrow.section
+            div.left.half    
+                hoverable-image#img.cover(
+                    :hoverable = "false"
+                    src = "/assets/imgs/terapia-ocupacional.jpg"
+                    src-placeholder = "/assets/imgs/terapia-ocupacional-tiny.jpg" )
+                    
+                    svg#call-text
+                        text( y="110px" x="30px" dominant-baseline="text-before-edge" ) O que
+                        text( y="175px" x="30px" dominant-baseline="text-before-edge" ) é mais
+                        text( y="240px" x="30px" dominant-baseline="text-before-edge" ) importante.
+            div.right.half
+                span.border.top
+                span.border.right
+                span.border.bottom
+                span.border.left
+                h1.section-title
+                    span.hidden( ref = "h1TextLetters" v-for = "(lt, i) in h1TextArray" :key = "`${lt + i}`" ) {{ lt }}
+                p.text-area( v-html = "text1")
+                p.text-area( v-html = "text2")
+                p.text-area( v-html = "text3")
             
 </template>
 <style lang="sass" scoped>
 @import "~@/styles/config";
 
-#terapia-ocupacional
+.section
     display: flex
 
 .text-area
