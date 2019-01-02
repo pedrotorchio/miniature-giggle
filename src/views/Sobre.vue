@@ -2,11 +2,12 @@
 import Route from '@/mixins/Route.mixin';
 import HeaderSection from './sobre/Header.section';
 import ToSection from './sobre/TO.section';
+import AtuacaoSection from './sobre/Atuacao.section';
 
 export default {
   name: 'home',
   extends: Route,
-  components: { HeaderSection, ToSection }
+  components: { HeaderSection, ToSection, AtuacaoSection }
 }
 </script>
 
@@ -14,5 +15,6 @@ export default {
   div#sobre
     header-section( ref = "headerSection" )
     to-section( ref = "toSection" )
+    atuacao-section( ref = "atuacaoSection" )
     
 </template>
