@@ -155,14 +155,14 @@ export default {
     
     width: 100%
     height: 100%
-    padding-top: 15%
-    padding-left: 5%
 
     h3
         +shown(false)
+        position: relative
+        top: 40px
+        left: 40px
         transition-property: transform, opacity, color
         font-size: 64px
-        padding: 0 20px
         text-transform: uppercase
         font-weight: bold
         font-family: Impact, sans-serif
