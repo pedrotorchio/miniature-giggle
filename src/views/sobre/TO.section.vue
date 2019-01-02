@@ -34,7 +34,7 @@ export default {
                     y: 50,
                     autoAlpha:0, 
                     ease: SlowMo.easeOut 
-                }, delay/100)
+                }, delay/100, .5);
 
             const textAreas = Array.from(this.$el.querySelectorAll('.right .text-area'));
 
@@ -65,12 +65,9 @@ export default {
                 })
             })
 
-            tl.staggerFrom(this.$refs['callTextLetters'], delay, {
-                y: 50,
-                autoAlpha:0, 
-                ease: SlowMo.easeOut 
-            }, delay/100);
-            
+            tl.addCallback(() => this.$el.querySelector('#img svg').classList.add('shown'));
+
+
         }
     },
     mounted() {
@@ -82,8 +79,14 @@ export default {
     section#terapia-ocupacional
         div.left.half    
             hoverable-image#img.cover(
+                invert
                 src = "/assets/imgs/terapia-ocupacional.jpg"
                 src-placeholder = "/assets/imgs/terapia-ocupacional-tiny.jpg" )
+                
+                svg#call-text
+                    text( y="200px" x="30px" dominant-baseline="text-before-edge" ) O que
+                    text( y="265px" x="30px" dominant-baseline="text-before-edge" ) é mais
+                    text( y="330px" x="30px" dominant-baseline="text-before-edge" ) importante.
         div.right.half
             h1.section-title
                 span.hidden( ref = "h1TextLetters" v-for = "(lt, i) in h1TextArray" :key = "`${lt + i}`" ) {{ lt }}
@@ -128,6 +131,54 @@ export default {
 
     p /deep/ strong
         position: relative
+
+=shown($state)
+    $trValue: -50px
+    $opacity: 0
+    $duration: .2s
+
+    @if $state
+        $trValue: 0
+        $opacity: 1
+        $duration: .5s
+
+    transform: translateX(#{$trValue})
+    opacity: $opacity
+    transition-duration: $duration
+
+#img /deep/ svg 
+    
+    width: 100%
+    height: 100%
+    fill: rgba(255, 255, 255, .5)
+
+
+    text
+        +shown(false)
+        transition-property: transform, opacity
+        font-size: 64px
+        padding: 0 20px
+        text-transform: uppercase
+        font-weight: bold
+        font-family: Impact, sans-serif
+
+#img /deep/ svg.shown text
+    +shown(true)
+    &:nth-child(1)
+        transition-delay: 0s
+    &:nth-child(2)
+        transition-delay: .2s
+    &:nth-child(3)
+        transition-delay: .4s
+#img:hover /deep/ svg.shown text
+    +shown(false)
+    
+    &:nth-child(1)
+        transition-delay: 0s
+    &:nth-child(2)
+        transition-delay: .1s
+    &:nth-child(3)
+        transition-delay: .2s
 
 
 .left
