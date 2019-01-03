@@ -31,7 +31,7 @@ export default {
       router-view#view
 
 </template>
-
+<style src="normalize.css"></style>
 <style lang="sass" scoped>
 @import '~@/styles/config';
 

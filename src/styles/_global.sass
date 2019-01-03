@@ -1,5 +1,8 @@
 @import '~@/styles/config'
-
+*, *:before, *:after 
+  box-sizing: inherit
+html
+  box-sizing: border-box
 .cta
   font-size: 24px;
   font-weight: bold;
@@ -32,25 +35,30 @@ body::-webkit-scrollbar-thumb
   outline: 1px solid slategrey;
 
 .cursive
-  font-family: 'Sacramento', cursive;
+  font-family: 'Sacramento', cursive
 
-.section
+section, .section
   position: relative
-  box-sizing: border-box
-  margin: 0 auto
-
   &.narrow
-    max-width: 940px
+    .inner-section
+      max-width: 940px
     &.fixed-height
-      height: 470px
+        height: 470px
   &.wide
-    max-width: 1200px
+    .inner-section
+      max-width: 1200px
     &.fixed-height
-      height: 600px
+        height: 600px
   &.ultra-wide
-    max-width: 1600px
+    .inner-section
+      max-width: 1600px
     &.fixed-height
       height: 800px
+  
+  .inner-section
+    position: relative
+    margin: 0 auto
+    height: 100%
 
 .full-height
   height: 100vh
