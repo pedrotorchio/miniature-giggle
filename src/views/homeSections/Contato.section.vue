@@ -31,46 +31,7 @@ export default {
             const delay = .8;
 
             const tl = new TimelineMax({ onComplete: () => this.$emit('doneAnimating') })
-                .set(this.$refs['h1TextLetters'], {
-                    visibility: 'visible'
-                })
-                .staggerFrom( this.$refs['h1TextLetters'], delay, {
-                    y: 50,
-                    autoAlpha:0, 
-                    ease: SlowMo.easeOut 
-                }, delay/100, .5);
-
-            const textAreas = Array.from(this.$el.querySelectorAll('.right .text-area'));
-
-            textAreas.forEach((text, i) => {
-                const textOffset = delay + delay * delay * i ;
                 
-                tl.fromTo( text, delay, {
-                    autoAlpha: 0,
-                    x: -50,
-                }, {
-                    autoAlpha: 1,
-                    x: 0,
-                    ease: Power2.easeOut
-                }, textOffset);
-
-                const strs = Array.from(text.querySelectorAll('strong'));
-
-                strs.forEach( (str, j) => {
-                    j++;
-                    tl.fromTo( str, delay/2, {
-                        autoAlpha: 0,
-                        left: -50,
-                    }, {
-                        autoAlpha: 1,
-                        left: 0,
-                        ease: Power2.easeOut
-                    }, textOffset + j * .2);
-                })
-            })
-            tl
-                .addCallback(() => this.$el.querySelector('#img #call-text').classList.add('shown'));
-
 
         }
     },
@@ -80,16 +41,14 @@ export default {
 }
 </script>
 <template lang="pug">
-    section#atuacao
-        div.narrow.section
+    section#servicos
+        div
             h2 REATO
             
 </template>
 <style lang="sass" scoped>
 @import "~@/styles/config";
 $height: 100vh;
-#atuacao
-    height: $height
 
 h2
     margin: 0

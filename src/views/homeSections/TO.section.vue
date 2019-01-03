@@ -81,7 +81,7 @@ export default {
 </script>
 <template lang="pug">
     section#terapia-ocupacional
-        div.narrow.fixed-height.section
+        div.inner-section
             div.left.half    
                 hoverable-image#img.cover(
                     :hoverable = "false"
@@ -107,7 +107,7 @@ export default {
 <style lang="sass" scoped>
 @import "~@/styles/config";
 
-.section
+.inner-section
     display: flex
 
 .text-area

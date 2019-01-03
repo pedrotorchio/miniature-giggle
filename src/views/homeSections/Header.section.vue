@@ -62,7 +62,7 @@ export default {
 </script>
 
 <template lang="pug">
-	header.full-height.section
+	header.section
 		lazy-image.cover(
 			src = "/assets/imgs/about-hero.jpg"
 			src-placeholder = "/assets/imgs/about-hero-tiny.jpg" )

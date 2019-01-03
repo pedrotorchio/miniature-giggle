@@ -9,8 +9,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'sobre',
-      component: () => import(/* webpackChunkName: "sobre" */ './views/Sobre.vue')
+      name: 'home',
+      component: () => import(/* webpackChunkName: "sobre" */ './views/Home.vue')
     }
   ]
 })
