@@ -1,5 +1,5 @@
 <script>
-
+import '@/components/svg/reato';
 import lazyImage from 'v-lazy-image';
 import hoverableImage from '@/components/hoverable-image';
 
@@ -47,14 +47,16 @@ export default {
     section#servicos( ref = "container" )
         div#early-words
             span( v-for = "( word, i ) in earlyWords" :key = "word + i" :style = "{ top: `${calcTop(i)}%` }" ) {{ word }}
-        h2 REATO
+        transition( appear ) 
+            svgicon#logo( name = "reato" :original = "true" )
         div#late-words
             span( v-for = "( word, i ) in lateWords" :key = "word + i" :style = "{ top: `${calcTop(i)}%` }" ) {{ word }}
         
             
 </template>
 <style lang="sass" scoped>
-@import "~@/styles/config";
+@import "~@/styles/config"
+@import "~@/styles/_animation.scss"
 
 #servicos
     position: relative
@@ -76,15 +78,27 @@ export default {
         flex: 0 0 auto
         padding: 0 10px
         font-size: 24px
-        font-family: impact
+        font-family: inherit
         text-transform: uppercase
-        
-h2
-    flex: 0 0 auto
-h2
-    margin: 0
-    text-align: center
-    font-size: 96px
+        color: $color--primary
+        opacity: .5
+        transition-property: transform, text-shadow
+        transition-duration: 1s
 
+        &:hover
+            text-shadow: 0px 8px 4px rgba(0,0,0,0.2)
+            transform: translatey(-8px)
+#logo
+    margin: 0
+    width: 300px
+    margin: 0 auto
+    transition: transform
+    transition-duration: .3s 
+    transition-timing-function: cubic-bezier(0.38, 0.15, 0.42, 2.29)
     
+    &:hover
+        transform: scale(1.2)
+        transition-duration: .5s
+        
+
 </style>
