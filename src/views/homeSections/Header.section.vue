@@ -2,8 +2,10 @@
 import { TweenMax, SlowMo, TimelineMax } from 'gsap';
 import lazyImage from 'v-lazy-image';
 import '@/components/svg/about-hero-line';
+import Section from '@/mixins/Section.mixin';
 
 export default {
+    extends: Section,
 	components: { lazyImage },
 	data: () => ({
 		ctaText: "Descubra a REATO"
@@ -27,11 +29,14 @@ export default {
 
 			return el;
 		},
-		animate() {
+		getTimelineParameters() {
+			return { delay: 3 };
+		},
+		animate(timeline) {
 			const line = this.initializeLine();
 			const ctaOffset = 0;
 
-			new TimelineMax({ onComplete: () => this.$emit('doneAnimating'), delay: 3 })
+			timeline
 				.to(line, 1, {
 					strokeDashoffset: 0,
 					ease: SlowMo.ease.config(0.5, 0.7, false),
@@ -54,9 +59,6 @@ export default {
 				
 			
 		},
-	},
-	mounted() {
-		setTimeout(this.animate, 0);
 	}
 }
 </script>

@@ -67,23 +67,33 @@ export default {
     padding: 50px 0
 h3
     font-family: impact
-    font-size: 36px
+    font-size: 42px
     letter-space: 2px
     margin: 0
     text-transform: uppercase
+    position: relative
+
+    transition-property: transform
+    transition-duration: 1s
 
     span
         visibility: hidden
 
     &:nth-child(1)
-        text-align: left
+        align-self: flex-start
+        transform: scale(1.1)
     &:nth-child(2)
-        text-align: left
-        padding-left: 50%
+        align-self: flex-start
+        left: 50%
+        transform: scale(1.2)
     &:nth-child(3)
-        text-align: right
-        padding-right: 50%
+        align-self: flex-end
+        right: 50%
+        transform: scale(1.1);
     &:nth-child(4)
-        text-align: right
-    
+        align-self: flex-end
+        transform: scale(1);
+
+    &:hover
+        transform: scale(1.3) !important    
 </style>

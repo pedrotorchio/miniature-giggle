@@ -2,8 +2,10 @@
 import { TweenMax, SlowMo, TimelineMax, Power2 } from 'gsap';
 import lazyImage from 'v-lazy-image';
 import hoverableImage from '@/components/hoverable-image';
+import Section from '@/mixins/Section.mixin';
 
 export default {
+    extends: Section,
     components: { hoverableImage },
     data: () => ({
         h1Text: "Terapia Ocupacional",
@@ -26,22 +28,10 @@ export default {
             return this.h1Text.split('')
         }
     },
-    methods: {
-        animate() {
-            const delay = .8;
-
-            const tl = new TimelineMax({ onComplete: () => this.$emit('doneAnimating') })
-                
-
-        }
-    },
-    mounted() {
-        setTimeout(this.animate, 0)
-    }
 }
 </script>
 <template lang="pug">
-    section#servicos
+    section#localizacao
         div
             h2 REATO
             

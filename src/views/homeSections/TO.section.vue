@@ -3,7 +3,10 @@ import { TweenMax, SlowMo, TimelineMax, Power2 } from 'gsap';
 import lazyImage from 'v-lazy-image';
 import hoverableImage from '@/components/hoverable-image';
 
+import Section from '@/mixins/Section.mixin';
+
 export default {
+    extends: Section,
     components: { hoverableImage },
     data: () => ({
         h1Text: "Terapia Ocupacional",
@@ -27,10 +30,10 @@ export default {
         }
     },
     methods: {
-        animate() {
+        animate(timeline) {
             const delay = .8;
 
-            const tl = new TimelineMax({ onComplete: () => this.$emit('doneAnimating') })
+            timeline
                 .set(this.$refs['h1TextLetters'], {
                     visibility: 'visible'
                 })
@@ -45,7 +48,7 @@ export default {
             textAreas.forEach((text, i) => {
                 const textOffset = delay + delay * delay * i ;
                 
-                tl.fromTo( text, delay, {
+                timeline.fromTo( text, delay, {
                     autoAlpha: 0,
                     x: -50,
                 }, {
@@ -58,7 +61,7 @@ export default {
 
                 strs.forEach( (str, j) => {
                     j++;
-                    tl.fromTo( str, delay/2, {
+                    timeline.fromTo( str, delay/2, {
                         autoAlpha: 0,
                         left: -50,
                     }, {
@@ -68,14 +71,11 @@ export default {
                     }, textOffset + j * .2);
                 })
             })
-            tl
+            timeline
                 .addCallback(() => this.$el.querySelector('#img #call-text').classList.add('shown'));
 
 
         }
-    },
-    mounted() {
-        setTimeout(this.animate, 0)
     }
 }
 </script>
@@ -97,7 +97,7 @@ export default {
                 span.border.right
                 span.border.bottom
                 span.border.left
-                h1.section-title
+                h1.section-titimelinee
                     span.hidden( ref = "h1TextLetters" v-for = "(lt, i) in h1TextArray" :key = "`${lt + i}`" ) {{ lt }}
                 p.text-area( v-html = "text1")
                 p.text-area( v-html = "text2")
@@ -116,7 +116,7 @@ export default {
     text-indent: 2em
     font-size: 18px
 
-.section-title
+.section-titimelinee
     z-index: 5
     text-align: left
     text-transform: uppercase

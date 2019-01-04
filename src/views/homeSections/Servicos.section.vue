@@ -1,60 +1,90 @@
 <script>
-import { TweenMax, SlowMo, TimelineMax, Power2 } from 'gsap';
+
 import lazyImage from 'v-lazy-image';
 import hoverableImage from '@/components/hoverable-image';
 
+import Section from '@/mixins/Section.mixin';
+
 export default {
+    extends: Section,
     components: { hoverableImage },
     data: () => ({
-        h1Text: "Terapia Ocupacional",
-        text1: "Procura ampliar campos de <strong>ação e participação</strong>, considerando recursos e necessidades de acordo com o momento e lugar.",
-        text2: "Considerando a <strong>individualidade</strong> de cada paciente, estimula condições de <strong>bem-estar e autonomia</strong>.",
-        text3: "Por meio do fazer afetivo, relacional, material e produtivo o profissional contribui com os processos de produção de <strong>vida e saúde</strong>.",
-        callMain: "O que mais importa pra você.",
-
-        imgEffect: false,
-
-
-        call0: "Possibilita ao indivíduo que execute suas <strong>atividades cotidianas</strong>",
-        call01: "Visando sempre promover <strong>qualidade de vida.</strong>",
-        call1: "Respeito ao <strong>indivíduo</strong> e anseios pessoais",
-        call2: "Lares adequados ao <strong>estilo de vida</strong>",
-
+        words: [
+            'Serviço',
+            'Serviço Diferente',
+            'Um Outro Serviço',
+            'Fazemos isso',
+            'Fazemos Aquilo',
+            'Isso é Importante',
+            'Palavra Chave',
+            'Outra Palavra Chave',
+            'Chave Palavra',
+            'Outra Chave'
+        ],
     }),
     computed: {
-        h1TextArray() {
-            return this.h1Text.split('')
+        earlyWords() {
+            const length = this.words.length;
+            return this.words.slice(0, length/2);
+        },
+        lateWords() {
+            const length = this.words.length;
+            return this.words.slice(length/2, length);
         }
     },
     methods: {
-        animate() {
-            const delay = .8;
+        calcTop(i) {
+            const length = this.words.length
+            if (i > length/2)
+                i = i - length/2
 
-            const tl = new TimelineMax({ onComplete: () => this.$emit('doneAnimating') })
-                
-
+            return i * 100 / length
         }
-    },
-    mounted() {
-        setTimeout(this.animate, 0)
     }
 }
 </script>
 <template lang="pug">
-    section#servicos
-        div
-            h2 REATO
+    section#servicos( ref = "container" )
+        div#early-words
+            span( v-for = "( word, i ) in earlyWords" :key = "word + i" :style = "{ top: `${calcTop(i)}%` }" ) {{ word }}
+        h2 REATO
+        div#late-words
+            span( v-for = "( word, i ) in lateWords" :key = "word + i" :style = "{ top: `${calcTop(i)}%` }" ) {{ word }}
+        
             
 </template>
 <style lang="sass" scoped>
 @import "~@/styles/config";
-$height: 100vh;
 
+#servicos
+    position: relative
+    display: flex
+    flex-direction: column
+
+#early-words, #late-words
+    position: relative
+    flex: 1 1 auto
+    display: flex
+    justify-content: space-around
+    align-items: center
+    flex-wrap: wrap
+
+    span
+        font-size: 20px
+        font-weight: 100
+        position: relative
+        flex: 0 0 auto
+        padding: 0 10px
+        font-size: 24px
+        font-family: impact
+        text-transform: uppercase
+        
+h2
+    flex: 0 0 auto
 h2
     margin: 0
     text-align: center
-    height: $height
-    line-height: $height
     font-size: 96px
+
     
 </style>
