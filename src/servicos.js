@@ -4,7 +4,7 @@ export class ServiceData {
         this.details = details;
     }
     setImgSource(src, placeholder = null) {
-        this.src = src
+        this.img = src
         this.placeholder = placeholder
 
         return this
@@ -13,7 +13,8 @@ export class ServiceData {
 
 export const words = [
     new ServiceData('Serviço', 
-        "Algo sobre este serviço. Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum."),
+        "Algo sobre este serviço. Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum.")
+        .setImgSource('servico-1.jpeg', 'servico-1-tiny.jpeg'),
     new ServiceData('Serviço Diferente', 
         "Algo sobre este serviço. Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum."),
     new ServiceData('Um Outro Serviço', 

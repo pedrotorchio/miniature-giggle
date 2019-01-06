@@ -2,6 +2,7 @@
 import lazyImage from 'v-lazy-image';
 
 export default {    
+    inheritAttrs: false,
     components: { lazyImage },
     props: {
         hoverable: {
@@ -15,7 +16,7 @@ export default {
     },
     computed: {
         attrs() {
-            const { hoverable, ...attrs } = this.$attrs;
+            const { hoverable, id, ...attrs } = this.$attrs;
             return attrs;
         },
         listeners() {
@@ -26,7 +27,7 @@ export default {
 }
 </script>
 <template lang="pug">
-    div.hoverable-image( :class = "[ invert ? 'invert' : 'regular', { hoverable }]")
+    div.hoverable-image( :class = "[ invert ? 'invert' : 'regular', { hoverable }]" :id = "$attrs.id")
         lazy-image(
             v-bind = "attrs"
             v-on = "listeners"

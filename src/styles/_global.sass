@@ -126,8 +126,14 @@ svg .site-line, svg.site-line path
   &.bottom, &.right
     right: 0
 
+=bgColor-flat-gradient($color)
+  background-color: rgba($color, .1)
+  &.gradient
+    background: radial-gradient(circle, rgba($color,.1) 0%, rgba($color,.2) 80%, rgba($color,.2) 100%)
+
 section:nth-child(odd)
-  background-color: rgba($color--primary, .1)
+  +bgColor-flat-gradient($color--primary)
+  
 
 section:nth-child(even)
-  background-color: rgba($color--secondary, .1)
+  +bgColor-flat-gradient($color--secondary)
