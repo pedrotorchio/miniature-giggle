@@ -33,12 +33,16 @@ export default {
         }
     },
     methods: {
-        calcTop(i) {
-            const length = this.words.length
-            if (i > length/2)
-                i = i - length/2
+        animate(timeline) {
+            const { earlyWords, lateWords } = this.$refs;
+            const words = [...earlyWords, ...lateWords];
 
-            return i * 100 / length
+            timeline
+                .staggerTo(words, 1, {
+                    y: 0,
+                    autoAlpha: 1,
+                    textShadow: "0px 0px 4px rgba(0,0,0,0.2)"
+                }, .2)
         }
     }
 }
@@ -46,17 +50,24 @@ export default {
 <template lang="pug">
     section#servicos( ref = "container" )
         div#early-words
-            span( v-for = "( word, i ) in earlyWords" :key = "word + i" :style = "{ top: `${calcTop(i)}%` }" ) {{ word }}
+            span( ref = "earlyWords" v-for = "( word, i ) in earlyWords" :key = "word + i" ) {{ word }}
         transition( appear ) 
             svgicon#logo( name = "reato" :original = "true" )
         div#late-words
-            span( v-for = "( word, i ) in lateWords" :key = "word + i" :style = "{ top: `${calcTop(i)}%` }" ) {{ word }}
+            span( ref = "lateWords" v-for = "( word, i ) in lateWords" :key = "word + i" ) {{ word }}
         
             
 </template>
 <style lang="sass" scoped>
 @import "~@/styles/config"
 @import "~@/styles/_animation.scss"
+
+=active-service
+    text-shadow: 0px 8px 4px rgba(0,0,0,0.2)
+    transform: translateY(-8px)
+=inactive-service
+    text-shadow: 0px 0px 0px rgba(0,0,0,0)
+    transform: translateY(0px)
 
 #servicos
     position: relative
@@ -81,13 +92,12 @@ export default {
         font-family: inherit
         text-transform: uppercase
         color: $color--primary
-        opacity: .5
         transition-property: transform, text-shadow
-        transition-duration: 1s
-
-        &:hover
-            text-shadow: 0px 8px 4px rgba(0,0,0,0.2)
-            transform: translatey(-8px)
+        
+        
+        +active-service
+        visibility: hidden
+        opacity: 0
 #logo
     margin: 0
     width: 300px
@@ -96,9 +106,9 @@ export default {
     transition-duration: .3s 
     transition-timing-function: cubic-bezier(0.38, 0.15, 0.42, 2.29)
     
-    &:hover
-        transform: scale(1.2)
-        transition-duration: .5s
+    // &:hover
+    //     transform: scale(1.2)
+    //     transition-duration: .5s
         
 
 </style>
