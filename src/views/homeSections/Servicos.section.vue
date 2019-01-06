@@ -1,26 +1,16 @@
 <script>
 import '@/components/svg/reato';
-import lazyImage from 'v-lazy-image';
-import hoverableImage from '@/components/hoverable-image';
-
+import ServiceDetails from '@/components/service-details';
+import {TweenMax} from 'gsap'
 import Section from '@/mixins/Section.mixin';
+import { words } from '@/servicos';
 
 export default {
     extends: Section,
-    components: { hoverableImage },
+    components: { ServiceDetails },
     data: () => ({
-        words: [
-            'Serviço',
-            'Serviço Diferente',
-            'Um Outro Serviço',
-            'Fazemos isso',
-            'Fazemos Aquilo',
-            'Isso é Importante',
-            'Palavra Chave',
-            'Outra Palavra Chave',
-            'Chave Palavra',
-            'Outra Chave'
-        ],
+        words,
+        activeService: false
     }),
     computed: {
         earlyWords() {
@@ -33,6 +23,21 @@ export default {
         }
     },
     methods: {
+        show(details) {
+            this.activeService = details;
+        },
+        contentEnter( el , done ) {
+            TweenMax.to(el, .2, {
+                autoAlpha: 1,
+                onComplete: done
+            })
+        },
+        contentLeave( el, done ){
+            TweenMax.to(el, .2, {
+                autoAlpha: 0,
+                onComplete: done
+            })
+        },
         animate(timeline) {
             const { earlyWords, lateWords } = this.$refs;
             const words = [...earlyWords, ...lateWords];
@@ -41,7 +46,8 @@ export default {
                 .staggerTo(words, 1, {
                     y: 0,
                     autoAlpha: 1,
-                    textShadow: "0px 0px 4px rgba(0,0,0,0.2)"
+                    textShadow: "0px 0px 4px rgba(0,0,0,0.2)",
+                    transitionDuration: ".5s"
                 }, .2)
         }
     }
@@ -49,14 +55,15 @@ export default {
 </script>
 <template lang="pug">
     section#servicos( ref = "container" )
+
         div#early-words
-            span( ref = "earlyWords" v-for = "( word, i ) in earlyWords" :key = "word + i" ) {{ word }}
-        transition( appear ) 
-            svgicon#logo( name = "reato" :original = "true" )
+            span( ref = "earlyWords" v-for = "( word, i ) in earlyWords" :key = "word.title + i" @mouseover = "show(word)" @mouseout = "show(false)") {{ word.title }}
+        transition( appear mode = "out-in" @enter = "contentEnter" @leave = "contentLeave" ) 
+            svgicon.content( v-if = "activeService == false" name = "reato" :original = "true" )
+            service-details.content.narrow.width( v-else ref = "details" :data = "activeService" )
         div#late-words
-            span( ref = "lateWords" v-for = "( word, i ) in lateWords" :key = "word + i" ) {{ word }}
-        
-            
+            span( ref = "lateWords" v-for = "( word, i ) in lateWords" :key = "word.title + i" @mouseover = "show(word)" @mouseout = "show(false)") {{ word.title }}
+
 </template>
 <style lang="sass" scoped>
 @import "~@/styles/config"
@@ -93,14 +100,27 @@ export default {
         text-transform: uppercase
         color: $color--primary
         transition-property: transform, text-shadow
-        
-        
+        $height: 3em
+        height: $height
+        line-height: $height
+        min-height: 64px
+
         +active-service
         visibility: hidden
         opacity: 0
-#logo
+        
+        cursor: pointer
+        &:hover
+            transform: translateY(-8px) scale(1.2) !important
+
+svg.content
+    max-width: 500px
+aside.content
+    max-width: 940px
+.content
     margin: 0
-    width: 300px
+    width: auto
+    height: 500px
     margin: 0 auto
     transition: transform
     transition-duration: .3s 

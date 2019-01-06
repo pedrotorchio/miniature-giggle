@@ -39,21 +39,7 @@ body::-webkit-scrollbar-thumb
 
 section, .section
   position: relative
-  &.narrow
-    .inner-section
-      max-width: 940px
-    &.fixed-height
-        height: 470px
-  &.wide
-    .inner-section
-      max-width: 1200px
-    &.fixed-height
-        height: 600px
-  &.ultra-wide
-    .inner-section
-      max-width: 1600px
-    &.fixed-height
-      height: 800px
+
   
   .inner-section
     position: relative
@@ -62,6 +48,30 @@ section, .section
 
 .full-height
   height: 100vh
+.narrow
+  $width: 940px
+  &.width
+    max-width: $width
+  .inner-section
+    max-width: $width
+  &.fixed-height
+      height: $width/2
+.wide
+  $width: 1200px
+  &.width
+    max-width: $width
+  .inner-section
+    max-width: $width
+  &.fixed-height
+      height: $width/2
+.ultra-wide
+  $width: 1600px
+  &.width
+    max-width: $width
+  .inner-section
+    max-width: $width
+  &.fixed-height
+      height: $width/2
 
 .cover
   position: absolute !important
