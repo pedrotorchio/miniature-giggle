@@ -164,7 +164,6 @@ svg.content
 aside.content
     max-width: 940px
 .content
-    padding: 1em
     width: auto
     margin: 0 auto
 
