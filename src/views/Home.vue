@@ -19,8 +19,8 @@ export default {
   div#sobre
     header-section.full-height( ref = "headerSection" )
 
-    to-section.wide( ref = "toSection" )
-    destaques-section.wide( ref = "toSection" )
+    to-section.wide.padded( ref = "toSection" )
+    destaques-section.wide.padded( ref = "toSection" )
 
     servicos-section.wide.full-height( ref = "atuacaoSection" )
     
