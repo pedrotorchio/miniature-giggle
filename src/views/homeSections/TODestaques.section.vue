@@ -28,23 +28,16 @@ export default {
             call2Letters = Array.from(call2Letters);
             call3Letters = Array.from(call3Letters);
 
-            call0Letters.forEach( lt => TweenMax.to(lt, .5, {
-                autoAlpha: 1,
-                delay: Math.random() * duration
-            }));
-            call1Letters.forEach( lt => TweenMax.to(lt, .5, {
-                autoAlpha: 1,
-                delay: Math.random() * duration
-            }));
-            call2Letters.forEach( lt => TweenMax.to(lt, .5, {
-                autoAlpha: 1,
-                delay: Math.random() * duration
-            }));
-            call3Letters.forEach( lt => TweenMax.to(lt, .5, {
-                autoAlpha: 1,
-                delay: Math.random() * duration
-            }));
-         
+            [call0Letters, call1Letters, call2Letters, call3Letters, ]
+            .forEach(word => {
+                word.forEach( lt => TweenMax.to(lt, .5, {
+                    scale: 1,
+                    autoAlpha: 1,
+                    delay: Math.random() * duration
+                }));
+            })
+            
+            
         }
     },
     mounted() {
@@ -78,10 +71,11 @@ h3
 
     span
         visibility: hidden
+        transform: scale(2)
 
     &:nth-child(1)
         align-self: flex-start
-        transform: scale(1.1)
+        transform: scale(1)
     &:nth-child(2)
         align-self: flex-start
         left: 50%

@@ -3,9 +3,6 @@
   box-sizing: inherit
 html
   box-sizing: border-box
-.cta
-  font-size: 24px;
-  font-weight: bold;
 
 .hidden
   visibility: hidden
@@ -126,14 +123,40 @@ svg .site-line, svg.site-line path
   &.bottom, &.right
     right: 0
 
-=bgColor-flat-gradient($color)
-  background-color: rgba($color, .1)
+=bgColor-flat-gradient($color, $opacity: 0)
+  background-color: rgba($color, $opacity)
   &.gradient
-    background: radial-gradient(circle, rgba($color,.1) 0%, rgba($color,.2) 80%, rgba($color,.2) 100%)
+    background: radial-gradient(circle, rgba($color,$opacity) 0%, rgba($color, 2*$opacity) 80%, rgba($color,2*$opacity) 100%)
 
-section:nth-child(odd)
-  +bgColor-flat-gradient($color--primary)
-  
+section:nth-child(odd), .bg-colored
+  +bgColor-flat-gradient($color--secondary, .05)
+.bg-white
+  background-color: white
 
-section:nth-child(even)
-  +bgColor-flat-gradient($color--secondary)
+.cta
+  font-weight: bold
+  font-size: 24px
+
+
+  will-change: transform
+  color: $color--primary
+  text-transform: uppercase
+  letter-spacing: .1em
+  border: 0 solid
+  padding: 1em
+  border-radius: 0
+  cursor: pointer
+  visibility: hidden
+  z-index: 5555
+
+  transition: color, background-color
+  transition-duration: .5s
+  transition-timing-function: ease-out
+
+  &:hover
+    background-color: $color--primary
+    color: lighten($color--primary, 60)
+
+  span.text
+    visibility: hidden;
+    will-change: transform
