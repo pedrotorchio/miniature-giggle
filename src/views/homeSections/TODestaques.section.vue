@@ -2,15 +2,19 @@
 import { TweenMax, SlowMo, TimelineMax, Power2 } from 'gsap';
 import lazyImage from 'v-lazy-image';
 import hoverableImage from '@/components/hoverable-image';
+import '@/components/svg/logo-head'
+import AppAnimations from '@/mixins/AppAnimations.mixin';
 
 export default {
+    mixins: [ AppAnimations ],
     components: { hoverableImage },
     data: () => ({
         calls: [
-            'Atividades Cotidianas',
-            'Qualidade de Vida',
-            'Autonomia',
-            'Individualidade'
+            'Reabilitação Cognitivo Funcional',
+            'Otimização de Habilidades',
+            'Independência com Segurança',
+            'Organização de Rotina',
+            'Orientação ou Acompanhamento Familiar'
         ]
     }),
     computed: {
@@ -21,15 +25,11 @@ export default {
     methods: {
         animate() {
             const duration = 1;
-            let { call0Letters, call1Letters, call2Letters, call3Letters } = this.$refs;
 
-            call0Letters = Array.from(call0Letters);
-            call1Letters = Array.from(call1Letters);
-            call2Letters = Array.from(call2Letters);
-            call3Letters = Array.from(call3Letters);
+            const callsLetters = this.calls.map( ( txt, i ) => Array.from(this.$refs[`call${i}Letters`]) );
 
-            [call0Letters, call1Letters, call2Letters, call3Letters, ]
-            .forEach(word => {
+            callsLetters
+            .forEach( word => {
                 word.forEach( lt => TweenMax.to(lt, .5, {
                     scale: 1,
                     autoAlpha: 1,
@@ -38,7 +38,24 @@ export default {
             })
             
             
-        }
+        },
+        // getStyling(i) {
+        //     let styles = {}
+            
+        //     if (i == 0) {
+        //         styles['alignSelf'] = 'flex-start';
+        //     } else if (i == this.calls.length - 1) {
+        //         styles['alignSelf'] = 'flex-end';
+        //     } else {
+        //         const   totalSpace = 400,
+        //                 remainingLength = this.calls.length - 2,
+        //                 step = totalSpace / remainingLength,
+        //                 margin = -totalSpace/2 + (i - 1) * step;
+
+        //         styles['marginLeft'] = `${margin}px`
+        //     }
+        //     return styles;
+        // } 
     },
     mounted() {
         setTimeout(this.animate, 3000)
@@ -47,47 +64,41 @@ export default {
 </script>
 <template lang="pug">
     section#destaques
-        div.inner-section
-            h3( v-for = "( callLetters, i ) in callsTextArray" :key = "i")
-                span( v-for = "( letter, j ) in callLetters" :key = "`${letter + j}`" :ref = "`call${i}Letters`") {{ letter }}
+        div.inner-section.split
+            div.half
+                h3( v-for = "( callLetters, i ) in callsTextArray" :key = "i" )
+                    span( v-for = "( letter, j ) in callLetters" :key = "`${letter + j}`" :ref = "`call${i}Letters`") {{ letter }}
+            div.half.logo-container
+                transition( appear @enter = "(el, done) => logoEnter(el, done, false)" )
+                    svgicon.logo( name = "logo-head" color = "#009688" )    
 </template>
 <style lang="sass" scoped>
-
+.logo
+    height: 300px
+    width: 100%
 .inner-section
-    display: flex
-    justify-content: space-around
-    flex-direction: column
     padding: 50px 0
 h3
-    font-family: impact
-    font-size: 42px
-    letter-space: 2px
-    margin: 0
-    text-transform: uppercase
+    margin: 1.5em
+    font-size: 24px
+    font-weight: 100
     position: relative
 
     transition-property: transform
     transition-duration: 1s
 
+    // &:nth-child(3n + 1)
+    //     align-self: flex-start
+    // &:nth-child(3n + 2)
+    //     align-self: center
+    // &:nth-child(3n)
+    //     align-self: flex-end
+
     span
         visibility: hidden
         transform: scale(2)
 
-    &:nth-child(1)
-        align-self: flex-start
-        transform: scale(1)
-    &:nth-child(2)
-        align-self: flex-start
-        left: 50%
-        transform: scale(1.2)
-    &:nth-child(3)
-        align-self: flex-end
-        right: 50%
-        transform: scale(1.1);
-    &:nth-child(4)
-        align-self: flex-end
-        transform: scale(1);
-
-    &:hover
-        transform: scale(1.3) !important    
+.logo-container
+    display: flex
+    align-items: center
 </style>

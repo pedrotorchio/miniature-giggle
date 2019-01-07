@@ -84,7 +84,7 @@ export default {
                     if (this.i < length) {
                         
                         this.animate(next, () => setTimeout(this.activate.bind(this), this.delay));
-                        next.dispatchEvent(this.over);
+                        // next.dispatchEvent(this.over);
                     }
                 }
             }
@@ -131,7 +131,7 @@ export default {
         position: relative
         flex: 0 0 auto
         padding: 0 10px
-        font-size: 24px
+        font-size: 16px
         font-family: inherit
         text-transform: uppercase
         color: $color--primary

@@ -80,7 +80,7 @@ export default {
 </script>
 <template lang="pug">
     section#terapia-ocupacional
-        div.inner-section
+        div.inner-section.split
             div.left.half    
                 hoverable-image#img.cover(
                     :hoverable = "false"
@@ -106,10 +106,6 @@ export default {
 <style lang="sass" scoped>
 @import "~@/styles/config";
 
-.inner-section
-    display: flex
-    align-items: stretch
-
 .text-area
     margin: 1em 0
     text-align: justify
@@ -120,12 +116,6 @@ export default {
     z-index: 5
     text-align: left
     text-transform: uppercase
-
-.half
-    width: 50%
-    position: relative
-    padding: 50px
-    box-sizing: border-box
 
 .right
     p

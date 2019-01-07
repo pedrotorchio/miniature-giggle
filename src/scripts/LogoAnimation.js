@@ -1,7 +1,7 @@
 import { TimelineMax, TweenMax, Linear } from 'gsap';
 import isFunction from 'is-function';
 
-export function logoEnter(svg, done) {
+export function logoEnter(svg, done, draw = true) {
     
     const els = extractComponents({
         head: '#head',
@@ -17,17 +17,14 @@ export function logoEnter(svg, done) {
     const timeline = new TimelineMax();
     let counter = 0;
 
+    if (draw) {
+        drawPath(head, 3);
+        drawPath(cog1, -1.5, .5);
+        drawPath(cog2, 1.5, 1);      
+        drawPath(cog3, 1.5, 1.5);
+
+    }
     
-    drawPath(head, 3);
-
-    drawPath(cog1, -1.5, .5);
-
-    
-    drawPath(cog2, 1.5, 1);
-
-    
-    drawPath(cog3, 1.5, 1.5);
-
 
     reatoLetters.forEach( lt => drawPath(lt, .5, counter * .1, false));
     underText.forEach( lt => drawPath(lt, 1, counter * .01, false));

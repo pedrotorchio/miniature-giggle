@@ -1,9 +1,9 @@
 import slugify from 'slugify';
 
-const home = makeRoute('/', 'Sobre');
-const serv = makeRoute('/servicos', 'Serviços');
-const loca = makeRoute('/localizacao', 'Localização');
-const cont = makeRoute('/contato', 'Contato');
+const home = makeRoute('#terapia-ocupacional', 'Sobre');
+const serv = makeRoute('#servicos', 'Serviços');
+const loca = makeRoute('#localizacao', 'Localização');
+const cont = makeRoute('#contato', 'Contato');
 
 export default [ home, serv, loca, cont ];
 

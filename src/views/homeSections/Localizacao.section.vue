@@ -38,12 +38,13 @@ export default {
         div.textual
             div.inner
                 div.grouped
-                    h2 Empresarial do Shopping Riomar
+                    h2 Empresarial Riomar Trade Center
                     ul
-                        li Região central de Recife
-                        li Segurança
-                        li Estacionamento
-                    h3 R. República do Líbano, 543,
+                        li Excelente Localização
+                        li Em frente ao Shopping Riomar
+                        li Infra-estrutura de estacionamento com segurança e conforto
+                        li Ambientes planejados para a prática da Terapia Ocupacional
+                    h3 Av. República do Líbano, 251, Sala 1005B
                         br 
                         | Pina, Recife-PE
 
@@ -89,7 +90,7 @@ export default {
     justify-content: space-around
     align-items: center
 
-    $base-font-size: 24px
+    $base-font-size: 22px
     h1, h2, button, h3
         text-align: center
         margin: 36px 0

@@ -19,14 +19,14 @@ export default {
   div#sobre
     header-section.full-height( ref = "headerSection" )
 
-    to-section.narrow.fixed-height( ref = "toSection" )
-    destaques-section.narrow( ref = "toSection" style="height: calc(100vh - 470px)" )
+    to-section.wide( ref = "toSection" )
+    destaques-section.wide( ref = "toSection" )
 
-    servicos-section.narrow.full-height( ref = "atuacaoSection" )
+    servicos-section.wide.full-height( ref = "atuacaoSection" )
     
-    localizacao-section.narrow.full-height( ref = "localizacaoSection" )
+    localizacao-section.wide.full-height( ref = "localizacaoSection" )
     
-    contato-section.narrow.full-height( ref = "contatoSection" )
+    contato-section.wide.full-height( ref = "contatoSection" )
 
 
 

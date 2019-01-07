@@ -17,7 +17,7 @@ a
   color: inherit
 body
   margin: 0
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   color: #545454;
 
@@ -33,6 +33,18 @@ body::-webkit-scrollbar-thumb
 
 .cursive
   font-family: 'Sacramento', cursive
+
+
+.split
+  display: flex
+  flex-direction: row
+  align-items: stretch
+  
+  &>.half
+      flex: 0 0 50%
+      position: relative
+      padding: 50px
+      box-sizing: border-box
 
 section, .section
   position: relative
