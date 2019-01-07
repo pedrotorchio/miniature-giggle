@@ -140,7 +140,7 @@ export default {
         height: $height
         line-height: $height
         min-height: 64px
-
+        min-width: 30%
         visibility: hidden
         opacity: 0
         text-shadow: 0px 8px 4px rgba(0,0,0,0.2)
