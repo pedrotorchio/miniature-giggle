@@ -108,6 +108,7 @@ export default {
 
 .inner-section
     display: flex
+    align-items: stretch
 
 .text-area
     margin: 1em 0
@@ -122,7 +123,6 @@ export default {
 
 .half
     width: 50%
-    height: 100%
     position: relative
     padding: 50px
     box-sizing: border-box
