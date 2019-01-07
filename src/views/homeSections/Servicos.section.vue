@@ -51,18 +51,21 @@ export default {
                 delay: .4,                        
                 over: new Event('mouseover'),
                 out: new Event('mouseout'),
-                onComplete() {
-                    TweenMax
-                        .set(words, {
-                            transitionDuration: ".5s"
-                        }, .5)
+                onComplete(el, done) {
+                    setTimeout(()=>
+                        TweenMax
+                            .set(this.words, {
+                                transitionDuration: "1s",
+                                onComplete: done
+                            })
+                    , 500);
                 },
                 animate(el, done) {
                     TweenMax.to(el, this.delay, {
                         y: 0,
                         autoAlpha: 1,
                         textShadow: "0px 0px 4px rgba(0,0,0,0.2)",
-                        onComplete: done
+                        onComplete: () => this.onComplete(el, done)
                     })
                 },
                 next() {
@@ -143,12 +146,14 @@ export default {
         min-width: 30%
         visibility: hidden
         opacity: 0
+        text-align: center
         text-shadow: 0px 8px 4px rgba(0,0,0,0.2)
         transform: translateY(-8px)
 
         cursor: pointer
         &:hover
-            transform: translateY(-8px) scale(1.2) !important
+            text-shadow: 0px 8px 4px rgba(0,0,0,0.2) !important
+            transform: translateY(-8px) !important
 
 $height: 300px
 #content
