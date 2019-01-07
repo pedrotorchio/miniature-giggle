@@ -31,9 +31,8 @@ export default {
 <style lang="sass" scoped>
 .input
     position: relative
-    height: 3em
     font-size: 24px
-    padding-top: 1em
+    padding: 1em 0
 
 label
     font-size: .5em
@@ -48,5 +47,6 @@ input
     background-color: transparent
     border: none
     outline: none
+    padding: 0 .5em
 
 </style>
