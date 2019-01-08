@@ -127,6 +127,7 @@ export default {
         font-size: $size--text
         color: $color--primary
         text-align: left
+        display: table
 
         transition-property: text-shadow, color
         transition-timing-function: ease-out
