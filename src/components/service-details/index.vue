@@ -34,23 +34,25 @@ export default {
 
 </template>
 <style lang="sass" scoped>
-$title-height: 48px
-aside
-    height: 100%
+@import '~@/styles/config'
+
 h2
-    height: $title-height
-    font-size: $title-height/2
-    margin: 0
+    font-size: $size--title * .8
+    margin: 16px 0
+    text-align: left
+
 .data
-    display: flex
-    height: calc(100% - #{$title-height})
+    font-size: $size--text
+
     p
-        padding: 0 1em
+        text-indent: 1em
         margin: 0
+        text-align: left
+        text-align: justify
     .img
         width: 50%
-        object-fit: cover
-        height: 100%
-        flex: 1 0 50%
+        margin-top: 1em
+        height: 200px
+        margin-left: auto
     
 </style>

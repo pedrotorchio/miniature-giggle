@@ -3,6 +3,8 @@
   box-sizing: inherit
 html
   box-sizing: border-box
+.cursive
+  font-family: 'Charm', cursive
 
 .hidden
   visibility: hidden
@@ -10,11 +12,13 @@ html
 .section-title
   position: relative
   margin: 0;
-  font-size: 24px;
+  font-size: $size--title
   color: $color--primary
 a
   text-decoration: none
   color: inherit
+p
+  font-size: $size--text
 body
   margin: 0
   font-family: 'Montserrat', sans-serif;
@@ -51,6 +55,8 @@ section, .section
 
   &.padded
     padding: 100px 0
+  &.half-padded
+    padding: 50px 0
   
   .inner-section
     position: relative
@@ -142,14 +148,14 @@ svg .site-line, svg.site-line path
   &.gradient
     background: radial-gradient(circle, rgba($color,$opacity) 0%, rgba($color, 2*$opacity) 80%, rgba($color,2*$opacity) 100%)
 
-section:nth-child(odd), .bg-colored
+section:nth-child(even), .bg-colored
   +bgColor-flat-gradient($color--secondary, .05)
 .bg-white
-  background-color: white
+  background-color: white !important
 
 .cta
   font-weight: bold
-  font-size: 24px
+  font-size: $size--title
 
 
   will-change: transform

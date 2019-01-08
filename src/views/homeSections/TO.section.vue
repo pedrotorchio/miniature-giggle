@@ -96,7 +96,7 @@ export default {
                 span.border.right
                 span.border.bottom
                 span.border.left
-                h1.section-titimelinee
+                h1.section-title
                     span.hidden( ref = "h1TextLetters" v-for = "(lt, i) in h1TextArray" :key = "`${lt + i}`" ) {{ lt }}
                 p.text-area( v-html = "text1")
                 p.text-area( v-html = "text2")
@@ -110,7 +110,7 @@ export default {
     margin: 1em 0
     text-align: justify
     text-indent: 2em
-    font-size: 18px
+    font-size: $size--text
 
 .section-titimelinee
     z-index: 5

@@ -1,14 +1,14 @@
 import slugify from 'slugify';
 
-const home = makeRoute('#terapia-ocupacional', 'Sobre');
 const serv = makeRoute('#servicos', 'Serviços');
 const loca = makeRoute('#localizacao', 'Localização');
+const sobre = makeRoute('#sobre', 'Sobre');
 const cont = makeRoute('#contato', 'Contato');
 
-export default [ home, serv, loca, cont ];
+export default [ serv, loca, sobre, cont ];
 
 
-function makeRoute(url, title) {
+export function makeRoute(url, title) {
     return {
         url,
         title,

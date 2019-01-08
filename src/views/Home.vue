@@ -32,11 +32,12 @@ export default {
     header-section.full-height( ref = "headerSection" )
 
     to-section#terapia-ocupacional.wide.padded( ref = "toSection" )
-    missao-section#missao.wide.padded( ref = "missaoSection" )
-
+    
     destaques-section.wide.padded( ref = "toSection" )
+    
+    missao-section#missao.wide.half-padded( ref = "missaoSection" )    
 
-    servicos-section.wide.full-height( ref = "atuacaoSection" )
+    servicos-section.wide.padded( ref = "atuacaoSection" )
     
     localizacao-section.wide.full-height( ref = "localizacaoSection" )
     
@@ -51,6 +52,6 @@ $to-height: 600px
   height: $to-height
 
 #missao
-  height: $to-height/2
-  height: calc(100vh - #{$to-height})
+  // height: $to-height/2
+  // height: calc(100vh - #{$to-height})
 </style>
