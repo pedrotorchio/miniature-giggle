@@ -3,9 +3,8 @@
   box-sizing: inherit
 html
   box-sizing: border-box
-.cta
-  font-size: 24px;
-  font-weight: bold;
+.cursive
+  font-family: 'Charm', cursive
 
 .hidden
   visibility: hidden
@@ -13,14 +12,16 @@ html
 .section-title
   position: relative
   margin: 0;
-  font-size: 24px;
+  font-size: $size--title
   color: $color--primary
 a
   text-decoration: none
   color: inherit
+p
+  font-size: $size--text
 body
   margin: 0
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   color: #545454;
 
@@ -37,23 +38,25 @@ body::-webkit-scrollbar-thumb
 .cursive
   font-family: 'Sacramento', cursive
 
+
+.split
+  display: flex
+  flex-direction: row
+  align-items: stretch
+  
+  &>.half
+      flex: 0 0 50%
+      position: relative
+      padding: 50px
+      box-sizing: border-box
+
 section, .section
   position: relative
-  &.narrow
-    .inner-section
-      max-width: 940px
-    &.fixed-height
-        height: 470px
-  &.wide
-    .inner-section
-      max-width: 1200px
-    &.fixed-height
-        height: 600px
-  &.ultra-wide
-    .inner-section
-      max-width: 1600px
-    &.fixed-height
-      height: 800px
+
+  &.padded
+    padding: 100px 0
+  &.half-padded
+    padding: 50px 0
   
   .inner-section
     position: relative
@@ -62,6 +65,30 @@ section, .section
 
 .full-height
   height: 100vh
+.narrow
+  $width: 940px
+  &.width
+    max-width: $width
+  .inner-section
+    max-width: $width
+  &.fixed-height
+      height: $width/2
+.wide
+  $width: 1200px
+  &.width
+    max-width: $width
+  .inner-section
+    max-width: $width
+  &.fixed-height
+      height: $width/2
+.ultra-wide
+  $width: 1600px
+  &.width
+    max-width: $width
+  .inner-section
+    max-width: $width
+  &.fixed-height
+      height: $width/2
 
 .cover
   position: absolute !important
@@ -116,8 +143,40 @@ svg .site-line, svg.site-line path
   &.bottom, &.right
     right: 0
 
-section:nth-child(odd)
-  background-color: rgba($color--primary, .1)
+=bgColor-flat-gradient($color, $opacity: 0)
+  background-color: rgba($color, $opacity)
+  &.gradient
+    background: radial-gradient(circle, rgba($color,$opacity) 0%, rgba($color, 2*$opacity) 80%, rgba($color,2*$opacity) 100%)
 
-section:nth-child(even)
-  background-color: rgba($color--secondary, .1)
+section:nth-child(even), .bg-colored
+  +bgColor-flat-gradient($color--secondary, .05)
+.bg-white
+  background-color: white !important
+
+.cta
+  font-weight: bold
+  font-size: $size--title
+
+
+  will-change: transform
+  color: $color--primary
+  text-transform: uppercase
+  letter-spacing: .1em
+  border: 0 solid
+  padding: 1em
+  border-radius: 0
+  cursor: pointer
+  visibility: hidden
+  z-index: 5555
+
+  transition: color, background-color
+  transition-duration: .5s
+  transition-timing-function: ease-out
+
+  &:hover
+    background-color: $color--primary
+    color: lighten($color--primary, 60)
+
+  span.text
+    visibility: hidden;
+    will-change: transform

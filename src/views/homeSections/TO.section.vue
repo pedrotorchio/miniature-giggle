@@ -1,6 +1,5 @@
 <script>
 import { TweenMax, SlowMo, TimelineMax, Power2 } from 'gsap';
-import lazyImage from 'v-lazy-image';
 import hoverableImage from '@/components/hoverable-image';
 
 import Section from '@/mixins/Section.mixin';
@@ -81,7 +80,7 @@ export default {
 </script>
 <template lang="pug">
     section#terapia-ocupacional
-        div.inner-section
+        div.inner-section.split
             div.left.half    
                 hoverable-image#img.cover(
                     :hoverable = "false"
@@ -97,7 +96,7 @@ export default {
                 span.border.right
                 span.border.bottom
                 span.border.left
-                h1.section-titimelinee
+                h1.section-title
                     span.hidden( ref = "h1TextLetters" v-for = "(lt, i) in h1TextArray" :key = "`${lt + i}`" ) {{ lt }}
                 p.text-area( v-html = "text1")
                 p.text-area( v-html = "text2")
@@ -107,26 +106,16 @@ export default {
 <style lang="sass" scoped>
 @import "~@/styles/config";
 
-.inner-section
-    display: flex
-
 .text-area
     margin: 1em 0
     text-align: justify
     text-indent: 2em
-    font-size: 18px
+    font-size: $size--text
 
 .section-titimelinee
     z-index: 5
     text-align: left
     text-transform: uppercase
-
-.half
-    width: 50%
-    height: 100%
-    position: relative
-    padding: 50px
-    box-sizing: border-box
 
 .right
     p

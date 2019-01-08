@@ -2,6 +2,7 @@
 import lazyImage from 'v-lazy-image';
 
 export default {    
+    inheritAttrs: false,
     components: { lazyImage },
     props: {
         hoverable: {
@@ -13,23 +14,34 @@ export default {
             default: false
         }
     },
+    data: () => ({
+        loaded: false
+    }),
     computed: {
         attrs() {
-            const { hoverable, ...attrs } = this.$attrs;
+            const { hoverable, id, ...attrs } = this.$attrs;
             return attrs;
         },
         listeners() {
-            const { ...listeners } = this.$listeners;
+            const { load, ...listeners } = this.$listeners;
             return listeners;
+        },
+    },
+    methods: {
+        load() {
+            this.loaded = true
+            this.$emit('load')
         }
     }
 }
 </script>
 <template lang="pug">
-    div.hoverable-image( :class = "[ invert ? 'invert' : 'regular', { hoverable }]")
+    div.hoverable-image( :class = "[ loaded? 'loaded' : 'not-loaded', invert ? 'invert' : 'regular', { hoverable }]" :id = "$attrs.id")
         lazy-image(
             v-bind = "attrs"
             v-on = "listeners"
+            :class = "[ loaded? 'loaded' : 'not-loaded' ]"
+            @load = "load"
         )
         div.caption
             slot

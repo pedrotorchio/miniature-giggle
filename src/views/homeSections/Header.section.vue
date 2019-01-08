@@ -99,29 +99,7 @@ header img
 
 	
 .cta
-	will-change: transform
 	position: absolute;
 	bottom: 100px;
 	right: 66px;
-	color: $color--primary;
-	text-transform: uppercase;
-	letter-spacing: .1em;
-	border: 0 solid;
-	padding: 1em;
-	border-radius: 0;
-	cursor: pointer
-	visibility: hidden
-	z-index: 5555
-
-	transition: color, background-color
-	transition-duration: .5s
-	transition-timing-function: easeOut
-
-	&:hover
-		color: white
-		background-color: $color--primary
-
-	span.text
-		visibility: hidden;
-		will-change: transform
 </style>

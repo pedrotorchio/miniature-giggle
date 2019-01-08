@@ -4,14 +4,26 @@ import Route from '@/mixins/Route.mixin';
 const HeaderSection = () => import('./homeSections/Header.section');
 const ToSection = () => import('./homeSections/TO.section');
 const DestaquesSection = () => import('./homeSections/TODestaques.section');
+const MissaoSection = () => import('./homeSections/Missao.section');
 const ServicosSection = () => import('./homeSections/Servicos.section');
 const LocalizacaoSection = () => import('./homeSections/Localizacao.section');
 const ContatoSection = () => import('./homeSections/Contato.section');
+const FooterSection = () => import('./homeSections/Footer.section');
 
 export default {
   name: 'home',
   extends: Route,
-  components: { HeaderSection, ToSection, DestaquesSection, ServicosSection, LocalizacaoSection, ContatoSection }
+  components: { 
+    HeaderSection, 
+    ToSection, 
+    DestaquesSection, 
+    MissaoSection, 
+    ServicosSection, 
+    LocalizacaoSection,
+    ContatoSection,
+    FooterSection
+  },
+
 }
 </script>
 
@@ -19,17 +31,27 @@ export default {
   div#sobre
     header-section.full-height( ref = "headerSection" )
 
-    to-section.narrow.fixed-height( ref = "toSection" )
-    destaques-section.narrow( ref = "toSection" style="height: calc(100vh - 470px)" )
-
-    servicos-section.narrow.full-height( ref = "atuacaoSection" )
+    to-section#terapia-ocupacional.wide.padded( ref = "toSection" )
     
-    localizacao-section.narrow.full-height( ref = "localizacaoSection" )
+    destaques-section.wide.padded( ref = "toSection" )
     
-    contato-section.narrow.full-height( ref = "contatoSection" )
+    missao-section#missao.wide.half-padded( ref = "missaoSection" )    
 
-
-
-
+    servicos-section.wide.padded( ref = "atuacaoSection" )
     
+    localizacao-section.wide.full-height( ref = "localizacaoSection" )
+    
+    contato-section.wide.full-height( ref = "contatoSection" )
+    
+    footer-section.full-height( ref = "footerSection" )
+
 </template>
+<style lang="sass" scoped>
+$to-height: 600px
+#terapia-ocupacional
+  height: $to-height
+
+#missao
+  // height: $to-height/2
+  // height: calc(100vh - #{$to-height})
+</style>

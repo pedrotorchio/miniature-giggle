@@ -25,12 +25,13 @@ export default {
         router-link( v-for = "( { url, title, slug } , i) in pages" :to="url" :data-index = "i" :key = "slug" ) {{ title }}
     
     transition( appear @enter = "logoEnter" @after-enter = "showNavigation" ) 
-      svgicon#logo( name = "logo-full" :original = "true" )
+      svgicon#logo( name = "logo-full" :original = "true" @click="$router.push('/')" )
     
     transition
       router-view#view
 
 </template>
+<style lang="scss" src="@/styles/_animation.scss"></style>
 <style src="normalize.css"></style>
 <style lang="sass" scoped>
 @import '~@/styles/config';
@@ -73,6 +74,7 @@ $height: 4em
   height: auto;
   left: 50px;
   top: 50px
+  cursor: pointer
 
 #view
   width: 100%
