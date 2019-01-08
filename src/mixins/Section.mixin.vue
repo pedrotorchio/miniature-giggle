@@ -26,8 +26,8 @@ export default {
 
             // scroll event
             if (scrollTrigger) {
-                console.log(scrollTrigger);
-                scrollOffset = scrollOffset || 0
+                
+                scrollOffset = scrollOffset || 100
                 scrollEvent = scrollEvent || 'enter'
 
                 new Trigger()
