@@ -50,7 +50,7 @@ export default {
             const textAreas = Array.from(this.$el.querySelectorAll('.right .text-area'));
 
             textAreas.forEach((text, i) => {
-                const textOffset = delay + delay * delay * i ;
+                const textOffset = delay + .2 * i ;
                 
                 timeline.fromTo( text, delay, {
                     autoAlpha: 0,
