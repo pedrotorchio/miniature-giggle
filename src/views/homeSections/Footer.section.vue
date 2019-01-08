@@ -32,7 +32,7 @@ export default {
 }
 </script>
 <template lang="pug">
-    section#contato
+    section#sobre
         div
             h2 REATO
             

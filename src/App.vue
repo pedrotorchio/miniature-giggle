@@ -5,23 +5,28 @@ import Animations from "@/mixins/AppAnimations.mixin";
 import pages from "@/pages";
 
 import SmoothScroll from 'smooth-scroll';
+import Sticky from 'sticky-js';
 
 export default {
   mixins: [Animations],
   data: () => ({
     pages
   }),
+  methods: {
+    stickyHeader() {
+      new Sticky('#nav-container');
+    }
+  },
   mounted() {
     new SmoothScroll('a[href*="#"]');
-
   }
 };
 </script>
 
 <template lang="pug">
   div#app
-    div#nav-container( v-if = "navShown")
-      transition-group#main( appear tag = "nav" @enter = "staggerNavigation" )
+    div#nav-container( ref = "navigation" )
+      transition-group#main( v-if = "navShown" appear tag = "nav" @enter = "staggerNavigation" @before-enter = "stickyHeader" )
         router-link( v-for = "( { url, title, slug } , i) in pages" :to="url" :data-index = "i" :key = "slug" ) {{ title }}
     
     transition( appear @enter = "logoEnter" @after-enter = "showNavigation" ) 
@@ -56,16 +61,16 @@ $height: 4em
     margin: 0 16px
     color: #ffffff;
     text-shadow: 1px 1px 8px #50505059;
-    transition-property: color, font-size
+    transition-property: color, font-size, transform
     transition-duration: 500ms
     will-change: opacity, color, text-shadow, transform    
 
     &.router-link-active
-      font-size: 32px
+      transform: scale(1.2)
 
     &.router-link-active, &:hover
       color: $color--primary
-      text-shadow: 0 0 0 #50505059;
+      text-shadow: 0 0 0 #50505059
 
 #logo
   position: absolute 
