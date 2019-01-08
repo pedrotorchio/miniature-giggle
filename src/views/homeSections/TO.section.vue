@@ -1,7 +1,6 @@
 <script>
 import { TweenMax, SlowMo, TimelineMax, Power2 } from 'gsap';
 import hoverableImage from '@/components/hoverable-image';
-
 import Section from '@/mixins/Section.mixin';
 
 export default {
@@ -29,6 +28,12 @@ export default {
         }
     },
     methods: {
+        getTimelineParameters() {
+            return {
+                scrollTrigger: this.$el,
+                scrollOffset: 100
+            }
+        },
         animate(timeline) {
             const delay = .8;
 
@@ -72,7 +77,6 @@ export default {
             })
             timeline
                 .addCallback(() => this.$el.querySelector('#img #call-text').classList.add('shown'));
-
 
         }
     }
