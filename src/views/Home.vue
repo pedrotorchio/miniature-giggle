@@ -1,5 +1,6 @@
 <script>
 import Route from '@/mixins/Route.mixin';
+import coordinates from 'element-coordinates';
 
 const HeaderSection = () => import('./homeSections/Header.section');
 const ToSection = () => import('./homeSections/TO.section');
@@ -27,7 +28,44 @@ export default {
 
     HoverableImage
   },
+  data: () => ({
+    activeSection: null
+  }),
+  methods: {
+    scrollProgress() {
+      window.onscroll = () => {
+        const first = this.$refs['servicosSection'];
+        const previous = this.$refs['toSection'];
 
+        let scrolled = 0
+
+        if (first && previous) {
+
+          const scrollPosition = document.body.scrollTop || document.documentElement.scrollTop || window.pageYOffset;
+          const previousScroll  = new coordinates(previous.$el).borderBox.top;
+          const initialScroll  = new coordinates(first.$el).borderBox.top;
+
+          let startingScroll = scrollPosition;
+          
+          if ( scrollPosition >= initialScroll )  
+            startingScroll = initialScroll;
+
+          // else if ( scrollPosition >= previousScroll )
+          //   startingScroll = previousScroll;
+
+          const targetOffset = document.documentElement.scrollHeight - startingScroll;
+          const viewportOffset = targetOffset - document.documentElement.clientHeight;
+
+          scrolled = ((scrollPosition - startingScroll) / viewportOffset ) * 100;
+        }
+
+        this.$parent.setProgress(scrolled)       
+      }
+    },
+  },
+  mounted() {
+    setTimeout(this.scrollProgress, 0);
+  }
 }
 </script>
 
@@ -41,7 +79,7 @@ export default {
     
     missao-section#missao.wide.half-padded.bg-colored( ref = "missaoSection" )    
 
-    servicos-section.wide.padded( ref = "atuacaoSection" )
+    servicos-section.wide.padded( ref = "servicosSection" )
 
     section#img-1.space
       hoverable-image#img.cover(

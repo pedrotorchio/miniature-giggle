@@ -15,6 +15,10 @@ export default {
   methods: {
     stickyHeader() {
       new Sticky('#nav-container');
+    },
+    setProgress(scrolled) {
+      scrolled = Math.floor(scrolled)
+      this.$refs['progress'].style.width = scrolled + "%";
     }
   },
   mounted() {
@@ -28,6 +32,7 @@ export default {
     div#nav-container( ref = "navigation" )
       transition-group#main( v-if = "navShown" appear tag = "nav" @enter = "staggerNavigation" @before-enter = "stickyHeader" )
         router-link( v-for = "( { url, title, slug } , i) in pages" :to="url" :data-index = "i" :key = "slug" ) {{ title }}
+      span.progress( ref= "progress" )
     
     transition( appear @enter = "logoEnter" @after-enter = "showNavigation" ) 
       svgicon#logo( name = "logo-full" :original = "true" @click="$router.push('/')" )
@@ -71,6 +76,16 @@ $height: 4em
     &.router-link-active, &:hover
       color: $color--primary
       text-shadow: 0 0 0 #50505059
+
+  
+  span.progress
+    content: ''
+    position: absolute
+    bottom: 0
+    width: 0%
+    height: 4px
+    transition: width .2s ease-out
+    background-color: $color--primary
 
 #logo
   position: absolute 
