@@ -10,7 +10,8 @@ import Sticky from 'sticky-js';
 export default {
   mixins: [Animations],
   data: () => ({
-    pages
+    pages,
+    currSectionId: null
   }),
   methods: {
     stickyHeader() {
@@ -19,6 +20,9 @@ export default {
     setProgress(scrolled) {
       scrolled = Math.floor(scrolled)
       this.$refs['progress'].style.width = scrolled + "%";
+    },
+    setProgressSection(sectionId) {
+      this.currSectionId = sectionId;
     }
   },
   mounted() {
@@ -31,7 +35,7 @@ export default {
   div#app
     div#nav-container( ref = "navigation" )
       transition-group#main( v-if = "navShown" appear tag = "nav" @enter = "staggerNavigation" @before-enter = "stickyHeader" )
-        router-link( v-for = "( { url, title, slug } , i) in pages" :to="url" :data-index = "i" :key = "slug" ) {{ title }}
+        router-link( v-for = "( { url, title, slug } , i) in pages" :to="url" :data-index = "i" :key = "slug" :class="{ active: slug === currSectionId }" ) {{ title }}
       span.progress( ref= "progress" )
     
     transition( appear @enter = "logoEnter" @after-enter = "showNavigation" ) 
@@ -69,11 +73,12 @@ $height: 4em
     transition-property: color, font-size, transform
     transition-duration: 500ms
     will-change: opacity, color, text-shadow, transform    
+    transform: scale(1)
 
-    &.router-link-active
+    &.active
       transform: scale(1.2)
 
-    &.router-link-active, &:hover
+    &.active, &:hover
       color: $color--primary
       text-shadow: 0 0 0 #50505059
 

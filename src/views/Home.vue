@@ -1,6 +1,5 @@
 <script>
 import Route from '@/mixins/Route.mixin';
-import coordinates from 'element-coordinates';
 
 const HeaderSection = () => import('./homeSections/Header.section');
 const ToSection = () => import('./homeSections/TO.section');
@@ -12,6 +11,8 @@ const ContatoSection = () => import('./homeSections/Contato.section');
 const FooterSection = () => import('./homeSections/Footer.section');
 
 const HoverableImage = () => import('@/components/hoverable-image');
+
+import { progress, markerId } from '@/scripts/ScrollEvents'
 
 export default {
   name: 'home',
@@ -34,33 +35,24 @@ export default {
   methods: {
     scrollProgress() {
       window.onscroll = () => {
-        const first = this.$refs['servicosSection'];
-        const previous = this.$refs['toSection'];
 
-        let scrolled = 0
+        const servicos = this.$refs['servicosSection'];
+        const localizacao = this.$refs['localizacaoSection'];
+        const contato = this.$refs['contatoSection'];
+        const sobre = this.$refs['footerSection'];
 
-        if (first && previous) {
+        const scrollPosition = document.body.scrollTop || document.documentElement.scrollTop || window.pageYOffset;
 
-          const scrollPosition = document.body.scrollTop || document.documentElement.scrollTop || window.pageYOffset;
-          const previousScroll  = new coordinates(previous.$el).borderBox.top;
-          const initialScroll  = new coordinates(first.$el).borderBox.top;
+        const scrolled = progress( servicos && servicos.$el , scrollPosition )
+        const id = markerId( [  servicos && servicos.$el, 
+                                  localizacao && localizacao.$el, 
+                                  contato && contato.$el, 
+                                  sobre && sobre.$el ], scrollPosition )
 
-          let startingScroll = scrollPosition;
-          
-          if ( scrollPosition >= initialScroll )  
-            startingScroll = initialScroll;
-
-          // else if ( scrollPosition >= previousScroll )
-          //   startingScroll = previousScroll;
-
-          const targetOffset = document.documentElement.scrollHeight - startingScroll;
-          const viewportOffset = targetOffset - document.documentElement.clientHeight;
-
-          scrolled = ((scrollPosition - startingScroll) / viewportOffset ) * 100;
-        }
-
-        this.$parent.setProgress(scrolled)       
-      }
+        this.$parent.setProgress(scrolled)
+        this.$parent.setProgressSection(id)
+         
+      }  
     },
   },
   mounted() {
