@@ -5,24 +5,38 @@ import Animations from "@/mixins/AppAnimations.mixin";
 import pages from "@/pages";
 
 import SmoothScroll from 'smooth-scroll';
+import Sticky from 'sticky-js';
 
 export default {
   mixins: [Animations],
   data: () => ({
-    pages
+    pages,
+    currSectionId: null
   }),
+  methods: {
+    stickyHeader() {
+      new Sticky('#nav-container');
+    },
+    setProgress(scrolled) {
+      scrolled = Math.floor(scrolled)
+      this.$refs['progress'].style.width = scrolled + "%";
+    },
+    setProgressSection(sectionId) {
+      this.currSectionId = sectionId;
+    }
+  },
   mounted() {
     new SmoothScroll('a[href*="#"]');
-
   }
 };
 </script>
 
 <template lang="pug">
   div#app
-    div#nav-container( v-if = "navShown")
-      transition-group#main( appear tag = "nav" @enter = "staggerNavigation" )
-        router-link( v-for = "( { url, title, slug } , i) in pages" :to="url" :data-index = "i" :key = "slug" ) {{ title }}
+    div#nav-container( ref = "navigation" )
+      transition-group#main( v-if = "navShown" appear tag = "nav" @enter = "staggerNavigation" @before-enter = "stickyHeader" )
+        router-link( v-for = "( { url, title, slug } , i) in pages" :to="url" :data-index = "i" :key = "slug" :class="{ active: slug === currSectionId }" ) {{ title }}
+      span.progress( ref= "progress" )
     
     transition( appear @enter = "logoEnter" @after-enter = "showNavigation" ) 
       svgicon#logo( name = "logo-full" :original = "true" @click="$router.push('/')" )
@@ -56,16 +70,27 @@ $height: 4em
     margin: 0 16px
     color: #ffffff;
     text-shadow: 1px 1px 8px #50505059;
-    transition-property: color, font-size
+    transition-property: color, font-size, transform
     transition-duration: 500ms
     will-change: opacity, color, text-shadow, transform    
+    transform: scale(1)
 
-    &.router-link-active
-      font-size: 32px
+    &.active
+      transform: scale(1.2)
 
-    &.router-link-active, &:hover
+    &.active, &:hover
       color: $color--primary
-      text-shadow: 0 0 0 #50505059;
+      text-shadow: 0 0 0 #50505059
+
+  
+  span.progress
+    content: ''
+    position: absolute
+    bottom: 0
+    width: 0%
+    height: 4px
+    transition: width .2s ease-out
+    background-color: $color--primary
 
 #logo
   position: absolute 

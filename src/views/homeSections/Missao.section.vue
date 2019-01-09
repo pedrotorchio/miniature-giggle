@@ -5,14 +5,6 @@ export default {
     data: () => ({
         text: "Prestar assistência diferenciada aos nosssos clientes e familiares, com foco na excelência dos atendimentos, buscando minimizar dificuldades e otimizar potencialidades."
     }),
-    methods: {
-        animate( timeline ) {
-            timeline
-                .to(this.$refs['section'], 1, {
-                    boxShadow: '0px 0px 25px -6px'
-                }, 1)
-        }
-    }
 }
 </script>
 <template lang="pug">
@@ -30,7 +22,6 @@ export default {
     flex-direction: column
     justify-content: center
     padding: 1em
-    box-shadow: '0px 0px 0px -6px rgba(0, 0, 0, 0.1)'
 p
     &:before
         content: '"'

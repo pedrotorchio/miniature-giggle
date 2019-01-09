@@ -5,7 +5,7 @@ const loca = makeRoute('#localizacao', 'Localização');
 const sobre = makeRoute('#sobre', 'Sobre');
 const cont = makeRoute('#contato', 'Contato');
 
-export default [ serv, loca, sobre, cont ];
+export default [ serv, loca, cont, sobre ];
 
 
 export function makeRoute(url, title) {
