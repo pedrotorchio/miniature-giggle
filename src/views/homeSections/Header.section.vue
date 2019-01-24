@@ -1,7 +1,7 @@
 <script>
 import { TweenMax, SlowMo, TimelineMax } from 'gsap';
 import lazyImage from 'v-lazy-image';
-import '@/components/svg/about-hero-line';
+// import '@/components/svg/about-hero-line2';
 import Section from '@/mixins/Section.mixin';
 
 export default {
@@ -33,7 +33,7 @@ export default {
 			return { delay: 3 };
 		},
 		animate(timeline) {
-			const line = this.initializeLine();
+			// const line = this.initializeLine();
 			const ctaOffset = 0;
 
 			timeline
@@ -69,7 +69,7 @@ export default {
 			src = "/assets/imgs/about-hero.jpg"
 			src-placeholder = "/assets/imgs/about-hero-tiny.jpg" )
 
-		svgicon#header-line.site-line( ref = "line" name = "about-hero-line" :fill = "false" )
+		//- svgicon#header-line.site-line( ref = "line" name = "about-hero-line2" :fill = "false" color = "blue" )
 	  
 		a.cta( ref = "cta" href = "#terapia-ocupacional" )
 			span.border.top( ref = "ctaBorderTop" )
@@ -88,13 +88,13 @@ header img
 	object-position: 35% center
 
 #header-line
-	position: absolute;
-	z-index: 555;
-	width: 100%;
-	height: auto;
-	bottom: 0px;
+	position: absolute
+	z-index: 555
+	width: 100%
+	height: 100%
+	bottom: 0px
 	left: 0
-	top: initial;
+	top: 0
 	
 
 	
