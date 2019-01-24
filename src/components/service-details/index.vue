@@ -5,7 +5,7 @@ import HoverableImage from '@/components/hoverable-image';
 export default {
     components: { HoverableImage},
     props: {
-        data: {
+        serviceData: {
             type: ServiceData | null,
             required: false
         }
@@ -26,11 +26,11 @@ export default {
 </script>
 <template lang="pug">
     aside( :class = "{ shown }")
-        template( v-if = "data" )
-            h2 {{ data.title }}
+        template( v-if = "serviceData" )
+            h2 {{ serviceData.title }}
             div.data
-                p {{ data.details }}
-                hoverable-image.img( v-if = "data.img" :src = "`/assets/imgs/${data.img}`" :src-placeholder = "`/assets/imgs/${data.placeholder}`" )
+                p {{ serviceData.details }}
+                hoverable-image.img( v-if = "serviceData.img" :src = "`/assets/imgs/${serviceData.img}`" :src-placeholder = "`/assets/imgs/${serviceData.placeholder}`" )
 
 </template>
 <style lang="sass" scoped>

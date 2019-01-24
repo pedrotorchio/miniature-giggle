@@ -37,11 +37,11 @@ export default {
 			const ctaOffset = 0;
 
 			timeline
-				.to(line, 1, {
-					strokeDashoffset: 0,
-					ease: SlowMo.ease.config(0.5, 0.7, false),
-					immediateRender: false
-				})
+				// .to(line, 1, {
+				// 	strokeDashoffset: 0,
+				// 	ease: SlowMo.ease.config(0.5, 0.7, false),
+				// 	immediateRender: false
+				// })
 				// .set(this.$refs['cta'], {
 				// 	visibility: 'visible'
 				// }, ctaOffset)

@@ -99,7 +99,7 @@ export default {
             div.content-container
                 transition( appear mode = "out-in" @enter = "contentEnter" @leave = "contentLeave" ) 
                     svgicon.content( v-if = "activeService == false" name = "reato" :original = "true" )
-                    service-details.content.narrow.width( v-else ref = "details" :data = "activeService" )
+                    service-details.content.narrow.width( v-else ref = "details" :serviceData = "activeService" )
             div.list
                 div#words
                     h3.cursive( ref = "words" v-for = "( word, i ) in words" :key = "word.title + i" @mouseover = "show(word)" @mouseout = "show(false)") {{ word.title }}

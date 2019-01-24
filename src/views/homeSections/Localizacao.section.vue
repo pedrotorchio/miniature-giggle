@@ -17,18 +17,18 @@ export default {
     },
     methods: {
         animate( timeline ) {
-            timeline
-                .addCallback(() => {
-					this.$refs['cta'].style['visibility'] = 'visible';
+            // timeline
+            //     .addCallback(() => {
+			// 		this.$refs['cta'].style['visibility'] = 'visible';
 
-					['Bottom', 'Left', 'Top', 'Right']
-						.forEach( pos => this.$refs[`ctaBorder${pos}`].classList.add('shown') )
-				})
-				.staggerFrom( this.$refs['ctaLetters'], 1, { 
-					autoAlpha:0, 
-					y: 50, 
-					ease: SlowMo.easeOut 
-				}, 0.05);
+			// 		['Bottom', 'Left', 'Top', 'Right']
+			// 			.forEach( pos => this.$refs[`ctaBorder${pos}`].classList.add('shown') )
+			// 	})
+			// 	.staggerFrom( this.$refs['ctaLetters'], 1, { 
+			// 		autoAlpha:0, 
+			// 		y: 50, 
+			// 		ease: SlowMo.easeOut 
+			// 	}, 0.05);
         }
     }
 }
@@ -48,13 +48,13 @@ export default {
                         br 
                         | Pina, Recife-PE
 
-                button.cta( ref = "cta" )
-                    span.border.top( ref = "ctaBorderTop" )
-                    span.border.bottom( ref = "ctaBorderBottom" )
-                    span.border.left( ref = "ctaBorderLeft" )
-                    span.border.right( ref = "ctaBorderRight" )
+                //- button.cta( ref = "cta" )
+                //-     span.border.top( ref = "ctaBorderTop" )
+                //-     span.border.bottom( ref = "ctaBorderBottom" )
+                //-     span.border.left( ref = "ctaBorderLeft" )
+                //-     span.border.right( ref = "ctaBorderRight" )
 
-                    span.text( ref = "ctaLetters" v-for = "( letter, i ) in ctaTextArray" :key = "letter + i" :data-index = "i" ) {{ letter }}
+                //-     span.text( ref = "ctaLetters" v-for = "( letter, i ) in ctaTextArray" :key = "letter + i" :data-index = "i" ) {{ letter }}
         div.map-container
             iframe#map(
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3950.1408328497528!2d-34.89415618454557!3d-8.087116883102201!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7ab1f3badda7f65%3A0x7ef167bddc90e085!2sBusiness+RioMar+Trade+Center!5e0!3m2!1sen!2sbr!4v1546819775920" 

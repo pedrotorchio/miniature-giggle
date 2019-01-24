@@ -67,11 +67,11 @@ export default {
 
     to-section#terapia-ocupacional.wide.padded( ref = "toSection" )
     
-    destaques-section.wide.padded.bg-colored( ref = "toSection" )
+    destaques-section.wide.padded.bg-colored( )
     
     missao-section#missao.wide.half-padded.bg-colored( ref = "missaoSection" )    
 
-    servicos-section.wide.padded( ref = "servicosSection" )
+    servicos-section#servicos.wide.padded( ref = "servicosSection" )
 
     section#img-1.space
       hoverable-image#img.cover(
@@ -79,7 +79,7 @@ export default {
         src = "/assets/imgs/localizacao-4.jpg"
         src-placeholder = "/assets/imgs/localizacao-4-tiny.jpg" )
 
-    localizacao-section.wide.full-height( ref = "localizacaoSection" )
+    localizacao-section#localizacao.wide.full-height( ref = "localizacaoSection" )
 
     div#photos
       ul
@@ -104,9 +104,9 @@ export default {
             hoverable-image( src = "/assets/imgs/localizacao-4.jpg" src-placeholder = "/assets/imgs/localizacao-4-tiny.jpg" )
               p Sala 2
     
-    contato-section.wide.full-height.bg-colored( ref = "contatoSection" )
+    contato-section#contato.wide.full-height.bg-colored( ref = "contatoSection" )
     
-    footer-section.full-height( ref = "footerSection" )
+    footer-section#sobre.full-height( ref = "footerSection" )
 
 </template>
 <style lang="sass" scoped>
