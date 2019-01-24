@@ -67,8 +67,6 @@ export default {
         overflow: hidden
         position: relative
 
-        *
-            cursor: initial
         &:before
             @extend %cover
             content: ''
