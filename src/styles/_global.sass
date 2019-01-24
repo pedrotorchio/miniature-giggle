@@ -1,4 +1,5 @@
 @import '~@/styles/config'
+@import '~media-query-mixins'
 *, *:before, *:after 
   box-sizing: inherit
 html
@@ -64,7 +65,9 @@ section, .section
     height: 100%
 
 .full-height
-  height: 100vh
+  height: initial
+  +md
+    height: 100vh
 .narrow
   $width: 940px
   &.width

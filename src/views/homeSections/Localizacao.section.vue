@@ -61,17 +61,24 @@ export default {
                 frameborder="0" style="border0" allowfullscreen )
 </template>
 <style lang="sass" scoped>
-@import "~@/styles/config";
+@import "~@/styles/config"
+@import "~media-query-mixins"
 
 #localizacao
-    display: flex
-    align-items: stretch
+    display: block
+    +md
+        display: flex
+        align-items: stretch
     
 .textual, .map-container
-    flex: 1 0 50%
+    width: 100%
+    +md
+        flex: 1 0 50%
     position: relative
 .textual
-    padding: 100px
+    padding: 10px
+    +md
+        padding: 100px
 .inner
     width: 470px
     margin-left: auto
@@ -81,25 +88,31 @@ export default {
     justify-content: space-around
     align-items: center
 
-    $base-font-size: 22px
+    font-size: 20px
+    +md
+        font-size: 22px
+
     h1, h2, button, h3
         text-align: center
         margin: 36px 0
     h1
-        font-size: $base-font-size * 1.4
+        font-size: 1.3em
     h2
-        font-size: $base-font-size * 1.2
+        font-size: 1.1em
     h3
-        font-size: $base-font-size * 1
+        font-size: 1em
     li
-        font-size: $base-font-size
+        font-size: 1em
         line-height: 2em
 button
     background-color: transparent
 
     &:hover
         color: lighten($color--primary, 60)
-
+.map-container
+    height: 80vh
+    +md
+        height: auto
 #map
     width: 100%
     height: 100%

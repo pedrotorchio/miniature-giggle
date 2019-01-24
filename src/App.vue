@@ -48,7 +48,8 @@ export default {
 <style lang="scss" src="@/styles/_animation.scss"></style>
 <style src="normalize.css"></style>
 <style lang="sass" scoped>
-@import '~@/styles/config';
+@import '~@/styles/config'
+@import '~media-query-mixins'
 
 #app
   position: relative
@@ -95,11 +96,18 @@ $height: 4em
 #logo
   position: absolute 
   z-index: 5555
-  width: 400px;
-  height: auto;
-  left: 50px;
-  top: 50px
   cursor: pointer
+  width: 80%
+  left: 50%
+  transform: translateX(-50%)
+  top: 100px
+
+  +md
+    width: 400px
+    height: auto
+    left: 50px
+    top: 50px
+    transform: translateX(0)
 
 #view
   width: 100%

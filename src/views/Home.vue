@@ -110,6 +110,7 @@ export default {
 
 </template>
 <style lang="sass" scoped>
+@import '~media-query-mixins'
 $to-height: 600px
 #terapia-ocupacional
   height: $to-height
@@ -128,15 +129,24 @@ $to-height: 600px
   width: 100%
 
   ul
+    display: block
+    padding: 0
+    +md
       display: flex
-      padding: 0
-      margin: 0
 
   li
-      flex: 1 1 auto
       list-style: none
       cursor: pointer
-      min-width: 64px
+      margin: 50px 0
+      padding: 10px 10px
+      box-shadow: 0px 0px 7px #00000033;
+
+      +md
+        min-width: 64px
+        flex: 1 1 auto
+        padding: 0
+        margin: 0
+        box-shadow: none
 
   .hoverable-image
       padding-bottom: 100%
