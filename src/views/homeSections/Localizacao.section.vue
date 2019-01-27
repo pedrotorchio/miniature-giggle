@@ -80,7 +80,9 @@ export default {
     +md
         padding: 100px
 .inner
-    width: 470px
+    width: 100%
+    +md
+        width: 470px
     margin-left: auto
     height: 100%
     display: flex
