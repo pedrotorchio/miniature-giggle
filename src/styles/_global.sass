@@ -41,15 +41,19 @@ body::-webkit-scrollbar-thumb
 
 
 .split
-  display: flex
-  flex-direction: row
-  align-items: stretch
+  display: block
+  +md
+    display: flex
+    flex-direction: row
+    align-items: stretch
   
   &>.half
+    padding: 50px 10px
+    position: relative
+    box-sizing: border-box
+    +md
       flex: 0 0 50%
-      position: relative
       padding: 50px
-      box-sizing: border-box
 
 section, .section
   position: relative
