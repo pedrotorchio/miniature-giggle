@@ -109,15 +109,20 @@ export default {
 </template>
 <style lang="sass" scoped>
 @import "~@/styles/config"
+@import "~media-query-mixins"
+
 
 .inner-section
-    display: flex
-    align-items: stretch
-    justify-content: center
+    +md
+        display: flex
+        align-items: stretch
+        justify-content: center
 
 .content-container, .list
-    flex: 0 0 50%
-    padding: 0 50px
+    padding: 0 10px
+    +md
+        flex: 0 0 50%
+        padding: 0 50px
 
 #words
 
@@ -144,12 +149,17 @@ export default {
 $height: 100%
 .content-container
     text-align: center
-    display: flex
-    align-items: center
+    display: none
+    +md
+        display: flex
+        align-items: center
 
 svg.content
-    height: 200px
-    max-width: 400px
+    width: 80%
+    height: 50vh
+    +md
+        height: 200px
+        max-width: 400px
 
 .content
     width: auto
