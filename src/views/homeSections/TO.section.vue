@@ -96,10 +96,6 @@ export default {
                         h3( y="175px" x="30px" dominant-baseline="text-before-edge" ) é mais
                         h3( y="240px" x="30px" dominant-baseline="text-before-edge" ) importante.
             div.right.half
-                span.border.top
-                span.border.right
-                span.border.bottom
-                span.border.left
                 h1.section-title
                     span.hidden( ref = "h1TextLetters" v-for = "(lt, i) in h1TextArray" :key = "`${lt + i}`" ) {{ lt }}
                 p.text-area( v-html = "text1")
@@ -108,7 +104,8 @@ export default {
             
 </template>
 <style lang="sass" scoped>
-@import "~@/styles/config";
+@import "~@/styles/config"
+@import '~media-query-mixins'
 
 .text-area
     margin: 1em 0
@@ -153,15 +150,19 @@ export default {
         +shown(false)
         position: relative
         top: 40px
-        left: 40px
         transition-property: transform, opacity, color
-        font-size: 64px
         text-transform: uppercase
         font-weight: bold
         font-family: Impact, sans-serif
         color: rgba(255, 255, 255, .8)
         margin: 0
         margin-bottom: -10px
+        left: 10px
+        font-size: 48px
+        line-height: 1.2em
+        +md
+            left: 40px
+            font-size: 64px
 
 #img /deep/ #call-text.shown h3
     +shown(true)
@@ -183,6 +184,12 @@ export default {
 
 
 .left
+    height: 400px
+    width: 100%
+
+    +md
+        height: initial
+        width: initial
     h2
         position: absolute;
         bottom: 10px;
