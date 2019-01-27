@@ -11,7 +11,8 @@ export default {
   mixins: [Animations],
   data: () => ({
     pages,
-    currSectionId: null
+    currSectionId: null,
+    navToggled: false
   }),
   methods: {
     stickyHeader() {
@@ -33,10 +34,15 @@ export default {
 
 <template lang="pug">
   div#app
-    div#nav-container( ref = "navigation" )
+    div#nav-container( ref = "navigation"  :class = "{ toggled: navToggled }" )
+      div.toggle( @click = "navToggled = !navToggled" )
+        span.fst
+        span.snd
+        span.trd
       transition-group#main( v-if = "navShown" appear tag = "nav" @enter = "staggerNavigation" @before-enter = "stickyHeader" )
         router-link( v-for = "( { url, title, slug } , i) in pages" :to="url" :data-index = "i" :key = "slug" :class="{ active: slug === currSectionId }" ) {{ title }}
       span.progress( ref= "progress" )
+
     
     transition( appear @enter = "logoEnter" @after-enter = "showNavigation" ) 
       svgicon#logo( name = "logo-full" :original = "true" @click="$router.push('/')" )
@@ -50,31 +56,88 @@ export default {
 <style lang="sass" scoped>
 @import '~@/styles/config'
 @import '~media-query-mixins'
+$height: 64px
+
+.toggle
+  width: $height
+  height: $height
+  position: relative
+  z-index: 99999999
+  margin-left: auto
+  +md
+    display: none
+  span
+    position: absolute
+    height: 4px
+    width: 80%
+    display: block
+    border-radius: 5px
+    background: $color--primary
+    transition-property: transform, opacity
+    transition-duration: 1s, .5s
+
+    &.fst
+      top: 20%
+    &.snd
+      top: 50%
+      transform: translateY(-50%)
+    &.trd
+      bottom: 20%
+
+
 
 #app
   position: relative
 
 
-$height: 4em
+
 #nav-container
+  &.toggled .toggle span
+    &.fst
+      transform: rotateZ(225deg)
+    &.snd
+      transform: rotateZ(-45deg)
+    &.trd
+      opacity: 0
+  width: 100%
+  +md
+    width: auto
+    height: $height
   position: absolute
-  height: $height
-  right: 50px
   top: calc(100vh - #{$height})
   font-size: 24px
   line-height: $height
-  z-index: 5555
+  z-index: 55555
+  +md
+    right: 50px
+
 
   a
-    display: inline-block
-    position: relative
-    margin: 0 16px
+    display: block
+    position: fixed
+    transform: translateX(-100vw)
+    margin-left: 0
+    padding: 0 20px
+    padding-right: 10px
+
+
+    @for $i from 1 through 8
+      &:nth-child(#{$i})
+        top: ($i * ($height + 10px))
+        transition-delay: ($i * .2s)
+    +md
+      display: inline-block
+      position: relative
+      top: initial !important
+      transform: none
+      margin: 0 16px
     color: #ffffff;
     text-shadow: 1px 1px 8px #50505059;
-    transition-property: color, font-size, transform
+    transition-property: color, font-size, transform, background-color
     transition-duration: 500ms
+    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55)
     will-change: opacity, color, text-shadow, transform    
-    transform: scale(1)
+    
 
     &.active
       transform: scale(1.2)
@@ -83,7 +146,14 @@ $height: 4em
       color: $color--primary
       text-shadow: 0 0 0 #50505059
 
-  
+  &.toggled a
+    transform: translateX(0)
+    background-color: $color--primary
+    +md
+      transform: none
+      background-color: transparent
+
+
   span.progress
     content: ''
     position: absolute
@@ -98,16 +168,14 @@ $height: 4em
   z-index: 5555
   cursor: pointer
   width: 80%
-  left: 50%
-  transform: translateX(-50%)
-  top: 100px
+  top: 10px
+  left: 10px
 
   +md
     width: 400px
     height: auto
     left: 50px
     top: 50px
-    transform: translateX(0)
 
 #view
   width: 100%

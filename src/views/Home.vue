@@ -63,7 +63,7 @@ export default {
 
 <template lang="pug">
   div#sobre
-    header-section.full-height( ref = "headerSection" )
+    header-section( ref = "headerSection" )
 
     to-section#terapia-ocupacional.wide.padded( ref = "toSection" )
     
@@ -113,7 +113,8 @@ export default {
 @import '~media-query-mixins'
 $to-height: 600px
 #terapia-ocupacional
-  height: $to-height
+  +md
+    height: $to-height
 
 #img-1
   height: 300px

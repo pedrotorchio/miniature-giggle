@@ -83,6 +83,10 @@ export default {
 
 <style lang="sass" scoped>
 @import '~@/styles/config'
+@import '~media-query-mixins'
+
+header
+	height: 100vh
 
 header img
 	object-position: 35% center
@@ -99,7 +103,19 @@ header img
 
 	
 .cta
-	position: absolute;
-	bottom: 100px;
-	right: 66px;
+	position: absolute
+	bottom: 100px
+	width: 90%
+	margin: 0 auto
+	left: 50%
+	transform: translateX(-50%)
+	font-size: 20px
+	text-align: center
+	+md
+		right: 66px
+		margin: 0
+		font-size: 24px
+		width: auto
+		left: initial
+		transform: none
 </style>
