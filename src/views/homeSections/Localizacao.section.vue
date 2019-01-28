@@ -3,6 +3,7 @@ import { TweenMax, SlowMo, TimelineMax, Power2 } from 'gsap';
 import lazyImage from 'v-lazy-image';
 import hoverableImage from '@/components/hoverable-image';
 import Section from '@/mixins/Section.mixin';
+import { address } from '@/contact'
 
 export default {
     extends: Section,
@@ -13,6 +14,15 @@ export default {
     computed: {
         ctaTextArray() {
             return this.ctaText.split('');
+        },
+        line1() {
+            return `${address.street}, ${address.number}`
+        },
+        line2() {
+            return `Sala ${address.room}`
+        },
+        line3() {
+            return address.area
         }
     },
     methods: {
@@ -44,9 +54,12 @@ export default {
                         li Em frente ao Shopping Riomar
                         li Infra-estrutura de estacionamento com segurança e conforto
                         li Ambientes planejados para a prática da Terapia Ocupacional
-                    h3 Av. República do Líbano, 251, Sala 1005B
+                    h3 
+                        | {{ line1 }}
                         br 
-                        | Pina, Recife-PE
+                        | {{ line2 }}
+                        br 
+                        | {{ line3 }}
 
                 //- button.cta( ref = "cta" )
                 //-     span.border.top( ref = "ctaBorderTop" )
@@ -73,11 +86,11 @@ export default {
 .textual, .map-container
     width: 100%
     +md
-        flex: 1 0 50%
+        flex: 0 0 50%
     position: relative
 .textual
     padding: 10px
-    +md
+    +lg
         padding: 100px
 .inner
     width: 100%
@@ -103,6 +116,7 @@ export default {
         font-size: 1.1em
     h3
         font-size: 1em
+        line-height: 2em
     li
         font-size: 1em
         line-height: 2em

@@ -134,6 +134,11 @@ export default {
         text-align: left
         display: table
 
+        +md
+            font-size: $size--title
+        +lg
+            font-size: $size--text
+
         transition-property: text-shadow, color
         transition-timing-function: ease-out
         visibility: hidden

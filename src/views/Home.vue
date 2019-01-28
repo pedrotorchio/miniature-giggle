@@ -99,10 +99,10 @@ export default {
               p Recepção
         li
             hoverable-image( src = "/assets/imgs/localizacao-6.jpg" src-placeholder = "/assets/imgs/localizacao-6-tiny.jpg" )
-              p Sala 1
+              p Consultório 1
         li
             hoverable-image( src = "/assets/imgs/localizacao-4.jpg" src-placeholder = "/assets/imgs/localizacao-4-tiny.jpg" )
-              p Sala 2
+              p Consultório 2
     
     contato-section#contato.wide.full-height.bg-colored.padded.fixed( ref = "contatoSection" )
     

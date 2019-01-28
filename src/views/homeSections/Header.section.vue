@@ -8,7 +8,7 @@ export default {
     extends: Section,
 	components: { lazyImage },
 	data: () => ({
-		ctaText: "Descubra a REATO"
+		ctaText: "Conheça a REATO"
 	}),
 	computed: {
 		ctaTextArray() {
@@ -87,7 +87,7 @@ export default {
 
 header
 	height: 100vh
-
+    
 header img
 	object-position: 35% center
 

@@ -2,19 +2,20 @@
 import { TweenMax, SlowMo, TimelineMax, Power2 } from 'gsap';
 import ContactForm from '@/components/contact-form';
 import Section from '@/mixins/Section.mixin';
-import { email, phone } from '@/contact'
+import { email, phone, whatsapp } from '@/contact'
 export default {
     extends: Section,
     components: { ContactForm },
     data: () => ({
         tel: phone,
-        email: email
+        email: email,
+        cel: whatsapp
     }),
 }
 </script>
 <template lang="pug">
     section#contato
-        p {{ tel }}
+        p {{ tel }} / {{ cel }}
         p {{ email }}
 
 </template>

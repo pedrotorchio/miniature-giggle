@@ -47,8 +47,8 @@ export default {
         span.snd
         span.trd
       transition-group#main( v-if = "navShown" appear tag = "nav" @enter = "staggerNavigation" @before-enter = "stickyHeader" )
+        router-link( v-if = "scrollRatio > 0" to="#inicio" :data-index = "pages.length" key = "inicio" ) Voltar
         router-link( v-for = "( { url, title, slug } , i) in pages" :to="url" :data-index = "i" :key = "slug" :class="{ active: slug === currSectionId }" ) {{ title }}
-        router-link( v-if = "scrollRatio > 10" to="#inicio" :data-index = "pages.length" key = "inicio" ) Subir
       span.progress( ref= "progress" )
 
     
@@ -79,6 +79,7 @@ $height: 64px
   +md
     display: none
   span
+    outline: 1px solid rgba(255, 255, 255, .5)
     position: absolute
     height: 4px
     width: 80%
