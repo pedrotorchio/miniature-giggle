@@ -1,5 +1,5 @@
 <script>
-import { phone } from '@/contact'
+import { phone, whatsapp } from '@/contact'
 import '@/components/svg/phone'
 import '@/components/svg/whatsapp'
 
@@ -12,12 +12,14 @@ export default {
     },
     computed: {
         callHref() {
-            return `tel:+55-81-${phone}`
+            const ph = `+55-81-${phone}`;
+            return `tel:${ph}`;
         },
         waHref() {
-            return `https://wa.me/${this.callHref}`;
+            const wa = `5581${whatsapp.replace(/-/g, "")}`;
+            return `https://wa.me/${wa}`;
         }
-    }
+    },
 }
 </script>
 <template lang="pug">
@@ -25,7 +27,7 @@ export default {
         a( :href="callHref") 
             | Ligar Agora
             svgicon( name = "phone" )
-        a( :href = "waHref" )
+        a( :href = "waHref" target = "_blank" )
             | Whatsapp
             svgicon( name = "whatsapp" )            
 

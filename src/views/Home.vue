@@ -63,7 +63,7 @@ export default {
 
 <template lang="pug">
   div#sobre
-    header-section( ref = "headerSection" )
+    header-section#inicio( ref = "headerSection" )
 
     to-section#terapia-ocupacional.wide.padded( ref = "toSection" )
     
@@ -74,10 +74,10 @@ export default {
     servicos-section#servicos.wide.padded.fixed( ref = "servicosSection" )
 
     section#img-1.space
-      hoverable-image#img.cover(
+      hoverable-image#img.cover.parallax(
         :hoverable = "false"
-        src = "/assets/imgs/localizacao-4.jpg"
-        src-placeholder = "/assets/imgs/localizacao-4-tiny.jpg" )
+        src = "/assets/imgs/localizacao-4-horizontal.jpg"
+        src-placeholder = "/assets/imgs/localizacao-4-horizontal-tiny.jpg" )
 
     localizacao-section#localizacao.wide.full-height( ref = "localizacaoSection" )
 

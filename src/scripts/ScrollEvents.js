@@ -30,9 +30,7 @@ export function progress( initialElement, scrollPosition ) {
     let sectionId = null;
 
     sections.forEach( section => {
-      if ( whenPassedElTopOrFalse(section, scrollPosition, -100) ) {
-        if (!section)
-          console.log(sections)
+      if ( section && whenPassedElTopOrFalse(section, scrollPosition, -250)) {          
         sectionId = section.id || section.dataset.id
       }
     })

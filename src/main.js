@@ -5,6 +5,7 @@ import router from './router'
 Vue.config.productionTip = false
 
 import SvgIcon from 'vue-svgicon'
+
 Vue.use(SvgIcon);
 Vue.mixin({
   data: () => ({

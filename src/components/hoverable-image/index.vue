@@ -12,6 +12,10 @@ export default {
         invert: {
             type: Boolean,
             default: false
+        },
+        imgClasses: {
+            type: Array,
+            default: ()=>([])
         }
     },
     data: () => ({
@@ -19,7 +23,7 @@ export default {
     }),
     computed: {
         attrs() {
-            const { hoverable, id, ...attrs } = this.$attrs;
+            const { hoverable, id, imgClasses, ...attrs } = this.$attrs;
             return attrs;
         },
         listeners() {
@@ -40,7 +44,7 @@ export default {
         lazy-image(
             v-bind = "attrs"
             v-on = "listeners"
-            :class = "[ loaded? 'loaded' : 'not-loaded' ]"
+            :class = "[ loaded? 'loaded' : 'not-loaded', ...imgClasses ]"
             @load = "load"
         )
         div.caption

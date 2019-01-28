@@ -2,13 +2,13 @@
 import { TweenMax, SlowMo, TimelineMax, Power2 } from 'gsap';
 import ContactForm from '@/components/contact-form';
 import Section from '@/mixins/Section.mixin';
-
+import { email, phone } from '@/contact'
 export default {
     extends: Section,
     components: { ContactForm },
     data: () => ({
-        tel: "3333-4444",
-        email: "contato@toreato.com.br"
+        tel: phone,
+        email: email
     }),
 }
 </script>

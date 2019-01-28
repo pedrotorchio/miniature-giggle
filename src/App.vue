@@ -16,7 +16,8 @@ export default {
     pages,
     currSectionId: null,
     navToggled: false,
-    callShown: false
+    callShown: false,
+    scrollRatio: 0
   }),
   methods: {
     stickyHeader() {
@@ -25,6 +26,7 @@ export default {
     setProgress(scrolled) {
       scrolled = Math.floor(scrolled)
       this.$refs['progress'].style.width = scrolled + "%";
+      this.scrollRatio = scrolled
     },
     setProgressSection(sectionId) {
       this.currSectionId = sectionId;
@@ -46,6 +48,7 @@ export default {
         span.trd
       transition-group#main( v-if = "navShown" appear tag = "nav" @enter = "staggerNavigation" @before-enter = "stickyHeader" )
         router-link( v-for = "( { url, title, slug } , i) in pages" :to="url" :data-index = "i" :key = "slug" :class="{ active: slug === currSectionId }" ) {{ title }}
+        router-link( v-if = "scrollRatio > 10" to="#inicio" :data-index = "pages.length" key = "inicio" ) Subir
       span.progress( ref= "progress" )
 
     
@@ -109,16 +112,16 @@ $height: 64px
     &.trd
       opacity: 0
   width: 100%
-  +md
-    width: auto
-    height: $height
   position: absolute
   top: calc(100vh - #{$height})
   font-size: 24px
   line-height: $height
   z-index: 55555
   +md
-    right: 50px
+    left: initial !important
+    right: 50px !important
+    width: auto !important
+    height: $height
 
 
   a
@@ -131,8 +134,8 @@ $height: 64px
 
 
     @for $i from 0 through 8
-      &:nth-child(#{$i})
-        top: (($i + 1) * ($height + 10px))
+      &:nth-child(#{$i + 1})
+        top: (2*$height + $i * ($height + 10px))
         transition-delay: ($i * .2s)
     +md
       display: inline-block
@@ -143,8 +146,8 @@ $height: 64px
       transition-delay: 0s !important
       
     color: #ffffff;
-    text-shadow: 1px 1px 8px #50505059;
-    transition-property: color, font-size, transform, background-color, top
+    text-shadow: 1px 1px 2px #505050e6
+    transition: color, font-size, transform, background-color, top, text-shadow
     transition-duration: 500ms
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55)
     will-change: opacity, color, text-shadow, transform    
@@ -152,23 +155,28 @@ $height: 64px
 
     &.active, &:hover
       color: $color--primary
-      text-shadow: 0 0 0 #50505059
+      text-shadow: 1px 1px 2px #50505055
+      
 
     &.active
       transform: scale(1.2)
-      transition-delay: 0
-      
-  &:not(.toggled)
-    a.active
+      transition-delay: 0s
       top: 0
       +md
         top: initial
+      
+  // &:not(.toggled)
+  //   a.active
+  //     top: 0
+  //     +md
+  //       top: initial
   &.toggled 
-
+    
     a
       transform: translateX(0)
       background-color: $color--primary
-
+      &:hover
+        color: white
       &.active
         color: white
       +md
