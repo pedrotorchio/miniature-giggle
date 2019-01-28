@@ -99,8 +99,8 @@ export default {
             div.left.half    
                 hoverable-image#img.cover(
                     :hoverable = "false"
-                    src = "/assets/imgs/terapia-ocupacional.jpg"
-                    src-placeholder = "/assets/imgs/terapia-ocupacional-tiny.jpg" )
+                    src = "/assets/imgs/piano-hands.jpg"
+                    src-placeholder = "/assets/imgs/piano-hands-tiny.jpg" )
                     
                     div#call-text
                         h3( y="110px" x="30px" dominant-baseline="text-before-edge" ) O que
