@@ -12,12 +12,16 @@ export default {
 }
 </script>
 <template lang="pug">
-    section#destaques
+    section#destaques.half-padded
         div.inner-section
             transition( appear @enter = "(el, done) => logoEnter(el, done, false)" )
                 svgicon.logo( name = "logo-head" color = "#009688" )    
 </template>
 <style lang="sass" scoped>
+@import '~media-query-mixins'
+section
+    padding-bottom: 0px
+
 .logo
     height: 300px
     width: 100%

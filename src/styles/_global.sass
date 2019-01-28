@@ -59,7 +59,14 @@ section, .section
   position: relative
 
   &.padded
-    padding: 100px 0
+    &.responsive
+      padding: 50px 0
+    &.fixed
+      padding: 100px 0
+    +md
+      padding: 100px 0
+    
+
   &.half-padded
     padding: 50px 0
   

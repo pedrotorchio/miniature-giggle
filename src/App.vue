@@ -7,12 +7,16 @@ import pages from "@/pages";
 import SmoothScroll from 'smooth-scroll';
 import Sticky from 'sticky-js';
 
+import Call from '@/components/call/Call'
+
 export default {
   mixins: [Animations],
+  components: { Call },
   data: () => ({
     pages,
     currSectionId: null,
-    navToggled: false
+    navToggled: false,
+    callShown: false
   }),
   methods: {
     stickyHeader() {
@@ -28,6 +32,7 @@ export default {
   },
   mounted() {
     new SmoothScroll('a[href*="#"]');
+    setTimeout(()=>this.callShown = true, 1000);
   }
 };
 </script>
@@ -49,6 +54,7 @@ export default {
     
     transition
       router-view#view
+    call#call( :shown = "callShown" )
 
 </template>
 <style lang="scss" src="@/styles/_animation.scss"></style>
@@ -56,8 +62,11 @@ export default {
 <style lang="sass" scoped>
 @import '~@/styles/config'
 @import '~media-query-mixins'
-$height: 64px
 
+$height: 64px
+#call
+  +sm
+    display: none
 .toggle
   width: $height
   height: $height
@@ -121,9 +130,9 @@ $height: 64px
     padding-right: 10px
 
 
-    @for $i from 1 through 8
+    @for $i from 0 through 8
       &:nth-child(#{$i})
-        top: ($i * ($height + 10px))
+        top: (($i + 1) * ($height + 10px))
         transition-delay: ($i * .2s)
     +md
       display: inline-block
@@ -131,27 +140,40 @@ $height: 64px
       top: initial !important
       transform: none
       margin: 0 16px
+      transition-delay: 0s !important
+      
     color: #ffffff;
     text-shadow: 1px 1px 8px #50505059;
-    transition-property: color, font-size, transform, background-color
+    transition-property: color, font-size, transform, background-color, top
     transition-duration: 500ms
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55)
     will-change: opacity, color, text-shadow, transform    
     
 
-    &.active
-      transform: scale(1.2)
-
     &.active, &:hover
       color: $color--primary
       text-shadow: 0 0 0 #50505059
 
-  &.toggled a
-    transform: translateX(0)
-    background-color: $color--primary
-    +md
-      transform: none
-      background-color: transparent
+    &.active
+      transform: scale(1.2)
+      transition-delay: 0
+      
+  &:not(.toggled)
+    a.active
+      top: 0
+      +md
+        top: initial
+  &.toggled 
+
+    a
+      transform: translateX(0)
+      background-color: $color--primary
+
+      &.active
+        color: white
+      +md
+        transform: none
+        background-color: transparent
 
 
   span.progress

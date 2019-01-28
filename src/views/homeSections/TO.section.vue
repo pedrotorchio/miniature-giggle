@@ -2,6 +2,7 @@
 import { TweenMax, SlowMo, TimelineMax, Power2 } from 'gsap';
 import hoverableImage from '@/components/hoverable-image';
 import Section from '@/mixins/Section.mixin';
+import viewport from 'viewport-dimensions';
 
 export default {
     extends: Section,
@@ -35,7 +36,16 @@ export default {
             }
         },
         animate(timeline) {
+            
             const delay = .8;
+            const isMobile = viewport.width() < 769;
+            const showImgText = () => {
+                timeline
+                    .addCallback(() => this.$el.querySelector('#img #call-text').classList.add('shown'));
+            }
+            
+            if (isMobile)
+                showImgText();
 
             timeline
                 .set(this.$refs['h1TextLetters'], {
@@ -75,8 +85,9 @@ export default {
                     }, textOffset + j * .2);
                 })
             })
-            timeline
-                .addCallback(() => this.$el.querySelector('#img #call-text').classList.add('shown'));
+            
+            if (!isMobile)
+                showImgText()
 
         }
     }

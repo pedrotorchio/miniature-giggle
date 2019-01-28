@@ -16,6 +16,7 @@ export default {
 </template>
 <style lang="sass" scoped>
 @import '~@/styles/config'
+@import '~media-query-mixins'
 .inner-section
     display: flex
     align-items: stretch
@@ -30,12 +31,14 @@ p
     font-style: italic
     text-align: center
     font-size: $size--title
+    line-height: 1.5em
 h3
 
     font-weight: 100
     text-align: center
     margin: 0
-    text-align: right
+    +md
+        text-align: right
     text-transform: uppercase
     opacity: .3
 

@@ -20,6 +20,7 @@
     "smooth-scroll": "^15.0.0",
     "sticky-js": "^1.2.0",
     "v-lazy-image": "^1.2.2",
+    "viewport-dimensions": "^0.2.0",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",
     "vue-svgicon": "^3.2.2"

@@ -71,7 +71,7 @@ export default {
     
     missao-section#missao.wide.half-padded.bg-colored( ref = "missaoSection" )    
 
-    servicos-section#servicos.wide.padded( ref = "servicosSection" )
+    servicos-section#servicos.wide.padded.fixed( ref = "servicosSection" )
 
     section#img-1.space
       hoverable-image#img.cover(
@@ -104,7 +104,7 @@ export default {
             hoverable-image( src = "/assets/imgs/localizacao-4.jpg" src-placeholder = "/assets/imgs/localizacao-4-tiny.jpg" )
               p Sala 2
     
-    contato-section#contato.wide.full-height.bg-colored( ref = "contatoSection" )
+    contato-section#contato.wide.full-height.bg-colored.padded.fixed( ref = "contatoSection" )
     
     footer-section#sobre.full-height( ref = "footerSection" )
 
