@@ -36,13 +36,9 @@ body::-webkit-scrollbar-thumb
   background-color: currentColor;
   outline: 1px solid slategrey;
 
-.cursive
-  font-family: 'Sacramento', cursive
-
-
 .split
   display: block
-  +md
+  +sm
     display: flex
     flex-direction: row
     align-items: stretch
@@ -51,7 +47,7 @@ body::-webkit-scrollbar-thumb
     padding: 50px 10px
     position: relative
     box-sizing: border-box
-    +md
+    +sm
       flex: 0 0 50%
       padding: 50px
 
@@ -63,7 +59,7 @@ section, .section
       padding: 50px 0
     &.fixed
       padding: 100px 0
-    +md
+    +sm
       padding: 100px 0
     
 
@@ -77,7 +73,7 @@ section, .section
 
 .full-height
   height: initial
-  +md
+  +sm
     height: 100vh
 .narrow
   $width: 940px

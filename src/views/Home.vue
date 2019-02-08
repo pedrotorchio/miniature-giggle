@@ -79,7 +79,7 @@ export default {
         src = "/assets/imgs/localizacao-4-horizontal.jpg"
         src-placeholder = "/assets/imgs/localizacao-4-horizontal-tiny.jpg" )
 
-    localizacao-section#localizacao.wide.full-height( ref = "localizacaoSection" )
+    localizacao-section#localizacao.wide( ref = "localizacaoSection" )
 
     div#photos
       ul
@@ -113,7 +113,7 @@ export default {
 @import '~media-query-mixins'
 $to-height: 600px
 #terapia-ocupacional
-  +md
+  +sm
     height: $to-height
 
 #img-1
@@ -132,7 +132,7 @@ $to-height: 600px
   ul
     display: block
     padding: 0
-    +md
+    +sm
       display: flex
 
   li
@@ -142,7 +142,7 @@ $to-height: 600px
       padding: 10px 10px
       box-shadow: 0px 0px 7px #00000033;
 
-      +md
+      +sm
         min-width: 64px
         flex: 1 1 auto
         padding: 0

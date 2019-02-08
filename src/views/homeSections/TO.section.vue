@@ -171,7 +171,7 @@ export default {
         left: 10px
         font-size: 48px
         line-height: 1.2em
-        +md
+        +sm
             left: 40px
             font-size: 64px
 
@@ -198,7 +198,7 @@ export default {
     height: 400px
     width: 100%
 
-    +md
+    +sm
         height: initial
         width: initial
     h2

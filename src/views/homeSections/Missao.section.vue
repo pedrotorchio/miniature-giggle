@@ -37,7 +37,7 @@ h3
     font-weight: 100
     text-align: center
     margin: 0
-    +md
+    +sm
         text-align: right
     text-transform: uppercase
     opacity: .3

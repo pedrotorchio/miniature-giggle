@@ -111,7 +111,7 @@ header img
 	transform: translateX(-50%)
 	font-size: 20px
 	text-align: center
-	+md
+	+sm
 		right: 66px
 		margin: 0
 		font-size: 24px

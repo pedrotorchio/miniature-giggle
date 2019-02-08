@@ -102,7 +102,7 @@ export default {
                     service-details.content.narrow.width( v-else ref = "details" :serviceData = "activeService" )
             div.list
                 div#words
-                    h3.cursive( ref = "words" v-for = "( word, i ) in words" :key = "word.title + i" @mouseover = "show(word)" @mouseout = "show(false)") {{ word.title }}
+                    h3.cursive( ref = "words" v-for = "( word, i ) in words" :key = "word.title + i" @mouseover = "show(word)" @mouseout = "show(false)" @click = "show(word) " ) {{ word.title }}
                 
                     
 
@@ -113,14 +113,14 @@ export default {
 
 
 .inner-section
-    +md
+    +lg
         display: flex
         align-items: stretch
         justify-content: center
 
 .content-container, .list
     padding: 0 10px
-    +md
+    +lg
         flex: 0 0 50%
         padding: 0 50px
 
@@ -129,13 +129,16 @@ export default {
     h3
         font-weight: 100
         position: relative
-        font-size: $size--text
+        font-size: $size--title
+        line-height: 2em
+        letter-spacing: .2em
         color: $color--primary
         text-align: left
         display: table
+        padding: .5em
+        margin: 0
+        width: 100%
 
-        +md
-            font-size: $size--title
         +lg
             font-size: $size--text
 
@@ -145,24 +148,27 @@ export default {
         opacity: 0
         text-shadow: 0px 8px 4px rgba(0,0,0,0.2)
         transform: translateY(-8px)
-
+        
         cursor: pointer
         &:hover
             color: rgba($color--primary, .5)
             text-shadow: 0 0 2em rgb(28, 68, 119) !important
+        
+        &:nth-child(odd)
+            background-color: rgba(black, .05)
 
 $height: 100%
 .content-container
     text-align: center
     display: none
-    +md
+    +lg
         display: flex
         align-items: center
 
 svg.content
     width: 80%
     height: 50vh
-    +md
+    +sm
         height: 200px
         max-width: 400px
 

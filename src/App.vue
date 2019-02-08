@@ -169,7 +169,7 @@ $height: 64px
   // &:not(.toggled)
   //   a.active
   //     top: 0
-  //     +md
+  //     +sm
   //       top: initial
   &.toggled 
     
