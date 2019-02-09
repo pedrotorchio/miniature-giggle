@@ -1,5 +1,4 @@
 <script>
-import { TweenMax, SlowMo, TimelineMax, Power2 } from 'gsap';
 import lazyImage from 'v-lazy-image';
 import hoverableImage from '@/components/hoverable-image';
 import Section from '@/mixins/Section.mixin';

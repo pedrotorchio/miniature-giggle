@@ -1,5 +1,4 @@
 <script>
-import { TweenMax, SlowMo, TimelineMax, Power2 } from 'gsap';
 import ContactForm from '@/components/contact-form';
 import Section from '@/mixins/Section.mixin';
 import { email, phone, whatsapp } from '@/contact'

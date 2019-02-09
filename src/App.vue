@@ -23,7 +23,9 @@ export default {
   }),
   methods: {
     stickyHeader() {
-      new Sticky('#nav-container');
+      new Sticky('#nav-container', {
+        stickyClass: 'sticked'
+      });
     },
     setProgress(scrolled) {
       scrolled = Math.floor(scrolled)
@@ -33,7 +35,7 @@ export default {
     setProgressSection(sectionId) {
       this.currSectionId = sectionId;
     },
-    menuClick({ url, slug }) {
+    menuClick() {
       rLg(()=>this.navToggled = false);
     }
   },
@@ -79,6 +81,7 @@ $height: 64px
   width: $height
   height: $height
   position: relative
+  bottom: 100px
   z-index: 99999999
   margin-left: auto
   +md
@@ -110,6 +113,9 @@ $height: 64px
 
 
 #nav-container
+  &.sticked
+    .toggle
+      bottom: 0 !important
   &.toggled .toggle span
     &.fst
       transform: rotateZ(225deg)

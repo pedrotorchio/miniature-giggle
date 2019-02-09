@@ -3,3 +3,9 @@ $color--secondary: #7dc4c7;
 
 $size--text: 18px;
 $size--title: 24px;
+
+@mixin cover() {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}

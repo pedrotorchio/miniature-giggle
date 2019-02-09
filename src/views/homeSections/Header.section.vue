@@ -1,5 +1,5 @@
 <script>
-import { TweenMax, SlowMo, TimelineMax } from 'gsap';
+import { TweenMax, SlowMo } from 'gsap';
 import lazyImage from 'v-lazy-image';
 // import '@/components/svg/about-hero-line2';
 import Section from '@/mixins/Section.mixin';
@@ -66,9 +66,31 @@ export default {
 <template lang="pug">
 	header.section
 		lazy-image.cover(
-			src = "/assets/imgs/about-hero.jpg"
-			src-placeholder = "/assets/imgs/about-hero-tiny.jpg" )
-
+			src = "/assets/imgs/about-hero-60.jpg"
+			srcset = `
+				/assets/imgs/about-hero-20.jpg 360w,
+				/assets/imgs/about-hero-30.jpg 540w,
+				/assets/imgs/about-hero-40.jpg 769w,
+				/assets/imgs/about-hero-60.jpg 1200w,
+				/assets/imgs/about-hero.jpg 1800w`
+			src-placeholder = "/assets/imgs/about-hero-tiny.jpg"
+			use-picture )
+			source( 
+				media="(orientation: portrait)"
+				srcset = `
+				/assets/imgs/about-hero-20-port.jpg 360w,
+				/assets/imgs/about-hero-30-port.jpg 540w,
+				/assets/imgs/about-hero-40-port.jpg 769w,
+				/assets/imgs/about-hero-60.jpg 1024w,
+				/assets/imgs/about-hero-port.jpg 1200w` )
+			source( 
+				media="(orientation: landscape)"
+				srcset = `
+				/assets/imgs/about-hero-20.jpg 360w,
+				/assets/imgs/about-hero-30.jpg 540w,
+				/assets/imgs/about-hero-40.jpg 769w,
+				/assets/imgs/about-hero-60.jpg 1200w,
+				/assets/imgs/about-hero.jpg 1800w` )
 		//- svgicon#header-line.site-line( ref = "line" name = "about-hero-line2" :fill = "false" color = "blue" )
 	  
 		a.cta( ref = "cta" href = "#terapia-ocupacional" )
@@ -88,8 +110,11 @@ export default {
 header
 	height: 100vh
     
-header img
-	object-position: 35% center
+header .cover 
+	/deep/ img
+		+cover
+		object-position: 35% center
+		object-fit: cover
 
 #header-line
 	position: absolute
@@ -105,17 +130,18 @@ header img
 .cta
 	position: absolute
 	bottom: 100px
+	right: 100px
 	width: 90%
-	margin: 0 auto
-	left: 50%
+	margin: 0 auto	
 	transform: translateX(-50%)
 	font-size: 20px
 	text-align: center
 	+sm
-		right: 66px
 		margin: 0
 		font-size: 24px
 		width: auto
-		left: initial
 		transform: none
+
+	+md
+		right: 64px
 </style>
