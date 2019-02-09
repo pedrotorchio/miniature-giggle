@@ -53,7 +53,7 @@ export default {
         span.trd
       transition-group#main( v-if = "navShown" appear tag = "nav" @enter = "staggerNavigation" @before-enter = "stickyHeader" )
         router-link( v-for = "( { url, title, slug } , i) in pages" :to="url" :data-index = "i" :key = "slug" :class="{ active: slug === currSectionId }" @click.native = "menuClick({url, slug})" ) {{ title }}
-        router-link.voltar( v-if = "scrollRatio > 0" to="#inicio" :data-index = "pages.length" key = "inicio" @click.native = "menuClick" ) Voltar
+        router-link.voltar( v-if = "scrollRatio > 0" to="#inicio" :data-index = "pages.length" key = "inicio" @click.native = "menuClick" ) Voltar para o topo
       span.progress( ref= "progress" )
 
     
@@ -129,6 +129,10 @@ $height: 64px
     width: auto !important
     height: $height
 
+    .voltar
+      position: fixed
+      bottom: 0
+      right: 0
 
   a
     display: block
