@@ -26,7 +26,7 @@ export const words = [
     new ServiceData('Otimização de Habilidades', 
         "Reconhecimento e potencialização das habilidades remanescentes para valorizar o papel social do idoso, mesmo em situação de dependência."),
     new ServiceData('Organização de Rotina', 
-        `Intervenção voltada a dar suport de forma a ampliar o senso de participação dos clientes no cotidiano. 
+        `Intervenção voltada a dar suporte de forma a ampliar o senso de participação dos clientes no cotidiano. 
         São identificadaos interesses do cliente, fatores facilitadores/dificultadores do ambiente (físico e interpessoal) e estratégias já assumidas.
         A partir da avaliação das propostas atividades organizadoras, que reforçam a identidade do cliente, previnindo comportamentos inadequados e aumentando o engajamento da rotina.`),
     new ServiceData('Adequação Postural em Sedestação', 
