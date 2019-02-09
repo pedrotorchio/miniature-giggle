@@ -26,12 +26,18 @@ export const words = [
     new ServiceData('Otimização de Habilidades', 
         "Reconhecimento e potencialização das habilidades remanescentes para valorizar o papel social do idoso, mesmo em situação de dependência."),
     new ServiceData('Organização de Rotina', 
-        "Algo sobre este serviço. Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum."),
+        `Intervenção voltada a dar suport de forma a ampliar o senso de participação dos clientes no cotidiano. 
+        São identificadaos interesses do cliente, fatores facilitadores/dificultadores do ambiente (físico e interpessoal) e estratégias já assumidas.
+        A partir da avaliação das propostas atividades organizadoras, que reforçam a identidade do cliente, previnindo comportamentos inadequados e aumentando o engajamento da rotina.`),
     new ServiceData('Adequação Postural em Sedestação', 
         "Intervenção voltada a auxilar a escolha do sistema de assento ou adaptar o produto já existente ás condições osteomusculares e funcionais do idoso, diminuindo o risco do aparecimento (ou agravamento) de deformidades e úlceras de pressão, conferindo conforto e funcionalidade."),
     new ServiceData('Reabilitação Neuromotora', 
         "Processo de intervenção que inclui atenção aos aspectos neuropsicomotor, cognitivo e músculoesquelético envolvidos na performance ocupacional. Objetiva facilitar o retorno do cliente ao seu papel social no domicílio, local de trabalho e do lazer."),
     new ServiceData('Reabilitação Cognitivo Funcional', 
-        "Reabilitação Cognitivo Funcional: proposta de intervenção diferenciada que parte da observação do comportamento cognitivo do idoso para melhorar sua performance diante das demandas do cotidiano.")
+        "Proposta de intervenção diferenciada que parte da observação do comportamento cognitivo do idoso para melhorar sua performance diante das demandas do cotidiano."),
+    new ServiceData('Confecção de Órtese Sob Medida', 
+        `Confecção de órtese em termoplástico para membro superior. A órtese é um recurso terapêutico utilizado com o objetivo de mobilizar ou imobilizar uma ou mais articulações, favorecendo a função e prevenindo deformidades.
+        É feita sob medida, respeitando as características e necessidades individuais e proporcionando maior conforto e melhores resultados.
+        `)
 ]
 

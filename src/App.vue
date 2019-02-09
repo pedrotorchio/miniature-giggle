@@ -9,6 +9,8 @@ import Sticky from 'sticky-js';
 
 import Call from '@/components/call/Call'
 
+import { rLg } from 'media-query-mixins/_mixins.js'
+
 export default {
   mixins: [Animations],
   components: { Call },
@@ -30,6 +32,9 @@ export default {
     },
     setProgressSection(sectionId) {
       this.currSectionId = sectionId;
+    },
+    menuClick({ url, slug }) {
+      rLg(()=>this.navToggled = false);
     }
   },
   mounted() {
@@ -47,8 +52,8 @@ export default {
         span.snd
         span.trd
       transition-group#main( v-if = "navShown" appear tag = "nav" @enter = "staggerNavigation" @before-enter = "stickyHeader" )
-        router-link( v-if = "scrollRatio > 0" to="#inicio" :data-index = "pages.length" key = "inicio" ) Voltar
-        router-link( v-for = "( { url, title, slug } , i) in pages" :to="url" :data-index = "i" :key = "slug" :class="{ active: slug === currSectionId }" ) {{ title }}
+        router-link( v-for = "( { url, title, slug } , i) in pages" :to="url" :data-index = "i" :key = "slug" :class="{ active: slug === currSectionId }" @click.native = "menuClick({url, slug})" ) {{ title }}
+        router-link.voltar( v-if = "scrollRatio > 0" to="#inicio" :data-index = "pages.length" key = "inicio" @click.native = "menuClick" ) Voltar
       span.progress( ref= "progress" )
 
     

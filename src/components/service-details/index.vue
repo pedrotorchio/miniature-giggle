@@ -29,7 +29,7 @@ export default {
         template( v-if = "serviceData" )
             h2 {{ serviceData.title }}
             div.data
-                p {{ serviceData.details }}
+                p( v-html = "serviceData.details" )
                 hoverable-image.img( v-if = "serviceData.img" :src = "`/assets/imgs/${serviceData.img}`" :src-placeholder = "`/assets/imgs/${serviceData.placeholder}`" )
 
 </template>

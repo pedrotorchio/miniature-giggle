@@ -9,19 +9,10 @@ export default {
     components: { hoverableImage },
     data: () => ({
         h1Text: "Terapia Ocupacional",
-        text1: "Procura ampliar campos de <strong>ação e participação</strong>, considerando recursos e necessidades de acordo com o momento e lugar.",
-        text2: "Considerando a <strong>individualidade</strong> de cada paciente, estimula condições de <strong>bem-estar e autonomia</strong>.",
-        text3: "Por meio do fazer afetivo, relacional, material e produtivo o profissional contribui com os processos de produção de <strong>vida e saúde</strong>.",
-        callMain: "O que mais importa pra você.",
+        text1: "Profissão que busca ampliar a participação social dos clientes, considerando sua história de vida, seu contexto social, suas habilidades e motivações.",
+        text2: "Preservando a individualizade dos clientes, o Terapeuta Ocupacional estimula a autonomia e independência com segurança, contribuindo para a sensação de bem estar.",
 
         imgEffect: false,
-
-
-        call0: "Possibilita ao indivíduo que execute suas <strong>atividades cotidianas</strong>",
-        call01: "Visando sempre promover <strong>qualidade de vida.</strong>",
-        call1: "Respeito ao <strong>indivíduo</strong> e anseios pessoais",
-        call2: "Lares adequados ao <strong>estilo de vida</strong>",
-
     }),
     computed: {
         h1TextArray() {
@@ -111,7 +102,7 @@ export default {
                     span.hidden( ref = "h1TextLetters" v-for = "(lt, i) in h1TextArray" :key = "`${lt + i}`" ) {{ lt }}
                 p.text-area( v-html = "text1")
                 p.text-area( v-html = "text2")
-                p.text-area( v-html = "text3")
+                //- p.text-area( v-html = "text3")
             
 </template>
 <style lang="sass" scoped>
@@ -134,6 +125,7 @@ export default {
         visibility: hidden
         margin: .5em 0
         display: block
+        line-height: 1.5em
 
     p /deep/ strong
         position: relative
