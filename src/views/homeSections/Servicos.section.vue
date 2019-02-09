@@ -4,17 +4,25 @@ import ServiceDetails from '@/components/service-details';
 import { TweenMax, Expo } from 'gsap'
 import Section from '@/mixins/Section.mixin';
 import { words } from '@/servicos';
+import { rLg, lg } from 'media-query-mixins/_mixins';
 
 export default {
     extends: Section,
     components: { ServiceDetails },
     data: () => ({
         words,
-        activeService: false
+        activeService: false,
+        popped: false
     }),
     methods: {
+        pop( details ) {
+            rLg(()=>{ // para dispositivos menores que LG
+                this.activeService = details
+                this.popped = true
+            })
+        },
         show(details) {
-            this.activeService = details;
+            lg(()=>this.activeService = details)
         },
         contentEnter( el , done ) {
             TweenMax.to(el, .5, {
@@ -96,13 +104,16 @@ export default {
 <template lang="pug">
     section#servicos.gradient( ref = "container" )
         div.inner-section
-            div.content-container
+            div.content-container( :class="{ popped }")
+                .close-trigger( @click = "popped = false")
+                    span
+                    span
                 transition( appear mode = "out-in" @enter = "contentEnter" @leave = "contentLeave" ) 
-                    svgicon.content( v-if = "activeService == false" name = "reato" :original = "true" )
+                    svgicon.content.logo( v-if = "activeService == false" name = "reato" :original = "true" )
                     service-details.content.narrow.width( v-else ref = "details" :serviceData = "activeService" )
             div.list
                 div#words
-                    h3.cursive( ref = "words" v-for = "( word, i ) in words" :key = "word.title + i" @mouseover = "show(word)" @mouseout = "show(false)" @click = "show(word) " ) {{ word.title }}
+                    h3.cursive( ref = "words" v-for = "( word, i ) in words" :key = "word.title + i" @mouseover = "show(word)" @mouseout = "show(false)" @click = "pop(word) " ) {{ word.title }}
                 
                     
 
@@ -120,6 +131,7 @@ export default {
 
 .content-container, .list
     padding: 0 10px
+
     +lg
         flex: 0 0 50%
         padding: 0 50px
@@ -160,10 +172,38 @@ export default {
 $height: 100%
 .content-container
     text-align: center
-    display: none
+    position: fixed
+    z-index: -1
+    visibility: hidden
+    transition: opacity .5s ease-out
+    opacity: 0
+
+    .logo
+        display: none
+    &.popped
+        opacity: 1
+        padding: 50px
+        visibility: visible
+        width: 100%
+        background: radial-gradient(darken($color--primary, 20) 0%, darken($color--primary, 20) 30%, $color--primary 100%)
+        top: 50%
+        transform: translateY(-50%)     
+        color: white
+        z-index: 9999
+
+
     +lg
+        opacity: 1
+        z-index: 5
+        transform: none
+        transition: initial
+        visibility: visible
+        position: relative !important
         display: flex
         align-items: center
+
+        .logo
+            display: block
 
 svg.content
     width: 80%
@@ -175,5 +215,33 @@ svg.content
 .content
     width: auto
     margin: 0 auto
+.close-trigger
+    position: absolute
+    width: 64px
+    height: 64px
+
+    right: 0
+    top: 0
+    +sm
+        right: 16px
+        top: 16px
+
+    +lg
+        display: none
+
+    span
+        height: 4px
+        background-color: currentColor
+        width: 100%
+        position: absolute
+        display: block
+        transform-origin: center center
+        top: 50%
+        &:first-child
+            transform: rotateZ(45deg)
+        &:nth-child(2)
+            transform: rotateZ(-45deg)
+            
+
 
 </style>

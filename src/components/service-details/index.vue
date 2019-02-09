@@ -49,6 +49,7 @@ h2
         margin: 0
         text-align: left
         text-align: justify
+        line-height: 1.5em
     .img
         width: 50%
         margin-top: 1em

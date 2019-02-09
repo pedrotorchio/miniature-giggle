@@ -190,3 +190,14 @@ svg .site-line, svg.site-line path
   span.text
     visibility: hidden;
     will-change: transform
+
+  
+@keyframes hide
+  100%
+    opacity: 0
+    display: none
+=show-frames( $display-state: block )
+  @keyframes show-block
+    100%
+      opacity: 1
+      display: $display-state
