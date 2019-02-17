@@ -35,17 +35,29 @@ export default {
     section#sobre
         div
             h2 REATO
+            h3 Desenvolvido por 
+                a( href ="mailto:pedro@torchiodev.com" target="_blank") Pedro Torchio
             
 </template>
 <style lang="sass" scoped>
-@import "~@/styles/config";
-$height: 100vh;
-
-h2
+@import "~@/styles/config"
+@import '~media-query-mixins'
+section
+    height: 100vh
+div
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translateY(-50%) translateX(-50%)
+h2, h3
     margin: 0
     text-align: center
-    height: $height
-    line-height: $height
     font-size: 96px
-    
+h3
+    font-size: 18px
+
+    +sm
+        font-size: 24px
+    font-weight: normal
+
 </style>

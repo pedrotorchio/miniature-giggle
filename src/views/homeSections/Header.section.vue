@@ -130,13 +130,14 @@ header .cover
 .cta
 	position: absolute
 	bottom: 100px
-	right: 100px
-	width: 90%
+	width: calc(90% - 60px)
+	left: 10px
 	margin: 0 auto	
-	transform: translateX(-50%)
 	font-size: 20px
 	text-align: center
 	+sm
+		left: initial
+		right: 100px
 		margin: 0
 		font-size: 24px
 		width: auto

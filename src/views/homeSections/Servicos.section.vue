@@ -182,7 +182,9 @@ $height: 100%
         display: none
     &.popped
         opacity: 1
-        padding: 50px
+        padding: 10px
+        +md
+            padding: 50px
         visibility: visible
         width: 100%
         background: radial-gradient(darken($color--primary, 20) 0%, darken($color--primary, 20) 30%, $color--primary 100%)
@@ -190,6 +192,14 @@ $height: 100%
         transform: translateY(-50%)     
         color: white
         z-index: 9999
+
+        /deep/ h2
+            min-height: 50px
+            width: 80%
+            width: calc(100% - 80px)
+
+            +md
+                width: 100%
 
 
     +lg
@@ -223,8 +233,8 @@ svg.content
     right: 0
     top: 0
     +sm
-        right: 16px
-        top: 16px
+        right: 10px
+        top: 10px
 
     +lg
         display: none
@@ -232,15 +242,16 @@ svg.content
     span
         height: 4px
         background-color: currentColor
-        width: 100%
+        width: 60%
+        left: 32px
         position: absolute
         display: block
         transform-origin: center center
         top: 50%
         &:first-child
-            transform: rotateZ(45deg)
+            transform: translateX(-50%) rotateZ(45deg)
         &:nth-child(2)
-            transform: rotateZ(-45deg)
+            transform: translateX(-50%) rotateZ(-45deg)
             
 
 
