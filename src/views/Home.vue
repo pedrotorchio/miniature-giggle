@@ -84,25 +84,43 @@ export default {
     div#photos
       ul
         li
-            hoverable-image( src = "/assets/imgs/localizacao-1.jpg" src-placeholder = "/assets/imgs/localizacao-1-tiny.jpg" )
+            hoverable-image( 
+              title = "Empresarial Riomar Trade Center, onde está a Reato."
+              alt = "Três grandes prédios do Empresarial Riomar Trade Center, sede da Reato"
+              src = "/assets/imgs/localizacao-1.jpg" src-placeholder = "/assets/imgs/localizacao-1-tiny.jpg" )
               p Empresarial
         li
-            hoverable-image( src = "/assets/imgs/localizacao-2.jpg" src-placeholder = "/assets/imgs/localizacao-2-tiny.jpg" )
+            hoverable-image( 
+              title = "Empresarial Riomar Trade Center ao lado do Shopping Riomar"
+              alt = "Prédios do Riomar Trade Center, sede da Reato, ao lado do Shopping Riomar"
+              src = "/assets/imgs/localizacao-2.jpg" src-placeholder = "/assets/imgs/localizacao-2-tiny.jpg" )
               p Empresarial/
                 br
                 | Shopping
         li
-            hoverable-image( src = "/assets/imgs/localizacao-3.jpg" src-placeholder = "/assets/imgs/localizacao-3-tiny.jpg" )
+            hoverable-image( 
+              title = "Saguão do Empresarial Riomar Trade Center"
+              alt = "Saguão do Empresarial que sedia a Reato"
+              src = "/assets/imgs/localizacao-3.jpg" src-placeholder = "/assets/imgs/localizacao-3-tiny.jpg" )
               p Saguão
         li
-            hoverable-image( src = "/assets/imgs/localizacao-5.jpg" src-placeholder = "/assets/imgs/localizacao-5-tiny.jpg" )
+            hoverable-image( 
+              title = "Recepção da Reato"
+              alt = "Recepção da Reato"
+              src = "/assets/imgs/localizacao-5.jpg" src-placeholder = "/assets/imgs/localizacao-5-tiny.jpg" )
               p Recepção
         li
-            hoverable-image( src = "/assets/imgs/localizacao-6.jpg" src-placeholder = "/assets/imgs/localizacao-6-tiny.jpg" )
-              p Consultório 1
-        li
-            hoverable-image( src = "/assets/imgs/localizacao-4.jpg" src-placeholder = "/assets/imgs/localizacao-4-tiny.jpg" )
+            hoverable-image( 
+              title = "Consultório de reabilitação da Reato"
+              alt = "Consultório de reabilitação da Reato"
+              src = "/assets/imgs/localizacao-4.jpg" src-placeholder = "/assets/imgs/localizacao-4-tiny.jpg" )
               p Consultório 2
+        li
+            hoverable-image( 
+              title = "Consultório de atividades da Reato"
+              alt = "Consultório de atividades da Reato"
+              src = "/assets/imgs/localizacao-6.jpg" src-placeholder = "/assets/imgs/localizacao-6-tiny.jpg" )
+              p Consultório 1
     
     contato-section#contato.wide.full-height.bg-colored.padded.fixed( ref = "contatoSection" )
     

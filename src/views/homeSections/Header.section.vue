@@ -1,6 +1,6 @@
 <script>
 import { TweenMax, SlowMo } from 'gsap';
-import lazyImage from 'v-lazy-image';
+import lazyImage from 'v-lazy-image/src';
 // import '@/components/svg/about-hero-line2';
 import Section from '@/mixins/Section.mixin';
 
@@ -82,7 +82,9 @@ export default {
 				/assets/imgs/about-hero-30-port.jpg 540w,
 				/assets/imgs/about-hero-40-port.jpg 769w,
 				/assets/imgs/about-hero-60.jpg 1024w,
-				/assets/imgs/about-hero-port.jpg 1200w` )
+				/assets/imgs/about-hero-port.jpg 1200w` 
+				srcset-placeholder = `/assets/imgs/about-hero-port-tiny.jpg` )
+				
 			source( 
 				media="(orientation: landscape)"
 				srcset = `
@@ -90,7 +92,8 @@ export default {
 				/assets/imgs/about-hero-30.jpg 540w,
 				/assets/imgs/about-hero-40.jpg 769w,
 				/assets/imgs/about-hero-60.jpg 1200w,
-				/assets/imgs/about-hero.jpg 1800w` )
+				/assets/imgs/about-hero.jpg 1800w`
+				srcset-placeholder = `/assets/imgs/about-hero-tiny.jpg` )
 		//- svgicon#header-line.site-line( ref = "line" name = "about-hero-line2" :fill = "false" color = "blue" )
 	  
 		a.cta( ref = "cta" href = "#terapia-ocupacional" )

@@ -5,6 +5,10 @@ import hoverableImage from '@/components/hoverable-image';
 
 import Section from '@/mixins/Section.mixin';
 
+import '@/components/svg/whatsapp'
+import '@/components/svg/email'
+import '@/components/svg/phone'
+
 export default {
     extends: Section,
     components: { hoverableImage },
@@ -33,18 +37,31 @@ export default {
 </script>
 <template lang="pug">
     section#sobre
-        div
+        .container
             h2 REATO
-            h3 Desenvolvido por 
-                a( href ="mailto:pedro@torchiodev.com" target="_blank") Pedro Torchio
+            h3 Desenvolvido por Pedro Torchio
+            .contact
+                a( href ="mailto:pedro@torchiodev.com" target="_blank") 
+                    svgicon( name = "email")
+                a( href ="tel:+55(81)99731-6338" target="_blank") 
+                    svgicon( name = "phone")
+                a( href ="https://wa.me/5581997316338" target="_blank") 
+                    svgicon( name = "whatsapp" color = "white inherit" )
             
 </template>
 <style lang="sass" scoped>
 @import "~@/styles/config"
 @import '~media-query-mixins'
+svg
+    height: 64px
+    width: 64px
+    margin: 0 20px
+    padding: 10px
+.contact
+    text-align: center
 section
     height: 100vh
-div
+.container
     position: absolute
     top: 50%
     left: 50%
