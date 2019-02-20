@@ -41,11 +41,11 @@ export default {
             h2 REATO
             h3 Desenvolvido por Pedro Torchio
             .contact
-                a( href ="mailto:pedro@torchiodev.com" target="_blank") 
+                a( title = "pedro@torchiodev.com" href ="mailto:pedro@torchiodev.com" target="_blank") 
                     svgicon( name = "email")
-                a( href ="tel:+55(81)99731-6338" target="_blank") 
+                a( title = "(81)99731-6338" href ="tel:+55(81)99731-6338" target="_blank") 
                     svgicon( name = "phone")
-                a( href ="https://wa.me/5581997316338" target="_blank") 
+                a( title = "(81)99731-6338" href ="https://wa.me/5581997316338" target="_blank") 
                     svgicon( name = "whatsapp" color = "white inherit" )
             
 </template>
