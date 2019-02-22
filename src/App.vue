@@ -12,6 +12,7 @@ import Call from '@/components/call/Call'
 import { rLg } from 'media-query-mixins/_mixins.js'
 
 export default {
+  name: 'App',
   mixins: [Animations],
   components: { Call },
   data: () => ({

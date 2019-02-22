@@ -1,16 +1,17 @@
 <script>
 import Route from '@/mixins/Route.mixin';
 
-const HeaderSection = () => import('./homeSections/Header.section');
-const ToSection = () => import('./homeSections/TO.section');
-const DestaquesSection = () => import('./homeSections/TODestaques.section');
-const MissaoSection = () => import('./homeSections/Missao.section');
-const ServicosSection = () => import('./homeSections/Servicos.section');
-const LocalizacaoSection = () => import('./homeSections/Localizacao.section');
-const ContatoSection = () => import('./homeSections/Contato.section');
-const FooterSection = () => import('./homeSections/Footer.section');
+import HeaderSection from './homeSections/Header.section';
+import ToSection from './homeSections/TO.section';
 
-const HoverableImage = () => import('@/components/hoverable-image');
+const DestaquesSection = () => import(/* webpackChunkName: "Destaques" */'./homeSections/TODestaques.section');
+const MissaoSection = () => import(/* webpackChunkName: "Missao" */'./homeSections/Missao.section');
+const ServicosSection = () => import(/* webpackChunkName: "Servicos" */'./homeSections/Servicos.section');
+const LocalizacaoSection = () => import(/* webpackChunkName: "Localizacao" */'./homeSections/Localizacao.section');
+const ContatoSection = () => import(/* webpackChunkName: "Contato" */'./homeSections/Contato.section');
+const FooterSection = () => import(/* webpackChunkName: "Footer" */'./homeSections/Footer.section');
+
+const HoverableImage = () => import(/* webpackChunkName: "HoverableImg" */'@/components/hoverable-image');
 
 import { progress, markerId } from '@/scripts/ScrollEvents'
 

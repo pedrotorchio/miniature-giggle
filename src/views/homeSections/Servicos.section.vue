@@ -1,10 +1,12 @@
 <script>
 import '@/components/svg/reato';
-import ServiceDetails from '@/components/service-details';
+
 import { TweenMax, Expo } from 'gsap'
 import Section from '@/mixins/Section.mixin';
 import { words } from '@/servicos';
 import { rLg, lg } from 'media-query-mixins/_mixins';
+
+const ServiceDetails = import(/* webpackChunkName: "service-details" */ '@/components/service-details');
 
 export default {
     extends: Section,

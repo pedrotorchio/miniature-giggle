@@ -1,6 +1,5 @@
 <script>
-import lazyImage from 'v-lazy-image';
-import hoverableImage from '@/components/hoverable-image';
+const hoverableImage = import('@/components/hoverable-image');
 import Section from '@/mixins/Section.mixin';
 import { address } from '@/contact'
 
