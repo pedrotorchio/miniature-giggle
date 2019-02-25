@@ -3,6 +3,7 @@ import { TweenMax, SlowMo } from 'gsap';
 import lazyImage from 'v-lazy-image/src';
 // import '@/components/svg/about-hero-line2';
 import Section from '@/mixins/Section.mixin';
+import { md, min } from 'media-query-mixins/_mixins'
 
 export default {
     extends: Section,
@@ -30,7 +31,9 @@ export default {
 			return el;
 		},
 		getTimelineParameters() {
-			return { delay: 3 };
+			const { result: delay } = md(()=>3) || min(()=>0);
+			
+			return { delay };
 		},
 		animate(timeline) {
 			// const line = this.initializeLine();

@@ -27,7 +27,7 @@ export default {
         a( :href="callHref") 
             | Ligar Agora
             svgicon( name = "phone" )
-        a( :href = "waHref" target = "_blank" )
+        a( :href = "waHref" target = "_blank" rel="noreferrer" )
             | Whatsapp
             svgicon( name = "whatsapp" )            
 

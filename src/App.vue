@@ -59,9 +59,9 @@ export default {
         router-link.voltar( v-if = "scrollRatio > 0" to="#inicio" :data-index = "pages.length" key = "inicio" @click.native = "menuClick" ) Voltar para o topo
       span.progress( ref= "progress" )
 
-    
-    transition( appear @enter = "logoEnter" @after-enter = "showNavigation" ) 
-      svgicon#logo( name = "logo-full" :original = "true" @click="$router.push('/')" )
+    router-link( to = "/" )
+      transition( appear @enter = "logoEnter" ) 
+        svgicon#logo( name = "logo-full" :original = "true" @click="$router.push('/')" )
     
     transition
       router-view#view

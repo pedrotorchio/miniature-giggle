@@ -20,7 +20,10 @@ export default {
         showNavigation() {
           this.navShown = true;  
         },
-        logoEnter
+        logoEnter(el, done) {
+            logoEnter(el, done)
+            this.showNavigation()
+        }
     },
 }
 </script>

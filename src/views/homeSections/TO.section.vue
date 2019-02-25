@@ -32,13 +32,17 @@ export default {
             const isMobile = viewport.width() < 769;
             const showImgText = () => {
                 timeline
-                    .addCallback(() => this.$el.querySelector('#img #call-text').classList.add('shown'));
+                    .addCallback(() => this.$el.querySelector('.img #call-text').classList.add('shown'));
             }
             
             if (isMobile)
                 showImgText();
 
             timeline
+                .from(this.$refs['image'].$el, 1, {
+                    y: 100,
+                    ease: SlowMo.easeOut
+                })
                 .set(this.$refs['h1TextLetters'], {
                     visibility: 'visible'
                 })
@@ -88,7 +92,8 @@ export default {
     section#terapia-ocupacional
         div.inner-section.split
             div.left.half    
-                hoverable-image#img.cover(
+                hoverable-image.img.cover(
+                    ref = "image"
                     :hoverable = "false"
                     src = "/assets/imgs/piano-hands.jpg"
                     src-placeholder = "/assets/imgs/piano-hands-tiny.jpg" )
@@ -143,8 +148,10 @@ export default {
     transform: translateX(#{$trValue})
     opacity: $opacity
     transition-duration: $duration
+.img
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)
 
-#img /deep/ #call-text 
+.img /deep/ #call-text 
     
     width: 100%
     height: 100%
@@ -167,7 +174,7 @@ export default {
             left: 40px
             font-size: 64px
 
-#img /deep/ #call-text.shown h3
+.img /deep/ #call-text.shown h3
     +shown(true)
     &:nth-child(1)
         transition-delay: 0s
@@ -176,7 +183,7 @@ export default {
     &:nth-child(3)
         transition-delay: .4s
         color: rgba($color--secondary, 1)
-#img:hover /deep/ #call-text.shown text
+.img:hover /deep/ #call-text.shown text
     +shown(false)
     &:nth-child(1)
         transition-delay: 0s
