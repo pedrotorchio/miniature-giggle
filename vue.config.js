@@ -5,7 +5,9 @@ const PuppeteerRenderer = PrerenderSPAPlugin.PuppeteerRenderer
 
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-let config = {}
+let configureWebpack = {
+    plugins: []
+}
 
 if (process.env.NODE_ENV === 'production') {
     // chainWebpack: config => {
@@ -17,7 +19,7 @@ if (process.env.NODE_ENV === 'production') {
     //             return args
     //     })
     // },
-    config.optimization = {
+    configureWebpack.optimization = {
         splitChunks: {
           chunks: 'all',
           maxInitialRequests: Infinity,
@@ -45,7 +47,7 @@ if (process.env.NODE_ENV === 'production') {
           }
         }
     };
-    config.configureWebpack.plugins.push(
+    configureWebpack.plugins.push(
         new PrerenderSPAPlugin({
             // Required - The path to the webpack-outputted app to prerender.
             staticDir: path.join(__dirname, 'dist'),
@@ -61,7 +63,7 @@ if (process.env.NODE_ENV === 'production') {
             renderer: new PuppeteerRenderer()
         })
     );
-    config.configureWebpack.plugins.push(
+    configureWebpack.plugins.push(
         new BundleAnalyzerPlugin({
             analyzerMode: 'disabled',
             openAnalyzer: false,
@@ -76,4 +78,6 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 
-module.exports = config
+module.exports = {
+    configureWebpack
+}
