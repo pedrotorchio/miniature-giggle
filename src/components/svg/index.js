@@ -1,6 +1,7 @@
 /* eslint-disable */
 import './about-hero-line'
 import './about-hero-line2'
+import './browser'
 import './email'
 import './logo-full'
 import './logo-head'

@@ -103,7 +103,7 @@ export default {
                         h3( y="175px" x="30px" dominant-baseline="text-before-edge" ) é mais
                         h3( y="240px" x="30px" dominant-baseline="text-before-edge" ) importante.
             div.right.half
-                h1.section-title
+                h2.section-title
                     span.hidden( ref = "h1TextLetters" v-for = "(lt, i) in h1TextArray" :key = "`${lt + i}`" ) {{ lt }}
                 p.text-area( v-html = "text1")
                 p.text-area( v-html = "text2")

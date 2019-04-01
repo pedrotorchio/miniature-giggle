@@ -1,14 +1,8 @@
 <script>
-import { ServiceData } from '@/servicos'
-import HoverableImage from '@/components/hoverable-image';
 
 export default {
-    components: { HoverableImage},
     props: {
-        serviceData: {
-            type: ServiceData | null,
-            required: false
-        }
+        serviceData: Object
     },
     data: () => ({
         shown: false
@@ -25,12 +19,12 @@ export default {
 }  
 </script>
 <template lang="pug">
+
     aside( :class = "{ shown }")
         template( v-if = "serviceData" )
             h2 {{ serviceData.title }}
             div.data
                 p( v-html = "serviceData.details" )
-                hoverable-image.img( v-if = "serviceData.img" :src = "`/assets/imgs/${serviceData.img}`" :src-placeholder = "`/assets/imgs/${serviceData.placeholder}`" )
 
 </template>
 <style lang="sass" scoped>

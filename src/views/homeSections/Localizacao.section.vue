@@ -1,5 +1,6 @@
 <script>
-const hoverableImage = import('@/components/hoverable-image');
+const hoverableImage = import(/* webpackChunkName: "hoverable-img" */'@/components/hoverable-image');
+
 import Section from '@/mixins/Section.mixin';
 import { address } from '@/contact'
 
